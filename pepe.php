@@ -1,5 +1,7 @@
 <?php
 
 include __DIR__ . "/header.php";
-?>
-<img src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
+
+print('"<img src="Public/StockItemIMG/pepe">"');
+include  __DIR__ . "/footer.php";
+
