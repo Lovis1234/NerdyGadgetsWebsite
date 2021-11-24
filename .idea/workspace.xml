@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="596f650e-85c8-4934-9c4f-a7735996b6df" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pepe.php" beforeDir="false" afterPath="$PROJECT_DIR$/pepe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/StockGroupIMG/Pepe.png" beforeDir="false" afterPath="$PROJECT_DIR$/Public/StockItemIMG/Pepe.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\NerdyGadgetsKBS\Public\StockItemIMG" />
       <recent name="C:\xampp\htdocs\NerdyGadgetsKBS\Database" />
       <recent name="C:\xampp\htdocs\NerdyGadgetsKBS\Public\StockGroupIMG" />
     </key>
@@ -76,5 +78,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
