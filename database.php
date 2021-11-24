@@ -13,7 +13,7 @@ function connectToDatabase() {
         $DatabaseAvailable = false;
     }
     if (!$DatabaseAvailable) {
-        ?><img src="Public/StockItemIMG/Pepe.png"><?php
+        ?><img src="Public/StockGroupIMG/Pepe.png"><?php
         die();
     }
 
