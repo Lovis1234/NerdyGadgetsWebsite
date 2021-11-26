@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="596f650e-85c8-4934-9c4f-a7735996b6df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bestellijst.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CartFuncties.php" beforeDir="false" afterPath="$PROJECT_DIR$/CartFuncties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/CSS/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagina1.php" beforeDir="false" afterPath="$PROJECT_DIR$/pagina1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verwijder.php" beforeDir="false" afterPath="$PROJECT_DIR$/verwijder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bestellijst.php" beforeDir="false" afterPath="$PROJECT_DIR$/bestellijst.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
