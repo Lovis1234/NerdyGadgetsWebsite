@@ -1,3 +1,9 @@
+#class-aantalartikel {
+    right: 1300px;
+    line-height: 200px;
+    position: absolute;
+    width: 5%;
+}
 html {
     background-color: rgb(35, 35, 47) !important;
 }
@@ -76,15 +82,15 @@ table tr td {
     line-height: 200px;
     font-size: 25px;
     height: 100px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
+    /*cursor: pointer;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*outline: none;*/
+    /*color: #fff;*/
+    /*background-color: #4CAF50;*/
+    /*border: none;*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 0 9px #999;*/
 }
 
 #button-meer {
@@ -92,16 +98,16 @@ table tr td {
     right: 100px;
     line-height: 200px;
     height: 100px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
+    /*font-size: 24px;*/
+    /*cursor: pointer;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*outline: none;*/
+    /*color: #fff;*/
+    /*background-color: #4CAF50;*/
+    /*border: none;*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 0 9px #999;*/
 }
 
 #class-prijsartikellos {
@@ -125,12 +131,7 @@ table tr td {
     font-size: 45px;
 }
 
-#class-aantalartikel {
-    right: 400px;
-    line-height: 200px;
-    position: absolute;
-    width: 5%;
-}
+
 #class-artikelnummer {
     left: 300px;
     line-height: 125px;
