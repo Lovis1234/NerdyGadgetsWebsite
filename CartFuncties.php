@@ -1,4 +1,4 @@
-<?php // altijd hiermee starten als je gebruik wilt maken van sessiegegevens
+    <?php // altijd hiermee starten als je gebruik wilt maken van sessiegegevens
 
 function getCart(){
     if(isset($_SESSION['cart'])){               //controleren of winkelmandje (=cart) al bestaat
@@ -24,13 +24,13 @@ function addProductToCart($stockItemID){
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
-function removeProductFromCart($stockItemID){
-    $cart = getCart();                          // eerst de huidige cart ophalen
-
-    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
-        unset($cart[$stockItemID]);                   //zo ja:  aantal met 1 verhogen
-    }
-
-    saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
-    print_r($cart);
-}
+//function removeProductFromCart($stockItemID){
+//    $cart = getCart();                          // eerst de huidige cart ophalen
+//
+//    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
+//        unset($cart[$stockItemID]);                   //zo ja:  aantal met 1 verhogen
+//    }
+//
+//    saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
+//    print_r($cart);
+//}
