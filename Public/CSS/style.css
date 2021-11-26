@@ -217,12 +217,26 @@ ul#ul-class-winkelwagen li {
 #Content {
     margin-top: 200px;
 }
-#FilterFrame {
+#CategorieNaam {
     position: fixed;
     width: 19%;
     background-color: rgba(35, 40, 47, 0.8);
     float: left;
     top:216px;
+    border: 1px solid #fff;
+    margin-left: 5px;
+    margin-top: 10px;
+    padding: 10px;
+}
+#CatNaamOpmaak{
+    font-size: 34px;
+}
+#FilterFrame {
+    position: fixed;
+    width: 19%;
+    background-color: rgba(35, 40, 47, 0.8);
+    float: left;
+    top:292px;
     border: 1px solid #fff;
     margin-left: 5px;
     margin-top: 10px;
