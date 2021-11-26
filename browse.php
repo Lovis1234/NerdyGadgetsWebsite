@@ -203,8 +203,12 @@ function berekenVerkoopPrijs($adviesPrijs, $btw) {
 <?php
 $HeaderStockGroups = getHeaderStockGroups($databaseConnection);
 foreach ($HeaderStockGroups as $HeaderStockGroup) {
-    if ($HeaderStockGroup['StockGroupID'] == $_GET['category_id']){
-        $categorieNaam = $HeaderStockGroup['StockGroupName'];
+    if(isset($_GET['category_id'])) {
+        if ($HeaderStockGroup['StockGroupID'] == $_GET['category_id']) {
+            $categorieNaam = $HeaderStockGroup['StockGroupName'];
+        }
+    } else {
+        $categorieNaam = "Algemeen";
     }
 }
 ?>

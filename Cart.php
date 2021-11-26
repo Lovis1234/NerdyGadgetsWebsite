@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-include "cartfuncties.php";
+include "CartFuncties.php";
 
 ?>
 <!DOCTYPE html>
