@@ -14,14 +14,17 @@ include "CartFuncties.php";
 
 </head>
 <body>
-<h1>Inhoud Winkelwagen</h1>
+<h1>&nbsp &nbsp Winkelmand</h1>
 
+<div class="Cart" id="ResultsArea">
 <?php
-$superaantal = 0;
-$totaalprijs = 0;
-$cart = getCart();
+$superaantal = 0; //Het totaal aantal producten
+$totaalprijs = 0; //Het totaalbedrag
+$cart = getCart(); //aanroepen cart array
+
+//Aanpassen hoeveelheid van product
 if(isset($_GET["button-minder"])) {
-    if( $cart[$_GET["idprod"]] != 0){
+    if( $cart[$_GET["idprod"]] != 1){
         $cart[$_GET["idprod"]] -= 1;
         saveCart($cart);
         header("Location:Cart.php");
@@ -35,61 +38,67 @@ elseif (isset($_GET["button-meer"])){
     $cart[$_GET["idprod"]] += 1;
     saveCart($cart);
     header("Location:Cart.php");
-} //
-$cart = getCart();
-print("<table><tr></tr>");
-foreach ($cart as $artikel => $aantal){
-$StockItem = getStockItem($artikel, $databaseConnection);
-$StockItemImage = getStockItemImage($artikel, $databaseConnection);
-$artikelprijstotaal = $StockItem['SellPrice']*$aantal;
-$totaalprijs = $totaalprijs+$artikelprijstotaal;
-$superaantal = $superaantal+$aantal;
-?>
-
-<div id="ArticleHeader">
-            <a id="class-naamartikel" href='view.php?id=<?php print($artikel); ?>'></i> <?php print $StockItem['StockItemName']; ?></a>
-            <a id="class-prijsartikellos"></i><?php print sprintf("Prijs per stuk: € %.2f", $StockItem['SellPrice']); ?></a>
-            <a id="class-prijsartikel"></i><?php print sprintf("Totaal prijs: € %.2f", $artikelprijstotaal); ?></a>
-            <a id="class-artikelnummer">Artikelnummer: <?php print($artikel);?></a>
-   <a id="class-verwijderartikel" href='verwijder.php?idprod=<?php print($artikel); ?>'><i class="bi-trash-fill"></i></a>
-    <form method="get" action="Cart.php" id="class-aantalartikel">
-        <input type="hidden" name="idprod" value="<?php print($artikel); ?>">
-        <input type="submit" name="button-minder" value="-">
-        <fieldset disabled="disabled">
-            <input type="text" name="aantal" value="<?php print($aantal); ?>">
-        </fieldset>
-        <input type="submit" name="button-meer" value="+">
-    </form>
-    <?php
-    if (isset($StockItemImage)) {
-    // één plaatje laten zien
-    if (count($StockItemImage) == 1) {
-        ?>
-        <div id="ImageFrame2"
-             style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 200px; background-repeat: no-repeat; background-position: center;"></div>
-        <?php
-    } else if (count($StockItemImage) >= 2) { ?>
-    <!-- meerdere plaatjes laten zien -->
-    <div id="ImageFrame">
-        <div id="ImageCarousel" class="carousel slide" data-interval="false">
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <?php for ($i = 0; $i < count($StockItemImage); $i++) {
-                    ?>
-                    <li data-target="#ImageCarousel"
-                        data-slide-to="<?php print $i ?>" <?php print (($i == 0) ? 'class="active"' : ''); ?>></li>
-                    <?php
-                } ?>
-            </ul>
-            <?php
-            }}
-    print("<tr><td>"."</td><td>"."</td><td>"."</td></tr>");
 }
-print("</table>");
-print("Aantal producten in winkelmand = ".$superaantal);
-print(sprintf("<br>Totaal prijs: € %.2f", $totaalprijs));
+//einde van aanpassen hoeveelheid product
+
+$test = array(1,2,3,4,5);
+
+foreach ($cart as $artikel => $aantal){
+    $StockItem = getStockItem($artikel, $databaseConnection);
+    $StockItemImage = getStockItemImage($artikel, $databaseConnection);
+    $artikelprijstotaal = $StockItem['SellPrice']*$aantal;
+    $totaalprijs = $totaalprijs+$artikelprijstotaal;
+    $superaantal = $superaantal+$aantal;
+    ?>
+    <hr style="border: 1px solid white">
+
+    <div class="CartProductFrame">
+        <?php
+        if (isset($StockItemImage)) {
+            if (count($StockItemImage) == 0) {
+                ?>
+                <div id="CartImageFrame"
+                     style="background-image: url('Public/StockItemIMG/GeenAfbeelding.jpg'); background-size: 200px; background-repeat: no-repeat; background-position: center;"></div>
+                <?php
+            }
+        // één plaatje laten zien
+        if (count($StockItemImage) >= 1) {
+            ?>
+            <div id="CartImageFrame"
+                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 200px; background-repeat: no-repeat; background-position: center;"></div>
+            <?php
+        }
+        }
+    ?>
+        <div class="CartNaamArtikel">
+            <a id="NaamArtikel" href='view.php?id=<?php print($artikel); ?>'></i> <?php print $StockItem['StockItemName']; ?></a>
+        </div>
+        <div class="CartArtikelNr">
+            <a id="Artikelnummer">Artikelnummer: <?php print($artikel);?></a>
+        </div>
+        <div class="CartHoeveelheid">
+            <form method="get" action="Cart.php" id="CartHoeveelheidArtikel">
+                <input type="hidden" name="idprod" value="<?php print($artikel); ?>">
+                <input type="submit" name="button-minder" value="-" id="CartPlusMin">
+                <input id="CartAantal" type="text" name="aantal" value="<?php print($aantal); ?>" disabled>
+                <input type="submit" name="button-meer" value="+" id="CartPlusMin">
+                <a id="CartBin" href='verwijder.php?idprod=<?php print($artikel); ?>'><i class="bi-trash-fill search"></i></a>
+            </form>
+        </div>
+        <div class="CartPrijzen">
+            <a id="CartTotPrijsStuk"></i><?php print sprintf("Totaal prijs: € %.2f", $artikelprijstotaal); ?></a>
+            <a id="CartPrijsStuk"></i><?php print sprintf("Prijs per stuk: € %.2f", $StockItem['SellPrice']); ?></a>
+        </div>
+    </div>
+    <div style="height: 200px"/>
+<?php
+    }
 ?>
+</div>
+<div class="CartAfronden">
+    <a id="CartTotaalPrijs">Totaalprijs (inclusief btw): </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
+    <a id="CartTotaalArtikelen">Aantal producten in winkelmand: </i><?php print($superaantal);?></a>
 
-
+</div>
 </body>
 </html>
