@@ -1,5 +1,14 @@
 <?php
-include __DIR__ . "/header.php";?>
+//session_start();
+//$_SESSION['naam'] = "Alex";
+////$leeftijd = 42;
+////$cart = array();            // tijdelijke variabele op de huidige pagina
+////$cart[$stockItemID] = 1;
+////$cart[105932] = 7;	     // puur als voorbeeld: 2e artikel in de lijst
+////$_SESSION['cart'] = $cart;  // sessievariabele neemt de huidige cart op
+//$naam = $_SESSION['naam'];
+//print("<p>Hallo " . $naam . "</p>");
+//?>
 <!--<a href="pagina2.php">Ga naar pagina 2</a>-->
 
 <!DOCTYPE html>
@@ -15,7 +24,7 @@ include __DIR__ . "/header.php";?>
 </head>
 <body>
 <h1><i class="bi-globe"></i> Hello, world!</h1>
-<?php print_r($sto)
+
 <!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

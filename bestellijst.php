@@ -2,49 +2,142 @@
 include __DIR__ . "/header.php";
 include "cartfuncties.php";
 
+function getCountries($databaseConnection)
+{
+    $Query = "
+                SELECT *
+                FROM countries ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $countries = mysqli_stmt_get_result($Statement);
+    return $countries;
+}
+function getVerzend($databaseConnection)
+{
+    $Query = "
+                SELECT *
+                FROM deliverymethods ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $countries = mysqli_stmt_get_result($Statement);
+    return $countries;
+}
+function getBetaal($databaseConnection)
+{
+    $Query = "
+                SELECT *
+                FROM paymentmethods ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $countries = mysqli_stmt_get_result($Statement);
+    return $countries;
+}
+
+if(isset($_GET["bestel"])) {
+    $email = $_GET['email'];
+    $geslacht = $_GET['geslacht'];
+    $vn = $_GET['vn'];
+    $an = $_GET['an'];
+    $beoordeling = $_GET['beoordeling'];
+    $zip = $_GET['zip'];
+    $hn = $_GET['huisnummer'];
+    $toevoeging = $_GET['toevoeging'];
+    $straat = $_GET['straat'];
+    $plaats = $_GET['plaats'];
+    $tel = $_GET['telnummer'];
+    $vz = $_GET['vz'];
+    $bm = $_GET['bm'];
+    echo $email. "<br>". $geslacht. "<br>".$vn. "<br>".$an. "<br>".$beoordeling. "<br>".$zip. "<br>".$hn. "<br>".$toevoeging. "<br>".$straat. "<br>".$plaats. "<br>".$tel. "<br>".$vz. "<br>".$bm. "<br>";
+}
+
+
+//    $query = "SELECT artikelnaam FROM producten
+//                WHERE artikelnaam=:artikelnaam OR artikelomschrijving=:artikelomschrijving OR foto=:foto";
+//    $stmt = $db->prepare($query);
+//    $stmt->bindValue(':artikelnaam', $email);
+//    $stmt->bindValue(':artikelomschrijving', $ao);
+//    $stmt->bindValue(':foto', $ft);
+//    $stmt->execute();
+
+//    if ($stmt->rowCount() == 0) {
+//        if(!$an || !$ao || !$pp || !$ft){
+//            echo "De gegevens zijn niet volledig ingevuld!";
+//        }
+//        else{
+//            $x = $v->execute(array($an, $ao,$ft));
+//            echo '<div class="alert alert-success">Artikel is succesvol toegevoegd!</div><br>';
+//        }
+//    }
+//    else{
+//        echo '<div class="alert alert-danger">Je kan geen dubbele product toevoegen!</div><br>';
+//    }
+
 ?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Winkelwagen</title>
+    <!DOCTYPE html>
+    <html lang="nl" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Winkelwagen</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-</head>
+    </head>
 <body>
-<center>
-<h1>Afronden bestelling</h1>
-    <div class="row">
-        <div class="col-75">
-             <div class="container">
-                <form action="/action_page.php">
-                    <div class="row">
-                        <div class="col-50">
-                            <h3>Contactgegevens</h3>
-    Email: <input type="text" id="email" name="email" required><br>
-    Geslacht:
-      <input type="radio" id="man" name="geslacht" value="man">
-      <label for="man">Man</label>
-      <input type="radio" id="vrouw" name="geslacht" value="vrouw">
-      <label for="css">Vrouw</label>
-      <input type="radio" id="anders" name="geslacht" value="anders">
-      <label for="anders">Anders</label><br>
-    Voornaam: <input type="text" id="email" name="email" required> Achternaam: <input type="text" id="email" name="email" required>
-    <SELECT name="beoordeling" required>
-        <option value="">Selecteer een land</option>
-        <option value="NL">Nederland</option>
-        <option value="VA">Belgie</option>
-       </SELECT> <br><br>
-    Postcode: <input type="text" id="zip" name="zip" required><br>
-    Huisnummer: <input type="text" id="huisnummer" name="huisnummer" required> Toevoeging: <input type="text" id="toevoeging" name="toevoeging"><br>
-    Straat: <input type="text" id="straat" name="straat" required><br>
-    Plaats: <input type="text" id="plaats" name="plaats" required><br>
-    Telefoonnummer: <input type="text" id="telnummer" name="telnummer" required><br>
-    <input type="submit" value="Submit">
-</form>
-</center>
+    <center><h1>Afronden bestelling</h1></center>
+<div class="row">
+    <div class="col-75">
+    <div class="container">
+    <form action="bestellijst.php">
+        <div class="row">
+            <div class="col-50">
+                <h3>Persoonlijke Gegevens</h3>
+                Aanhef:
+                  <input type="radio" id="man" name="geslacht" value="mevrouw">
+                  <label for="mevrouw">Mevrouw</label>
+                  <input type="radio" id="de-heer" name="geslacht" value="de-heer">
+                  <label for="de-heer">De heer</label>
+                  <input type="radio" id="anders" name="geslacht" value="anders">
+                  <label for="anders">Liever geen van beide</label><br>
+                Voornaam: <input type="text" id="email" name="vn"  required>
+                Achternaam: <input type="text" id="email" name="an" required>
+                Email: <input type="text" id="email" name="email" required><br>
+                <SELECT name="beoordeling" required>
+                    <option value="">Selecteer een land</option>
+                    <?php
+                    $countries = getCountries($databaseConnection);
+                    foreach ($countries as $aap) {
+                        echo '<option value="'.$aap["CountryID"].'">'.$aap["CountryName"].'</option>';
+                    }?>
+
+                </SELECT> <br><br>
+                Postcode: <input type="text" id="zip" name="zip" required><br>
+                Huisnummer: <input type="text" id="huisnummer" name="huisnummer" required>
+                Toevoeging: <input type="text" id="toevoeging" name="toevoeging"><br>
+                Straat: <input type="text" id="straat" name="straat" required><br>
+                Plaats: <input type="text" id="plaats" name="plaats" required><br>
+                Telefoonnummer: <input type="text" id="telnummer" name="telnummer" required><br>
+                Verzendmethode: <SELECT name="vz" required>
+                    <option value="">Selecteer een verzendmethode</option>
+                    <?php
+                    $countries = getVerzend($databaseConnection);
+                    foreach ($countries as $aap) {
+                        echo '<option value="'.$aap["DeliveryMethodID"].'">'.$aap["DeliveryMethodName"].'</option>';
+                    }?>
+                </SELECT> <br><br>
+                Betaalmethode: <SELECT name="bm" required>
+                    <option value="">Selecteer een betaalmethode</option>
+                    <?php
+                    $countries = getBetaal($databaseConnection);
+                    foreach ($countries as $aap) {
+                        echo '<option value="'.$aap["PaymentMethodID"].'">'.$aap["PaymentMethodName"].'</option>';
+                    }?>
+                </SELECT> <br><br>
+                <input type="submit" name="bestel" value="Submit">
+    </form>
+
 
 <?php
 include __DIR__ . "/footer.php";
+
+?>
