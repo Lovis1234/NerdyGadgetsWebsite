@@ -47,60 +47,55 @@ if(isset($_GET["bestel"])) {
     $tel = $_GET['telnummer'];
     $vz = $_GET['vz'];
     $bm = $_GET['bm'];
-    echo $email. "<br>". $geslacht. "<br>".$vn. "<br>".$an. "<br>".$beoordeling. "<br>".$zip. "<br>".$hn. "<br>".$toevoeging. "<br>".$straat. "<br>".$plaats. "<br>".$tel. "<br>".$vz. "<br>".$bm. "<br>";
+//    echo $email. "<br>". $geslacht. "<br>".$vn. "<br>".$an. "<br>".$beoordeling. "<br>".$zip. "<br>".$hn. "<br>".$toevoeging. "<br>".$straat. "<br>".$plaats. "<br>".$tel. "<br>".$vz. "<br>".$bm. "<br>";
 
-    $Query = "INSERT INTO `customers` 
-(`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`, 
+    $Query = "INSERT INTO `customers`
+(`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`,
      `BuyingGroupID`, `PrimaryContactPersonID`, `AlternateContactPersonID`,
-     `DeliveryMethodID`, `DeliveryCityID`, 
+     `DeliveryMethodID`, `DeliveryCityID`,
      `PostalCityID`, `CreditLimit`, `AccountOpenedDate`,
      `StandardDiscountPercentage`, `IsStatementSent`, `IsOnCreditHold`, `PaymentDays`,
      `PhoneNumber`, `FaxNumber`, `DeliveryRun`, `RunPosition`,
      `WebsiteURL`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, `DeliveryPostalCode`, `DeliveryLocation`,
      `PostalAddressLine1`, `PostalAddressLine2`,
-     `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`) 
+     `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`)
  VALUES (NULL, '".$vn." ".$an."', '1', '1', NULL, '1', NULL, '".$vz."', '1', '1', NULL, '".date("Y-m-d")."', '0', '0', '0', '7',
   '".$tel."', '".$tel."', NULL, NULL, 'http://www.microsoft.com/', '".$straat."', NULL, '".$zip ."', NULL,
    '".$plaats."', NULL, '".$zip ."', '1', '".date("Y-m-d h:i:sa")."', '".date("Y-m-d h:i:sa")."')
                 ";
-    echo "<br>". $Query;
+
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
 
     $Query = "INSERT INTO `orders` (`OrderID`, `CustomerID`, `SalespersonPersonID`, `PickedByPersonID`,
 `ContactPersonID`, `BackorderOrderID`,
                       `OrderDate`, `ExpectedDeliveryDate`, `CustomerPurchaseOrderNumber`,
-`IsUndersupplyBackordered`, `Comments`, `DeliveryInstructions`, `InternalComments`, `PickingCompletedWhen`, 
-                      `LastEditedBy`, `LastEditedWhen`) 
+`IsUndersupplyBackordered`, `Comments`, `DeliveryInstructions`, `InternalComments`, `PickingCompletedWhen`,
+                      `LastEditedBy`, `LastEditedWhen`)
 VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
         '".date("Y-m-d")."', '".date("Y-m-d")."', NULL,
          '1', NULL, NULL, NULL, '".date("Y-m-d h:i:sa")."', (SELECT max(CustomerID) FROM customers), '".date("Y-m-d h:i:sa")."')";
-    echo "<br><br>". $Query;
+
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
+
+    $cart = getCart();
+    print_r($cart);
+
+    foreach ($cart as $tamim => $stan)
+    {
+        $Query = "INSERT INTO `orderlines` (`OrderLineID`, `OrderID`, `StockItemID`, `Description`, `PackageTypeID`, 
+    `Quantity`, `UnitPrice`, `TaxRate`, `PickedQuantity`, `PickingCompletedWhen`, `LastEditedBy`, `LastEditedWhen`) 
+    VALUES (NULL, (SELECT max(OrderID) FROM orders), '".$tamim."', (SELECT MarketingComments FROM stockitems WHERE StockItemID = '".$tamim."' ), (SELECT OuterPackageID FROM stockitems WHERE StockItemID = '".$tamim.")' ), '".$stan."',
+     (SELECT UnitPrice FROM stockitems WHERE StockItemID = '".$tamim."' ), (SELECT TaxRate FROM stockitems WHERE StockItemID = '".$tamim."' ), '".$stan."', '".date("Y-m-d h:i:sa")."', '1', '".date("Y-m-d h:i:sa")."')";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    }
 }
 
 
-//    $query = "SELECT artikelnaam FROM producten
-//                WHERE artikelnaam=:artikelnaam OR artikelomschrijving=:artikelomschrijving OR foto=:foto";
-//    $stmt = $db->prepare($query);
-//    $stmt->bindValue(':artikelnaam', $email);
-//    $stmt->bindValue(':artikelomschrijving', $ao);
-//    $stmt->bindValue(':foto', $ft);
-//    $stmt->execute();
 
-//    if ($stmt->rowCount() == 0) {
-//        if(!$an || !$ao || !$pp || !$ft){
-//            echo "De gegevens zijn niet volledig ingevuld!";
-//        }
-//        else{
-//            $x = $v->execute(array($an, $ao,$ft));
-//            echo '<div class="alert alert-success">Artikel is succesvol toegevoegd!</div><br>';
-//        }
-//    }
-//    else{
-//        echo '<div class="alert alert-danger">Je kan geen dubbele product toevoegen!</div><br>';
-//    }
 
 ?>
 <!DOCTYPE html>
