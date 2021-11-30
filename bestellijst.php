@@ -66,6 +66,18 @@ if(isset($_GET["bestel"])) {
     echo "<br>". $Query;
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
+
+    $Query = "INSERT INTO `orders` (`OrderID`, `CustomerID`, `SalespersonPersonID`, `PickedByPersonID`,
+`ContactPersonID`, `BackorderOrderID`,
+                      `OrderDate`, `ExpectedDeliveryDate`, `CustomerPurchaseOrderNumber`,
+`IsUndersupplyBackordered`, `Comments`, `DeliveryInstructions`, `InternalComments`, `PickingCompletedWhen`, 
+                      `LastEditedBy`, `LastEditedWhen`) 
+VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
+        '".date("Y-m-d")."', '".date("Y-m-d")."', NULL,
+         '1', NULL, NULL, NULL, '".date("Y-m-d h:i:sa")."', (SELECT max(CustomerID) FROM customers), '".date("Y-m-d h:i:sa")."')";
+    echo "<br><br>". $Query;
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
 }
 
 
