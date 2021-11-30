@@ -17,25 +17,25 @@ include "cartfuncties.php";
 <h1>Gegevens Factuuradres/Afleveradres</h1>
 <center>
 <form>
-    Email: <input type="text" id="email" name="email"><br>
+    Email: <input type="text" id="email" name="email" required><br>
     Geslacht:
-      <input type="radio" id="html" name="fav_language" value="HTML">
-      <label for="html">Man</label>
-      <input type="radio" id="css" name="fav_language" value="CSS">
+      <input type="radio" id="man" name="geslacht" value="man">
+      <label for="man">Man</label>
+      <input type="radio" id="vrouw" name="geslacht" value="vrouw">
       <label for="css">Vrouw</label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Ik weet het niet</label><br>
-    Voornaam: <input type="text" id="email" name="email"> Achternaam: <input type="text" id="email" name="email">
+      <input type="radio" id="anders" name="geslacht" value="anders">
+      <label for="anders">Anders</label><br>
+    Voornaam: <input type="text" id="email" name="email" required> Achternaam: <input type="text" id="email" name="email" required>
     <SELECT name="beoordeling" required>
         <option value="">Selecteer een land</option>
-        <option value="1">Nederland</option>
-        <option value="2">Vaticaanstad</option>
+        <option value="NL">Nederland</option>
+        <option value="VA">Vaticaanstad</option>
        </SELECT> <br><br>
-    Postcode: <input type="text" id="email" name="email"><br>
-    Huisnummer: <input type="text" id="email" name="email"> Toevoeging: <input type="text" id="email" name="email"><br>
-    Straat: <input type="text" id="email" name="email"><br>
-    Plaats: <input type="text" id="email" name="email"><br>
-    Telefoonnummer: <input type="text" id="email" name="email"><br>
+    Postcode: <input type="text" id="zip" name="zip" required><br>
+    Huisnummer: <input type="text" id="huisnummer" name="huisnummer" required> Toevoeging: <input type="text" id="toevoeging" name="toevoeging"><br>
+    Straat: <input type="text" id="straat" name="straat" required><br>
+    Plaats: <input type="text" id="plaats" name="plaats" required><br>
+    Telefoonnummer: <input type="text" id="telnummer" name="telnummer" required><br>
     <input type="submit" value="Submit">
 </form>
 </center>
