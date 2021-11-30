@@ -98,7 +98,9 @@ foreach ($cart as $artikel => $aantal){
 <div class="CartAfronden">
     <a id="CartTotaalPrijs">Totaalprijs (inclusief btw): </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
     <a id="CartTotaalArtikelen">Aantal producten in winkelmand: </i><?php print($superaantal);?></a>
-
+    <form action="bestellijst.php" method="get">
+        <input type="submit" name="button" value="Afronden" class="button2">
+    </form>
 </div>
 </body>
 </html>
