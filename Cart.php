@@ -90,7 +90,7 @@ foreach ($cart as $artikel => $aantal){
             <a id="CartPrijsStuk"></i><?php print sprintf("Prijs per stuk: € %.2f", $StockItem['SellPrice']); ?></a>
         </div>
     </div>
-    <div style="height: 200px"/>
+    <div style="height: 160px"/>
 <?php
     }
 ?>
