@@ -45,7 +45,26 @@ if(isset($_GET["bestel"])) {
     $straat = $_GET['straat'];
     $plaats = $_GET['plaats'];
     $tel = $_GET['telnummer'];
-    echo $email. "<br>". $geslacht. "<br>".$vn. "<br>".$an. "<br>".$beoordeling. "<br>".$zip. "<br>".$hn. "<br>".$toevoeging. "<br>".$straat. "<br>".$plaats. "<br>".$tel. "<br>";
+    $vz = $_GET['vz'];
+    $bm = $_GET['bm'];
+    echo $email. "<br>". $geslacht. "<br>".$vn. "<br>".$an. "<br>".$beoordeling. "<br>".$zip. "<br>".$hn. "<br>".$toevoeging. "<br>".$straat. "<br>".$plaats. "<br>".$tel. "<br>".$vz. "<br>".$bm. "<br>";
+    $Query = " INSERT INTO INSERT INTO `customers` 
+(`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`, 
+     `BuyingGroupID`, `PrimaryContactPersonID`, `AlternateContactPersonID`,
+     `DeliveryMethodID`, `DeliveryCityID`, 
+     `PostalCityID`, `CreditLimit`, `AccountOpenedDate`,
+     `StandardDiscountPercentage`, `IsStatementSent`, `IsOnCreditHold`, `PaymentDays`,
+     `PhoneNumber`, `FaxNumber`, `DeliveryRun`, `RunPosition`,
+     `WebsiteURL`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, `DeliveryPostalCode`, `DeliveryLocation`,
+     `PostalAddressLine1`, `PostalAddressLine2`,
+     `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`) 
+ VALUES (NULL, '".$vn." ".$an."', '1', '1', NULL, '1', NULL, '".$vz."', '1', '1', NULL, '".date("Y-m-d")."', '0', '0', '0', '7',
+  '".$tel."', '".$tel."', NULL, NULL, 'http://www.microsoft.com/', '".$straat."', NULL, '".$zip ."', NULL,
+   '".$plaats."', NULL, '".$zip ."', '1', '".date("Y-m-d h:i:sa")."', '".date("Y-m-d h:i:sa")."')
+                ";
+    echo "<br>". $Query;
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
 }
 
 
