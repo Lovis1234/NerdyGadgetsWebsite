@@ -635,3 +635,126 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+
+/*
+cart layout
+*/
+
+#ResultsArea.Cart  {
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 4px;
+}
+.CartProductFrame {
+    width: 100%;
+    height: 250px;
+    margin-top: 15px;
+    position: relative;
+    padding: 1px;
+    /*
+    border: 1px solid #fff;
+    */
+}
+#CartImageFrame {
+    left: 60px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 60px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.CartNaamArtikel {
+    margin-left: 200px;
+    margin-top: 30px;
+}
+#NaamArtikel {
+    left: 300px;
+    position: absolute;
+    font-size: 30px;
+    color: #007bf;
+}
+.CartArtikelNr {
+    margin-left: 200px;
+    margin-top: 75px;
+}
+#Artikelnummer {
+    left: 300px;
+    position: absolute;
+    font-size: 22px;
+}
+.CartHoeveelheid {
+    top: 80px;
+    right: 100px;
+    border: 1px white;
+}
+#CartHoeveelheidArtikel {
+    right: 100px;
+    top: 60px;
+    position: absolute;
+}
+#CartPlusMin {
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+}
+#CartAantal {
+    height: 50px;
+    width: 100px;
+    background: #ffffff;
+}
+#CartBin {
+    top: -5px;
+    margin: 5px;
+    line-height: 50px;
+    position: absolute;
+    font-size: 40px;
+    color: white;
+}
+.CartPrijzen {
+    width: 250px;
+    bottom: 110px;
+    right: 200px;
+    position: absolute;
+}
+#CartTotPrijsStuk {
+    width: 400px;
+    font-size: 30px;
+    text-align:right;
+    position: absolute;
+}
+#CartPrijsStuk {
+    width: 400px;
+    font-size: 20px;
+    top: 40px;
+    text-align: right;
+    position: absolute;
+}
+
+.CartAfronden {
+    border-top: 2px solid white;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 200px;
+    background-color: rgb(35, 35, 47);
+    position: fixed;
+}
+#CartTotaalPrijs {
+    font-size: 30px;
+    top: 60px;
+    left: 100px;
+    position: absolute;
+}
+#CartTotaalArtikelen {
+    font-size: 22px;
+    top: 105px;
+    left: 100px;
+    position: absolute;
+}
