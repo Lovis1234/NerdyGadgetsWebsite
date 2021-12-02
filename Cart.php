@@ -88,6 +88,7 @@ foreach ($cart as $artikel => $aantal){
         <div class="CartPrijzen">
             <a id="CartTotPrijsStuk"></i><?php print sprintf("Totaal prijs: € %.2f", $artikelprijstotaal); ?></a>
             <a id="CartPrijsStuk"></i><?php print sprintf("Prijs per stuk: € %.2f", $StockItem['SellPrice']); ?></a>
+            <a id="CartBTWStuk"></i><?php print sprintf("Waarvan BTW: € %.2f", ($StockItem['SellPrice']/100*$StockItem['TaxRate'])); ?></a>
         </div>
     </div>
     <div style="height: 200px"/>

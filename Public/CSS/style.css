@@ -751,6 +751,13 @@ cart layout
     text-align: right;
     position: absolute;
 }
+#CartBTWStuk {
+    width: 400px;
+    font-size: 20px;
+    top: 50px;
+    text-align: right;
+    position: absolute;
+}
 
 .CartAfronden {
     border-top: 2px solid white;

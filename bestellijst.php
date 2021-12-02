@@ -2,37 +2,6 @@
 include __DIR__ . "/header.php";
 include "cartfuncties.php";
 
-function getCountries($databaseConnection)
-{
-    $Query = "
-                SELECT *
-                FROM countries ";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_execute($Statement);
-    $countries = mysqli_stmt_get_result($Statement);
-    return $countries;
-}
-function getVerzend($databaseConnection)
-{
-    $Query = "
-                SELECT *
-                FROM deliverymethods ";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_execute($Statement);
-    $countries = mysqli_stmt_get_result($Statement);
-    return $countries;
-}
-function getBetaal($databaseConnection)
-{
-    $Query = "
-                SELECT *
-                FROM paymentmethods ";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_execute($Statement);
-    $countries = mysqli_stmt_get_result($Statement);
-    return $countries;
-}
-
 if(isset($_GET["bestel"])) {
     $email = $_GET['email'];
     $geslacht = $_GET['geslacht'];
@@ -92,6 +61,7 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
     }
+
 }
 
 
