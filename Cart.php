@@ -91,7 +91,7 @@ foreach ($cart as $artikel => $aantal){
             <a id="CartBTWStuk"></i><?php print sprintf("Waarvan BTW: € %.2f", ($StockItem['SellPrice']/100*$StockItem['TaxRate'])); ?></a>
         </div>
     </div>
-    <div style="height: 200px"/>
+    <div style="height: 160px"/>
 <?php
     }
 ?>

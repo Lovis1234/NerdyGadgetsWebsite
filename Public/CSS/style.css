@@ -193,7 +193,8 @@ table tr td {
 }
 
 .button2 {
-    height: 100px;
+    margin: 24px;
+    height: 80px;
     right: 10px;
     font-size: 24px;
     cursor: pointer;
@@ -751,34 +752,26 @@ cart layout
     text-align: right;
     position: absolute;
 }
-#CartBTWStuk {
-    width: 400px;
-    font-size: 20px;
-    top: 50px;
-    text-align: right;
-    position: absolute;
-}
 
 .CartAfronden {
     border-top: 2px solid white;
     bottom: 0px;
     left: 0px;
     width: 100%;
-    height: 120px;
-    /*margin-bottom: 20px;*/
+    height: 140px;
     background-color: rgb(35, 35, 47);
     position: fixed;
 }
 #CartTotaalPrijs {
     font-size: 30px;
-    top: 10px;
-    left: 200px;
+    top: 30px;
+    left: 230px;
     position: absolute;
 }
 #CartTotaalArtikelen {
     font-size: 22px;
-    top: 45px;
-    left: 200px;
+    top: 65px;
+    left: 230px;
     position: absolute;
 }
 .row {
