@@ -78,8 +78,11 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
     echo "<br><br>". $Query;
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
+    return $jemoeder=TRUE;
 }
-
+if ($jemoeder == TRUE) {
+    header("Location:Cart.php");
+}
 
 //    $query = "SELECT artikelnaam FROM producten
 //                WHERE artikelnaam=:artikelnaam OR artikelomschrijving=:artikelomschrijving OR foto=:foto";
@@ -163,7 +166,7 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
                                     echo '<option value="'.$aap["PaymentMethodID"].'">'.$aap["PaymentMethodName"].'</option>';
                                 }?>
                             </SELECT> <br><br>
-    <input type="submit" name="bestel" value="Submit">
+    <input type="submit" name="bestel" value="Submit" href="Location=">
 </form>
 
 
