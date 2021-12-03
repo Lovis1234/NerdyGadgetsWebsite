@@ -24,6 +24,37 @@ function addProductToCart($stockItemID){
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
+
+    function getCountries($databaseConnection)
+    {
+        $Query = "
+                SELECT *
+                FROM countries ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
+    function getVerzend($databaseConnection)
+    {
+        $Query = "
+                SELECT *
+                FROM deliverymethods ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
+    function getBetaal($databaseConnection)
+    {
+        $Query = "
+                SELECT *
+                FROM paymentmethods ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
 //function removeProductFromCart($stockItemID){
 //    $cart = getCart();                          // eerst de huidige cart ophalen
 //
