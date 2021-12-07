@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
+include "CartFuncties.php";
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
 }
@@ -43,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;
+                            getCart3($databaseConnection);
                             header("location: index.php");
                         } else{
                             $login_err = "Invalid email or password.";

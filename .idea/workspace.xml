@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/CartFuncties.php" beforeDir="false" afterPath="$PROJECT_DIR$/CartFuncties.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inlog.php" beforeDir="false" afterPath="$PROJECT_DIR$/inlog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registreer.php" beforeDir="false" afterPath="$PROJECT_DIR$/registreer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
       <workItem from="1637913898643" duration="3336000" />
       <workItem from="1637920191482" duration="308000" />
       <workItem from="1638520437203" duration="15939000" />
-      <workItem from="1638882379741" duration="7326000" />
+      <workItem from="1638882379741" duration="9188000" />
     </task>
     <servers />
   </component>

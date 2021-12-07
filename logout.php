@@ -18,7 +18,7 @@
 <!--</head>-->
 <!--<body>-->
 <?php
-include __DIR__ . "/header.php";
+//include __DIR__ . "/header.php";
 ////include "CartFuncties.php";
 ////$cart = getCart($databaseConnection);
 ////print_r($cart);
@@ -85,30 +85,31 @@ include __DIR__ . "/header.php";
 ////    unset($_SESSION["loggedin"]);
 ////    unset($_SESSION["loggedin"]);
 //
-//// Initialize the session
-//session_start();
-//
-//// Unset all of the session variables
-//$_SESSION = array();
-//
-//// Destroy the session.
-//session_destroy();
-//
-//// Redirect to login page
-//header("location: index.php");
-//exit;
+// Initialize the session
+session_start();
+
+// Unset all of the session variables
+$_SESSION = array();
+
+// Destroy the session.
+session_destroy();
+
+// Redirect to login page
+header("location: index.php");
+exit;
 //?>
 <!--//?>-->
 <?php
-$sql = "SELECT winkelmand FROM users WHERE email = ?";
-$email = $_SESSION["email"];
-if($stmt = mysqli_prepare($databaseConnection, $sql)) {
-    mysqli_stmt_bind_param($stmt, "s", $param_email);
-    $param_email = $email;
-    mysqli_stmt_execute($stmt);
-    $cartserialized = mysqli_stmt_get_result($stmt);
-    if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
-        $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
-    }
-}
-?>
+//$sql = "SELECT winkelmand FROM users WHERE email = ?";
+//$email = $_SESSION["email"];
+//if($stmt = mysqli_prepare($databaseConnection, $sql)) {
+//    mysqli_stmt_bind_param($stmt, "s", $param_email);
+//    $param_email = $email;
+//    mysqli_stmt_execute($stmt);
+//    $cartserialized = mysqli_stmt_get_result($stmt);
+//    if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+//        $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+//    }
+//}
+//print_r($cart)
+//?>
