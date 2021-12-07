@@ -16,17 +16,6 @@ include "CartFuncties.php";
 <body>
     <br><br><br>
 <?php
-    function getVerzend($databaseConnection)
-    {
-    $Query = "
-    SELECT max(OrderID)
-    FROM orderlines ";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_execute($Statement);
-    $countries = mysqli_stmt_get_result($Statement);
-    return $countries;
-    }
-
     $orderID = getVerzend($databaseConnection);
 foreach ($orderID as $aap) {
     ?><center>

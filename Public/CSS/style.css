@@ -207,7 +207,21 @@ table tr td {
     border-radius: 10px;
     box-shadow: 0 9px #999;
 }
-
+.button3 {
+    margin: 24px;
+    height: 80px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
 .button:hover {background-color: #3e8e41}
 
 .button:active {

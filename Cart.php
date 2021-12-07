@@ -20,13 +20,16 @@ include "CartFuncties.php";
 <?php
 $superaantal = 0; //Het totaal aantal producten
 $totaalprijs = 0; //Het totaalbedrag
-$cart = getCart(); //aanroepen cart array
+$cart = getCart($databaseConnection); //aanroepen cart array
 
 //Aanpassen hoeveelheid van product
+if(isset($_GET["doorgaan"])) {//controleren of $stockItemID(=key!) al in array staat
+    print("Het product is verwijdert!");
+}
 if(isset($_GET["button-minder"])) {
     if( $cart[$_GET["idprod"]] != 1){
         $cart[$_GET["idprod"]] -= 1;
-        saveCart($cart);
+        saveCart($cart,$databaseConnection);
         header("Location:Cart.php");
     }
     else
@@ -36,7 +39,7 @@ if(isset($_GET["button-minder"])) {
 }
 elseif (isset($_GET["button-meer"])){
     $cart[$_GET["idprod"]] += 1;
-    saveCart($cart);
+    saveCart($cart,$databaseConnection);
     header("Location:Cart.php");
 }
 //einde van aanpassen hoeveelheid product
