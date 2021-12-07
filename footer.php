@@ -1,5 +1,4 @@
-<!-- de inhoud van dit bestand wordt onderaan elke pagina geplaatst -->
-</div>
+jemoeder
 </div>
 </div>
 </div>

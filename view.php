@@ -141,8 +141,8 @@ $button="";
 <?php
 if(isset($_POST["button"])) {
     $id=$_GET["id"];
-    getCart();
-    addProductToCart("$id");
+    getCart($databaseConnection);
+    addProductToCart("$id",$databaseConnection);
 }
 
 ?>

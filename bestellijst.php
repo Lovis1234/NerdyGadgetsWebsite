@@ -48,7 +48,7 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
 
-    $cart = getCart();
+    $cart = getCart($databaseConnection);
     print_r($cart);
 
     foreach ($cart as $tamim => $stan)
