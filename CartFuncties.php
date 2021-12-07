@@ -9,21 +9,36 @@
         $orderid = mysqli_stmt_get_result($Statement);
         return $orderid;
     }
+    function getCart3($databaseConnection)
+    {
+        $Query = "
+    SELECT winkelmand FROM users WHERE email = ?";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $cart = mysqli_stmt_get_result($Statement);
+        return $cart;
+    }
+
 function getCart($databaseConnection){
 
-//    $sql = "SELECT winkelmand FROM login";
-//    $Statement = mysqli_prepare($databaseConnection, $sql);
-//    mysqli_stmt_execute($Statement);
-//    $cartserialized = mysqli_stmt_get_result($Statement);
-//    $cart = unserialize($cartserialized);
-//    return $cart;
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    $sql = "SELECT winkelmand FROM users WHERE email = ?";
+    $email = $_SESSION["email"];
+    if($stmt = mysqli_prepare($databaseConnection, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_email);
+        $param_email = $email;
+        mysqli_stmt_execute($stmt);
+        $cartserialized = mysqli_stmt_get_result($stmt);
+        $cart = unserialize($cartserialized);
+        return $cart;
+    } else {
     if(isset($_SESSION['cart'])){               //controleren of winkelmandje (=cart) al bestaat
         $cart = $_SESSION['cart'];                  //zo ja:  ophalen
     } else{
         $cart = array();                            //zo nee: dan een nieuwe (nog lege) array
     }                            // resulterend winkelmandje terug naar aanroeper functie
 return $cart;
-    }
+    }}
 
 
 function saveCart($cart,$databaseConnection){
@@ -71,7 +86,7 @@ function addProductToCart($stockItemID,$databaseConnection){
         mysqli_stmt_execute($Statement);
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
-    }
+    }}
 //function removeProductFromCart($stockItemID){
 //    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen
 //

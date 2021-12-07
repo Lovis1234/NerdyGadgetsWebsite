@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // uitvoeren
             if(mysqli_stmt_execute($stmt)){
-                header("location: login.php");
+                header("location: inlog.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
