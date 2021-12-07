@@ -30,7 +30,7 @@ function saveCart($cart,$databaseConnection){
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         $email = $_SESSION["email"];
         $cartserialised = serialize($cart);
-        $sql = "UPDATE login SET winkelmand='$cartserialised' WHERE email='$email'";
+        $sql = "UPDATE users SET winkelmand='$cartserialised' WHERE email='$email'";
         $Statement = mysqli_prepare($databaseConnection, $sql);
         mysqli_stmt_execute($Statement);
         $_SESSION["cart"] = $cart;

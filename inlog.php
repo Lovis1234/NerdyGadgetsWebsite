@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Wanneer geen error
     if(empty($email_err) && empty($password_err)){
         // Inloggegevens ophalen
-        $sql = "SELECT id, email, password FROM login WHERE email = ?";
+        $sql = "SELECT id, email, password FROM users WHERE email = ?";
 
         if($stmt = mysqli_prepare($databaseConnection, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_email);
@@ -98,8 +98,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login">
         </div>
-        <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+        <p>Don't have an account? <a href="registeer.php">Sign up now</a>.</p>
     </form>
 </div>
 </body>
 </html>
+<?php
+include __DIR__ . "/footer.php";

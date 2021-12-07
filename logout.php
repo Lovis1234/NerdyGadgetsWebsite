@@ -67,8 +67,8 @@
 <center> <br><br><br><br><br><br><br><br>
 <h1>Je staat op het punt om uit te loggen</h1>
 <form action="logout.php">
-    <input type="submit" name="annuleren" value="Annuleren" class="button2" style="background-color: red">
-    <input type="submit" name="doorgaan" value="Doorgaan" class="button2">
+    <input type="submit" name="annuleren" value="annuleren" class="button2" style="background-color: red">
+    <input type="submit" name="doorgaan" value="doorgaan" class="button2">
 </form>
     <center>
 <?php

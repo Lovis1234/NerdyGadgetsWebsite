@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 //        $email_err = "email can only contain letters, numbers, and underscores.";
     } else{
         // id ophalen
-        $sql = "SELECT id FROM login WHERE email = ?";
+        $sql = "SELECT id FROM users WHERE email = ?";
 
         if($stmt = mysqli_prepare($databaseConnection, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_email);
@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Shit in de database zetten
-        $sql = "INSERT INTO login (email, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
 
         if($stmt = mysqli_prepare($databaseConnection, $sql)){
             // parameters
@@ -106,8 +106,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="submit" class="btn btn-primary" value="Submit">
             <input type="reset" class="btn btn-secondary ml-2" value="Reset">
         </div>
-        <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        <p>Already have an account? <a href="inlog.php">Login here</a>.</p>
     </form>
 </div>
 </body>
 </html>
+<?php
+include __DIR__ . "/footer.php";

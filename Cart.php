@@ -112,3 +112,5 @@ foreach ($cart as $artikel => $aantal){
 </div>
 </body>
 </html>
+<?php
+include __DIR__ . "/footer.php";
