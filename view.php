@@ -146,3 +146,5 @@ if(isset($_POST["button"])) {
 }
 
 ?>
+<?php
+include __DIR__ . "/footer.php";

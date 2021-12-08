@@ -134,5 +134,4 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
 
 <?php
 include __DIR__ . "/footer.php";
-
 ?>

@@ -35,8 +35,6 @@
 
 
 function getCart($databaseConnection){
-
-
     if(isset($_SESSION['cart'])){               //controleren of winkelmandje (=cart) al bestaat
         $cart = $_SESSION['cart'];                  //zo ja:  ophalen
     } else{
@@ -103,3 +101,4 @@ function addProductToCart($stockItemID,$databaseConnection){
 //    saveCart($cart,$databaseConnection);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 //    print_r($cart);
 //}
+
