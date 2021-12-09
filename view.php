@@ -95,13 +95,12 @@ $button="";
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
-            <h1 class="Review">Reviews:</h1>
 
             <?php
-
 $idarray = getReviewIDUit($databaseConnection,$_GET['id']);
 
         if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
+            print("<h1 class='Review'>Reviews:</h1>");
         foreach ($idarray as $id) {
 //                $id = getReviewID()
                 $sterren = getReviewAantSterren($databaseConnection,$_GET['id'],$id);
