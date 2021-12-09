@@ -2,7 +2,7 @@
 <?php
 
 include __DIR__ . "/header.php";
-include 'CartFuncties.php';
+include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 $button="";
@@ -98,9 +98,14 @@ $button="";
             <h1 class="Review">Reviews:</h1>
 
             <?php
+            $netflix = array();
+            $new = array_push($netflix, getReview($databaseConnection,$_GET['id']));
+print_r($netflix);
+
+
 
         if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
-//            for ($i=0;$i < getReviewCount($databaseConnection,$_GET['id']); $i++) {
+        foreach (getReviewID($databaseConnection,$_GET['id']) as $jemoeder) {
                 $sterren = getReviewAantSterren($databaseConnection,$_GET['id']);
                 $naam = getReviewNaam($databaseConnection,$_GET['id']);
                 $datum = getReviewDatum($databaseConnection,$_GET['id']);
@@ -116,7 +121,7 @@ $button="";
             <br>
             <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
             <h3>(<?php print($omschrijving); ?>)</h3>
-        <?php } ?>
+        <?php }} ?>
         </div>
         <div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-include "cartfuncties.php";
+include "Functies.php";
 
 if(isset($_GET["bestel"])) {
     $email = $_GET['email'];
