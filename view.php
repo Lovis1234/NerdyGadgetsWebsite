@@ -95,6 +95,31 @@ $button="";
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
+            <h1 class="Review">Reviews:</h1>
+
+            <?php
+
+        if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
+//            for ($i=0;$i < getReviewCount($databaseConnection,$_GET['id']); $i++) {
+                $sterren[] = getReviewAantSterren($databaseConnection,$_GET['id']);
+                $naam = getReviewNaam($databaseConnection,$_GET['id']);
+                $datum = getReviewDatum($databaseConnection,$_GET['id']);
+                print($sterren);
+                print($naam);
+                print($datum);
+            for ($i = 0; $i < $sterren   ; $i++) {
+                print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
+            }
+            for ($i = 0; $i < 5-$sterren   ; $i++) {
+                print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
+            }
+            ?>
+            <br>
+            <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
+            <h3>(Omschrijving)</h3>
+        <?php } ?>
+        </div>
+        <div>
         </div>
         <div id="StockItemSpecifications">
             <h3>Artikel specificaties</h3>

@@ -12,6 +12,68 @@
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
     }
+    function getReview($databaseConnection, $productID)
+    {
+        $Query = "
+                SELECT aantSterren, onderwerp, naam, datum, opmerkingen
+                FROM reviews WHERE productID = ?";
+
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $param_email);
+        $param_email = $productID;
+        mysqli_stmt_execute($Statement);
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
+    function getCount($databaseConnection, $productID)
+    {
+        $Query = "
+                SELECT count(*) count
+                FROM reviews WHERE productID = ?";
+
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $param_email);
+        $param_email = $productID;
+        mysqli_stmt_execute($Statement);
+        $count = mysqli_stmt_get_result($Statement);
+        return $count;
+    }
+    function getReviewCount($databaseConnection, $productID)
+    {
+        $results = getCount($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $naam = $result["count"];
+
+        }
+        return $naam;
+    }
+    function getReviewNaam($databaseConnection, $productID)
+    {
+        $results = getReview($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $naam = $result["naam"];
+
+        }
+        return $naam;
+    }
+    function getReviewAantSterren($databaseConnection, $productID)
+    {
+        $results = getReview($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $aantSterren = $result["aantSterren"];
+
+        }
+        return $aantSterren;
+    }
+    function getReviewDatum($databaseConnection, $productID)
+    {
+        $results = getReview($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $datum = $result["datum"];
+
+        }
+        return $datum;
+    }
     function getVerzend($databaseConnection)
     {
         $Query = "
