@@ -24,6 +24,11 @@ $totaalprijs = 0; //Het totaalbedrag
 $cart = getCart($databaseConnection); //aanroepen cart array
 
 //Aanpassen hoeveelheid van product
+if ($cart == array()) {
+    print("<h2> Uw winkelmand is leeg <br>");
+    print('<img src="Public/StockItemIMG/jemoeder.gif" style="height: 25%; width: 25%" >');
+}
+
 if(isset($_GET["doorgaan"])) {//controleren of $stockItemID(=key!) al in array staat
     print("Het product is verwijdert!");
 }
@@ -124,4 +129,3 @@ foreach ($cart as $artikel => $aantal){
 </body>
 </html>
 <?php
-include __DIR__ . "/footer.php";
