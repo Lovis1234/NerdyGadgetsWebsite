@@ -56,6 +56,24 @@
         }
         return $naam;
     }
+    function getReviewOmschrijving($databaseConnection, $productID)
+    {
+        $results = getReview($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $naam = $result["opmerkingen"];
+
+        }
+        return $naam;
+    }
+    function getReviewOnderwerp($databaseConnection, $productID)
+    {
+        $results = getReview($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $naam = $result["onderwerp"];
+
+        }
+        return $naam;
+    }
     function getReviewAantSterren($databaseConnection, $productID)
     {
         $results = getReview($databaseConnection, $productID);

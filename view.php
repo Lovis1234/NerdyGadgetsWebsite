@@ -101,12 +101,11 @@ $button="";
 
         if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
 //            for ($i=0;$i < getReviewCount($databaseConnection,$_GET['id']); $i++) {
-                $sterren[] = getReviewAantSterren($databaseConnection,$_GET['id']);
+                $sterren = getReviewAantSterren($databaseConnection,$_GET['id']);
                 $naam = getReviewNaam($databaseConnection,$_GET['id']);
                 $datum = getReviewDatum($databaseConnection,$_GET['id']);
-                print($sterren);
-                print($naam);
-                print($datum);
+                $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id']);
+                $titel = getReviewOnderwerp($databaseConnection,$_GET['id']);
             for ($i = 0; $i < $sterren   ; $i++) {
                 print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
             }
@@ -116,7 +115,7 @@ $button="";
             ?>
             <br>
             <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
-            <h3>(Omschrijving)</h3>
+            <h3>(<?php print($omschrijving); ?>)</h3>
         <?php } ?>
         </div>
         <div>
