@@ -15,7 +15,7 @@
     function getReview($databaseConnection, $productID)
     {
         $Query = "
-                SELECT aantSterren, onderwerp, naam, datum, opmerkingen
+                SELECT id, aantSterren, onderwerp, naam, datum, opmerkingen
                 FROM reviews WHERE productID = ?";
 
         $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -84,6 +84,15 @@
         return $aantSterren;
     }
     function getReviewDatum($databaseConnection, $productID)
+    {
+        $results = getReview($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $datum = $result["datum"];
+
+        }
+        return $datum;
+    }
+    function getReviewID($databaseConnection, $productID)
     {
         $results = getReview($databaseConnection, $productID);
         foreach ($results as $result) {
