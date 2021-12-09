@@ -14,8 +14,6 @@
     }
     function getReview($databaseConnection, $productID)
     {
-
-        foreach (getReviewID($databaseConnection,$productID) as $aap){
         $Query = "
                 SELECT id, aantSterren, onderwerp, naam, datum, opmerkingen
                 FROM reviews WHERE productID = ?";
@@ -24,9 +22,9 @@
         mysqli_stmt_bind_param($Statement, "s", $param_email);
         $param_email = $productID;
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
-    }}
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
     function getCount($databaseConnection, $productID)
     {
         $Query = "

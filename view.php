@@ -98,11 +98,6 @@ $button="";
             <h1 class="Review">Reviews:</h1>
 
             <?php
-            $netflix = array();
-            $new = array_push($netflix, getReview($databaseConnection,$_GET['id']));
-print_r($netflix);
-
-
 
         if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
         foreach (getReviewID($databaseConnection,$_GET['id']) as $jemoeder) {
@@ -117,6 +112,7 @@ print_r($netflix);
             for ($i = 0; $i < 5-$sterren   ; $i++) {
                 print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
             }
+            $array[] = "neefe"
             ?>
             <br>
             <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
