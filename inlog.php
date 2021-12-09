@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
+include "Functies.php";
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
 }
