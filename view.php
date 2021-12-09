@@ -98,19 +98,17 @@ $button="";
             <h1 class="Review">Reviews:</h1>
 
             <?php
-            $netflix = array();
-            $new = array_push($netflix, getReview($databaseConnection,$_GET['id']));
-print_r($netflix);
 
-
+$idarray = getReviewIDUit($databaseConnection,$_GET['id']);
 
         if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
-        foreach (getReviewID($databaseConnection,$_GET['id']) as $jemoeder) {
-                $sterren = getReviewAantSterren($databaseConnection,$_GET['id']);
-                $naam = getReviewNaam($databaseConnection,$_GET['id']);
-                $datum = getReviewDatum($databaseConnection,$_GET['id']);
-                $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id']);
-                $titel = getReviewOnderwerp($databaseConnection,$_GET['id']);
+        foreach ($idarray as $id) {
+//                $id = getReviewID()
+                $sterren = getReviewAantSterren($databaseConnection,$_GET['id'],$id);
+                $naam = getReviewNaam($databaseConnection,$_GET['id'],$id);
+                $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
+                $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
+                $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
             for ($i = 0; $i < $sterren   ; $i++) {
                 print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
             }
