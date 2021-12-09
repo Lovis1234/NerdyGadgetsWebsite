@@ -83,13 +83,13 @@ $button="";
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <h6> Inclusief <?php $StockItem['SellPrice']/100*$StockItem['TaxRate'] ?> BTW </h6>
                     </div>
                 </div>
             </div>
         </div>
             <form method="post">
-                <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button">
+                <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
             </form>
         </ul>
         <div id="StockItemDescription">
