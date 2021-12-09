@@ -91,6 +91,9 @@ $button="";
             <form method="post">
                 <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
             </form>
+        <form method="post">
+            <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" id="button">
+        </form>
         </ul>
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
@@ -170,7 +173,17 @@ if(isset($_POST["button"])) {
     getCart($databaseConnection);
     addProductToCart("$id",$databaseConnection);
 }
-
+if(isset($_GET["button-minder"])) {
+    if( $cart[$_GET["idprod"]] != 1){
+        $cart[$_GET["idprod"]] -= 1;
+        saveCart($cart,$databaseConnection);
+        header("Location:Cart.php");
+    }
+    else
+    {
+        header('Location:verwijder.php?idprod='.$_GET["id"]);
+    }
+}
 ?>
 <?php
 include __DIR__ . "/footer.php";

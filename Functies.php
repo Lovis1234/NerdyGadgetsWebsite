@@ -26,6 +26,18 @@
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
     }
+    function makeReview($databaseConnection, $productID,$onderwerp,$naam,$opmerking,$aantSterren)
+    {
+
+        $Query = '
+                INSERT INTO reviews(onderwerp, naam, opmerkingen, productID, aantSterren)
+                VALUES ('.$onderwerp.','.$naam.', '.$opmerking.','.$productID.','.$aantSterren.')';
+
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "s", $param_email);
+        $param_email = $productID;
+        mysqli_stmt_execute($Statement);
+    }
     function getCount($databaseConnection, $productID)
     {
         $Query = "
