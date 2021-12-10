@@ -141,7 +141,15 @@ $button="";
         </div>
             <?php
             $idarray = getReviewIDUit($databaseConnection,$_GET['id']);
+            if (getReviewCount($databaseConnection,$_GET['id']) == 0) {
+                ?>
+                    <div id="StockItemReview">
+                    <h3 class='Review'>Reviews:</h3>
+                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
+                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px;">
+                </form>
 
+                    <?php }
             if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
                 ?><div id="StockItemReview"><?php
 
@@ -160,14 +168,16 @@ $button="";
                     for ($i = 0; $i < 5-$sterren   ; $i++) {
                         print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
                     }
+                    print("       ". $titel);
                     ?>
-                        Allo
+
                     <br>
                     <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
                     <h3>(<?php print($omschrijving); ?>)</h3>
-                <?php } ?>
-                <form method="post">
-                    <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px; margin-left: 16%">
+                <?php print("<hr style='border: 1px solid white'");
+                } ?>
+                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
+                    <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px;">
                 </form>
                 <?php } ?>
         </div>
