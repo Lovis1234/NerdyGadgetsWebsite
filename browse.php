@@ -200,7 +200,24 @@ function berekenVerkoopPrijs($adviesPrijs, $btw) {
     return $btw * $adviesPrijs / 100 + $adviesPrijs;
 }
 ?>
+<?php
+$HeaderStockGroups = getHeaderStockGroups($databaseConnection);
+foreach ($HeaderStockGroups as $HeaderStockGroup) {
+    if(isset($_GET['category_id'])) {
+        if ($_GET['category_id'] == "") {
+            $categorieNaam = "Algemeen";
+        } else {
+            if ($HeaderStockGroup['StockGroupID'] == $_GET['category_id']) {
+                $categorieNaam = $HeaderStockGroup['StockGroupName'];
+            }
+        }
+    } else {
+        $categorieNaam = "Algemeen";
+    }
+}
+?>
 
+<div id="CategorieNaam"><h1 id="CatNaamOpmaak"><?php print $categorieNaam; ?></h1></div>
 <!-- code deel 3 van User story: Zoeken producten : de html -->
 <!-- de zoekbalk links op de pagina  -->
 
@@ -341,7 +358,3 @@ function berekenVerkoopPrijs($adviesPrijs, $btw) {
     }
     ?>
 </div>
-
-<?php
-include __DIR__ . "/footer.php";
-?>
