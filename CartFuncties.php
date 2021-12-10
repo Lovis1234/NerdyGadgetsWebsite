@@ -72,6 +72,19 @@ function addProductToCart($stockItemID,$databaseConnection){
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
     }
+    function getMail($databaseConnection, $mail)
+    {
+        $Query = "
+                SELECT *
+                FROM users WHERE email = ?";
+
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "s", $param_email);
+        $param_email = $mail;
+        mysqli_stmt_execute($Statement);
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
 //function removeProductFromCart($stockItemID){
 //    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen
 //
