@@ -12,18 +12,31 @@
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
     }
-    function getReview($databaseConnection, $productID)
+    function getReview($databaseConnection, $productID,$id)
     {
+
         $Query = "
                 SELECT id, aantSterren, onderwerp, naam, datum, opmerkingen
-                FROM reviews WHERE productID = ?";
+                FROM reviews WHERE productID = ? AND id=".$id;
 
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_bind_param($Statement, "s", $param_email);
         $param_email = $productID;
         mysqli_stmt_execute($Statement);
-        $resultaat = mysqli_stmt_get_result($Statement);
-        return $resultaat;
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
+    function makeReview($databaseConnection, $productID,$onderwerp,$naam,$opmerking,$aantSterren)
+    {
+
+        $Query = '
+                INSERT INTO reviews(onderwerp, naam, opmerkingen, productID, aantSterren)
+                VALUES ('.$onderwerp.','.$naam.', '.$opmerking.','.$productID.','.$aantSterren.')';
+
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "s", $param_email);
+        $param_email = $productID;
+        mysqli_stmt_execute($Statement);
     }
     function getCount($databaseConnection, $productID)
     {
@@ -47,45 +60,45 @@
         }
         return $naam;
     }
-    function getReviewNaam($databaseConnection, $productID)
+    function getReviewNaam($databaseConnection, $productID, $id)
     {
-        $results = getReview($databaseConnection, $productID);
+        $results = getReview($databaseConnection, $productID, $id);
         foreach ($results as $result) {
             $naam = $result["naam"];
 
         }
         return $naam;
     }
-    function getReviewOmschrijving($databaseConnection, $productID)
+    function getReviewOmschrijving($databaseConnection, $productID, $id)
     {
-        $results = getReview($databaseConnection, $productID);
+        $results = getReview($databaseConnection, $productID, $id);
         foreach ($results as $result) {
             $naam = $result["opmerkingen"];
 
         }
         return $naam;
     }
-    function getReviewOnderwerp($databaseConnection, $productID)
+    function getReviewOnderwerp($databaseConnection, $productID, $id)
     {
-        $results = getReview($databaseConnection, $productID);
+        $results = getReview($databaseConnection, $productID, $id);
         foreach ($results as $result) {
             $naam = $result["onderwerp"];
 
         }
         return $naam;
     }
-    function getReviewAantSterren($databaseConnection, $productID)
+    function getReviewAantSterren($databaseConnection, $productID, $id)
     {
-        $results = getReview($databaseConnection, $productID);
+        $results = getReview($databaseConnection, $productID, $id);
         foreach ($results as $result) {
             $aantSterren = $result["aantSterren"];
 
         }
         return $aantSterren;
     }
-    function getReviewDatum($databaseConnection, $productID)
+    function getReviewDatum($databaseConnection, $productID, $id)
     {
-        $results = getReview($databaseConnection, $productID);
+        $results = getReview($databaseConnection, $productID, $id);
         foreach ($results as $result) {
             $datum = $result["datum"];
 
@@ -106,6 +119,16 @@
             $countries = mysqli_stmt_get_result($Statement);
             return $countries;
         }
+    }
+    function getReviewIDUit($databaseConnection, $productID)
+    {
+        $idarray = array();
+        $results = getReviewID($databaseConnection, $productID);
+        foreach ($results as $result) {
+            $idarray[] = $result["id"];
+
+        }
+        return $idarray;
     }
     function getVerzend($databaseConnection)
     {
