@@ -192,9 +192,14 @@ table tr td {
     box-shadow: 0 9px #999;
 }
 #button {
-    top: -100px;
-    left: 1050px;
-    position: relative;
+    top: 240px;
+    right: 300px;
+    position: absolute;
+}
+#ReviewButton {
+    top: 240px;
+    right: 610px;
+    position: absolute;
 }
 
 .button2 {

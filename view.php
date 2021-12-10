@@ -97,8 +97,8 @@ $button="";
             <form method="post">
                 <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
             </form>
-        <form method="post">
-            <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" id="button">
+        <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
+            <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" id="ReviewButton">
         </form>
         </ul>
         <div id="StockItemDescription">
@@ -179,7 +179,7 @@ if(isset($_POST["button"])) {
     getCart($databaseConnection);
     addProductToCart("$id",$databaseConnection);
 }
-if(isset($_GET["button-minder"])) {
+if(isset($_POST["ReviewButton"])) {
             header('Location:reviewmaken.php?id='.$_GET["id"]);
     }
 

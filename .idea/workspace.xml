@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="40d8d2ef-6f2d-4b34-913f-e24dcdc2e646" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CartFuncties.php" beforeDir="false" afterPath="$PROJECT_DIR$/CartFuncties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inlog.php" beforeDir="false" afterPath="$PROJECT_DIR$/inlog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registreer.php" beforeDir="false" afterPath="$PROJECT_DIR$/registreer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -75,7 +76,8 @@
       <workItem from="1637913898643" duration="3336000" />
       <workItem from="1637920191482" duration="308000" />
       <workItem from="1638520437203" duration="15939000" />
-      <workItem from="1638882379741" duration="3909000" />
+      <workItem from="1638882379741" duration="9188000" />
+      <workItem from="1639121661191" duration="2443000" />
     </task>
     <servers />
   </component>
