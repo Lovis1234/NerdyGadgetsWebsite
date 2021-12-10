@@ -123,7 +123,9 @@ foreach ($cart as $artikel => $aantal){
         <input type="submit" name="button" value="Verder winkelen" class="button2" style="float: left;">
     </form>
     <form action="bestellijst.php" method="get">
-        <input type="submit" name="button" value="Bestelling afronden" class="button2" style="float: right;">
+    <?php if ($cart !== array()) {
+        print('<input type="submit" name="button" value="Bestelling afronden" class="button2" style="float: right;">');
+     } ?>
     </form>
 </div>
 </body>
