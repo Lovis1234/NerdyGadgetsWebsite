@@ -1,6 +1,10 @@
 <?php
 include __DIR__ . "/header.php";
+<<<<<<< HEAD
 include "CartFuncties.php";
+=======
+include "Functies.php";
+>>>>>>> Stan
 
 ?>
 <!DOCTYPE html>
@@ -23,4 +27,10 @@ foreach ($orderID as $aap) {
     <h2> Ordernummer: #<?php print($aap["max(OrderID)"]); ?></h2>
     <br><br>
     <img src="Public/StockItemIMG/voltooid.gif" style="height: 30%; width: 30%">
+<<<<<<< HEAD
 <?php }
+=======
+<?php }
+
+include __DIR__ . "/footer.php";
+>>>>>>> Stan

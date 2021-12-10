@@ -61,7 +61,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // uitvoeren
             if(mysqli_stmt_execute($stmt)){
+<<<<<<< HEAD
                 header("location: login.php");
+=======
+                header("location: inlog.php");
+>>>>>>> Stan
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -112,4 +116,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </body>
 </html>
 <?php
+<<<<<<< HEAD
 include __DIR__ . "/footer.php";
+=======
+>>>>>>> Stan

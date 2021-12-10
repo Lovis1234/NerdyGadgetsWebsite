@@ -38,8 +38,8 @@ a {
     color:#000000;
 }
 a:hover {
-     text-decoration: none !important;
- }
+    text-decoration: none !important;
+}
 a span {
     display: none;
     position: absolute;
@@ -190,6 +190,11 @@ table tr td {
     border: none;
     border-radius: 10px;
     box-shadow: 0 9px #999;
+}
+#button {
+    top: -100px;
+    left: 1050px;
+    position: relative;
 }
 
 .button2 {
@@ -759,13 +764,30 @@ cart layout
     text-align:right;
     position: absolute;
 }
-#CartPrijsStuk {
+#CartTotBTWStuk {
     width: 400px;
-    font-size: 20px;
-    top: 40px;
+    font-size: 16px;
+    top: 36px;
     text-align: right;
     position: absolute;
 }
+#CartPrijsStuk {
+    width: 400px;
+    font-size: 20px;
+    top: 60px;
+    text-align: right;
+    position: absolute;
+}
+<<<<<<< HEAD
+=======
+#CartBTWStuk {
+    width: 400px;
+    font-size: 16px;
+    top: 84px;
+    text-align: right;
+    position: absolute;
+}
+>>>>>>> Stan
 
 .CartAfronden {
     border-top: 2px solid white;
@@ -780,12 +802,27 @@ cart layout
     font-size: 30px;
     top: 30px;
     left: 230px;
+<<<<<<< HEAD
     position: absolute;
 }
 #CartTotaalArtikelen {
     font-size: 22px;
     top: 65px;
     left: 230px;
+=======
+    position: absolute;
+}
+#CartTotaalBTWPrijs {
+    font-size: 20px;
+    top: 66px;
+    left: 230px;
+    position: absolute;
+}
+#CartTotaalArtikelen {
+    font-size: 26px;
+    top: 36px;
+    right: 80px;
+>>>>>>> Stan
     position: absolute;
 }
 .row {

@@ -59,8 +59,13 @@ $databaseConnection = connectToDatabase();
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
                 <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelmand</a>
+<<<<<<< HEAD
                 <?php if(isset($_SESSION["loggedin"]) !== true){ print('<a href="inlog.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Log in</a>');}?>
                 <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="logout.php" class="HrefDecoration" ><i class="fas fa-arrow-right-from-bracket search"></i> Log uit</a>');}?>
+=======
+                <?php if(isset($_SESSION["loggedin"]) !== true){ print('<a href="inlog.php" class="HrefDecoration"><i class="fas fa-user-circle search"></i> Log in</a>');}?>
+                <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="logout.php" class="HrefDecoration" ><i class="fas fa-user-circle search"></i></i> Log uit</a>');}?>
+>>>>>>> Stan
             </li>
         </ul>
 
@@ -75,4 +80,4 @@ $databaseConnection = connectToDatabase();
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
-
+                <br>

@@ -1,5 +1,9 @@
 <?php
 include __DIR__ . "/header.php";
+<<<<<<< HEAD
+=======
+include "Functies.php";
+>>>>>>> Stan
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
 }
@@ -43,6 +47,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;
+<<<<<<< HEAD
+=======
+                            getCart3($databaseConnection);
+>>>>>>> Stan
                             header("location: index.php");
                         } else{
                             $login_err = "Invalid email or password.";
@@ -98,7 +106,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login">
         </div>
+<<<<<<< HEAD
         <p>Don't have an account? <a href="registeer.php">Sign up now</a>.</p>
+=======
+        <p>Don't have an account? <a href="registreer.php">Sign up now</a>.</p>
+>>>>>>> Stan
     </form>
 </div>
 </body>

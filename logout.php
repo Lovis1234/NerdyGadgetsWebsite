@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="Public/CSS/typekit.css">
 </head>
 <body>
+<<<<<<< HEAD
 <?php
 //include __DIR__ . "/header.php";
 //include "CartFuncties.php";
@@ -69,17 +70,37 @@
 <form action="logout.php">
     <input type="submit" name="annuleren" value="annuleren" class="button2" style="background-color: red">
     <input type="submit" name="doorgaan" value="doorgaan" class="button2">
+=======
+<center> <br><br><br><br><br><br><br><br>
+<h1>Je staat op het punt om uit te loggen</h1>
+<form action="logout.php">
+    <input type="submit" name="annuleren" value="Annuleren" class="button2" style="background-color: red">
+    <input type="submit" name="doorgaan" value="Doorgaan" class="button2">
+>>>>>>> Stan
 </form>
     <center>
 <?php
 if(isset($_GET["doorgaan"])) {//controleren of $stockItemID(=key!) al in array staat
+<<<<<<< HEAD
     unset($_SESSION["loggedin"]);
     unset($_SESSION["loggedin"]);
     unset($_SESSION["id"]);
     unset($_SESSION["email"]);
     header("Location:Index.php");
+=======
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    header("location: index.php");
+    exit;
+>>>>>>> Stan
 }
 if(isset($_GET["annuleren"])) {//controleren of $stockItemID(=key!) al in array staat
     header("Location:Index.php");
 }
+<<<<<<< HEAD
 ?>
+=======
+
+
+>>>>>>> Stan
