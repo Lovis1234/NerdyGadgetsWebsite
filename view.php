@@ -165,10 +165,11 @@ $button="";
                     <br>
                     <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
                     <h3>(<?php print($omschrijving); ?>)</h3>
-                <?php }} ?>
-        <form method="post">
-            <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px; margin-left: 16%">
-        </form>
+                <?php } ?>
+                <form method="post">
+                    <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px; margin-left: 16%">
+                </form>
+                <?php } ?>
         </div>
         </div>
         <?php
