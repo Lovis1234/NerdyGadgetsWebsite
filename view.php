@@ -24,13 +24,19 @@ $button="";
         <div id="ArticleHeader">
             <?php
             if (isset($StockItemImage)) {
+                if (count($StockItemImage) == 0) {
+                    ?>
+                    <div id="ImageFrame"
+                         style="background-image: url('Public/StockItemIMG/GeenAfbeelding.jpg'); background-size: 250px; background-repeat: no-repeat; background-position: center;"></div>
+                    <?php
+                }
                 // één plaatje laten zien
-                if (count($StockItemImage) == 1) {
+                elseif (count($StockItemImage) == 1) {
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
-                } else if (count($StockItemImage) >= 2) { ?>
+                } elseif (count($StockItemImage) >= 2) { ?>
                     <!-- meerdere plaatjes laten zien -->
                     <div id="ImageFrame">
                         <div id="ImageCarousel" class="carousel slide" data-interval="false">
