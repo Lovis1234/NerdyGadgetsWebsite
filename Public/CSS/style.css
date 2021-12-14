@@ -192,8 +192,7 @@ table tr td {
     box-shadow: 0 9px #999;
 }
 #button {
-    top: 240px;
-    right: 300px;
+    right: 0px;
     position: absolute;
 }
 #ReviewButton {
@@ -410,6 +409,16 @@ ul#ul-class-winkelwagen li {
     padding: 10px;
     margin-left: 1%;
     margin-top:10px;
+    border: 1px solid;
+    font-family: pt-sans, sans-serif;
+    font-size: 20px;
+}
+#StockItemReview {
+    background-color: rgba(35, 40, 47, 0.8);
+    width: 49%;
+    float: left;
+    padding: 10px;
+    margin-top:-90px;
     border: 1px solid;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
@@ -904,65 +913,56 @@ span.price {
     }
 }
 
-.wrapper {
-    width: 705px;
-    margin: 20px auto;
-    padding: 20px;
+/*Chatbot code*/
+.chatbot {
+    top: 50px;
+    border: 1px solid red;
+    height: 620px;
+    width: 70%;
+    position: absolute;
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
 }
-h1 {
-    display: inline-block;
-    background-color: #333;
-    color: #fff;
-    font-size: 20px;
-    font-weight: normal;
-    text-transform: uppercase;
-    padding: 4px 20px;
-    float: left;
+#chatbox {
+    overflow-y:scroll;
+    height:540px;
+    width: 100%;
+    border: 1px solid white;
+    position: absolute;
 }
-.clear {
-    clear: both;
+
+#chatbericht {
+    height: 50px;
+    width: 1100px;
+    position: absolute;
+    bottom: -5px;
+    left: 20px;
 }
-.items {
-    display: block;
-    margin: 20px 0;
+
+#chatsubmit {
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
 }
-.item {
-    background-color: #fff;
-    float: left;
-    margin: 0 10px 10px 0;
-    width: 205px;
-    padding: 10px;
-    height: 290px;
+
+.botbericht {
+    border: 1px solid blue;
+    min-height: 100px;
+    height: fit-content;
+    width: 98%;
+    left: 1%;
+    position: relative;
+    margin-bottom: 10px;
 }
-.item img {
-    display: block;
-    margin: auto;
+#botnaam {
+    top: 10px;
+    left: 10px;
+    position: relative;
 }
-h2 {
-    font-size: 16px;
-    display: block;
-    border-bottom: 1px solid #ccc;
-    margin: 0 0 10px 0;
-    padding: 0 0 5px 0;
+#botopmerking {
+    left: 10px;
+    position: relative;
 }
-button {
-    border: 1px solid #722A1B;
-    padding: 4px 14px;
-    background-color: #fff;
-    color: #722A1B;
-    text-transform: uppercase;
-    float: right;
-    margin: 5px 0;
-    font-weight: bold;
-    cursor: pointer;
-}
-span {
-    float: right;
-}
-.shopping-cart {
-    display: inline-block;
-    background: url('http://cdn1.iconfinder.com/data/icons/jigsoar-icons/24/_cart.png') no-repeat 0 0;
-    width: 24px;
-    height: 24px;
-    margin: 0 10px 0 0;
-}
+/*Einde chatbot code*/
