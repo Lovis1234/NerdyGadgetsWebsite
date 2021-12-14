@@ -50,7 +50,6 @@ elseif (isset($_GET["button-meer"])){
 }
 //einde van aanpassen hoeveelheid product
 
-$test = array(1,2,3,4,5);
 
 foreach ($cart as $artikel => $aantal){
     $StockItem = getStockItem($artikel, $databaseConnection);

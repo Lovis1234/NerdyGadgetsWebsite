@@ -4,13 +4,33 @@
         $Query = "
                 SELECT *
                 FROM users WHERE email = ?";
-
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_bind_param($Statement, "s", $param_email);
         $param_email = $mail;
         mysqli_stmt_execute($Statement);
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
+    }
+    function getWelkom($databaseConnection, $mail, $idpro)
+    {
+       $datauser = getMail($databaseConnection, $mail);
+       foreach ($datauser as $info)
+       {
+           $arrayprod = unserialize($info['bekekenprod']);
+                $arrayprod[2] = $arrayprod[1];
+                $arrayprod[1] = $arrayprod[0];
+                $arrayprod[0] = $idpro;
+
+           $datprod = serialize($arrayprod);
+            updateWelkom($databaseConnection,$idpro,$datprod,$info['email']);
+       }
+    }
+    function updateWelkom($databaseConnection, $productID,$uAR,$mail)
+    {
+        $Query = "
+                UPDATE users SET bekekenprod = '".$uAR."' WHERE email = '".$mail."';";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
     }
     function getReview($databaseConnection, $productID,$id)
     {
@@ -162,7 +182,23 @@ return $cart;
     }
 //    }
 
-
+//    function sProd($cart,$databaseConnection){
+//        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//            $producten[] = array(0,0,0);
+//            $email = $_SESSION["email"];
+//            if (count($cart) >= 3)
+//            {
+//
+//            }
+//            else{
+//                $cartserialised = serialize($producten);
+//                $sql = "UPDATE users SET bekekenprod='$cartserialised' WHERE email='$email'";
+//                $Statement = mysqli_prepare($databaseConnection, $sql);
+//                mysqli_stmt_execute($Statement);
+//            }
+//
+//        }
+//    }
 function saveCart($cart,$databaseConnection){
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         $email = $_SESSION["email"];
