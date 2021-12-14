@@ -4,9 +4,9 @@ include 'Functies.php';
 $email = $_SESSION["email"];
 $voornaam = getProfiel($databaseConnection, $email, "voornaam");
 $achternaam = getProfiel($databaseConnection, $email,"achternaam");
-$voornaam = getProfiel($databaseConnection, $email, "voornaam");
-$achternaam = getProfiel($databaseConnection, $email,"achternaam");
-$voornaam = getProfiel($databaseConnection, $email, "voornaam");
+$bestelnaam = getProfiel($databaseConnection, $email, "bestelnaam");
+$bestelstraat = getProfiel($databaseConnection, $email,"bestelstraat");
+$bestelhuisnummer = getProfiel($databaseConnection, $email, "voornaam");
 $achternaam = getProfiel($databaseConnection, $email,"achternaam");
 ?>
 <div class="container rounded bg-white mt-5 mb-5">
