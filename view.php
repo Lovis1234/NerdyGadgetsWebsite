@@ -191,6 +191,7 @@ $button="";
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+</div>
 <?php
 if(isset($_POST["button"])) {
     $id=$_GET["id"];

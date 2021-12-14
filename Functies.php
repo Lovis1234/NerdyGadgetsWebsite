@@ -12,6 +12,15 @@
         $resultaat = mysqli_stmt_get_result($Statement); //Hier haal je het resultaat op , alleen nodig bij SELECT statements omdat je ook echt iets terug wilt krijgen
         return $resultaat; // Return het resultaat om te gebruiken in de code
     }
+    function getProfiel($databaseConnection, $email, $rij)
+    {
+        $results = getMail($databaseConnection, $email);
+        foreach ($results as $result) {
+            $naam = $result["$rij"];
+
+        }
+        return $naam;
+    }
     function getReview($databaseConnection, $productID,$id)
     {
 
