@@ -1,4 +1,25 @@
     <?php // altijd hiermee starten als je gebruik wilt maken van sessiegegevens
+    function getWelkom($databaseConnection, $mail, $idpro)
+    {
+        $datauser = getMail($databaseConnection, $mail);
+        foreach ($datauser as $info)
+        {
+            $arrayprod = unserialize($info['bekekenprod']);
+            $arrayprod[2] = $arrayprod[1];
+            $arrayprod[1] = $arrayprod[0];
+            $arrayprod[0] = $idpro;
+
+            $datprod = serialize($arrayprod);
+            updateWelkom($databaseConnection,$idpro,$datprod,$info['email']);
+        }
+    }
+    function updateWelkom($databaseConnection, $productID,$uAR,$mail)
+    {
+        $Query = "
+                UPDATE users SET bekekenprod = '".$uAR."' WHERE email = '".$mail."';";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+    }
     function getMail($databaseConnection, $mail)
     {
         $Query = "
