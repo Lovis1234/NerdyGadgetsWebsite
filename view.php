@@ -176,9 +176,9 @@ $button="";
                     <h3>(<?php print($omschrijving); ?>)</h3>
                 <?php print("<hr style='border: 1px solid white'");
                 } ?>
-                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
-                    <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px;">
-                </form>
+                                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
+                                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px;">
+                                </form>
                 <?php } ?>
         </div>
         </div>
