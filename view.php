@@ -90,13 +90,13 @@ $button="";
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
                         <h6> Inclusief <?php $StockItem['SellPrice']/100*$StockItem['TaxRate'] ?> BTW </h6>
+                        <form method="post">
+                            <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-            <form method="post">
-                <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
-            </form>
         </ul>
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
@@ -145,8 +145,8 @@ $button="";
                 ?>
                     <div id="StockItemReview">
                     <h3 class='Review'>Reviews:</h3>
-                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
-                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px;">
+                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]); ?>">
+                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px; margin-bottom: 20px">
                 </form>
 
                     <?php }
@@ -162,13 +162,14 @@ $button="";
                     $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
                     $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
                     $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
+                    print("<h3>". $titel."</h3>");
+
                     for ($i = 0; $i < $sterren   ; $i++) {
                         print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
                     }
                     for ($i = 0; $i < 5-$sterren   ; $i++) {
                         print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
                     }
-                    print("       ". $titel);
                     ?>
 
                     <br>
@@ -176,11 +177,14 @@ $button="";
                     <h3>(<?php print($omschrijving); ?>)</h3>
                 <?php print("<hr style='border: 1px solid white'");
                 } ?>
-                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
-                    <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px;">
-                </form>
                 <?php } ?>
         </div>
+            <?php
+                if (getReviewCount($databaseConnection,$_GET['id']) >= 1) { ?>
+                    <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]); ?>">
+                        <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px; margin-bottom: 20px">
+                    </form>
+            <?php } ?>
         </div>
         <?php
     } else {
@@ -193,17 +197,7 @@ if(isset($_POST["button"])) {
     getCart($databaseConnection);
     addProductToCart("$id",$databaseConnection);
 }
-if(isset($_GET["button-minder"])) {
-    if( $cart[$_GET["idprod"]] != 1){
-        $cart[$_GET["idprod"]] -= 1;
-        saveCart($cart,$databaseConnection);
-        header("Location:Cart.php");
-    }
-    else
-    {
-        header('Location:verwijder.php?idprod='.$_GET["id"]);
-    }
-}
+
 ?>
 <?php
 include __DIR__ . "/footer.php";
