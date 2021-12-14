@@ -3,14 +3,14 @@
     {
         $Query = "
                 SELECT *
-                FROM users WHERE email = ?";
+                FROM users WHERE email = ?"; // Het sql klaar zetten om het te gebruiken
 
-        $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "s", $param_email);
-        $param_email = $mail;
-        mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
+        $Statement = mysqli_prepare($databaseConnection, $Query); // Je koppelt hier de sql aan de database zodat hij ook weet waar uit te voeren
+        mysqli_stmt_bind_param($Statement, "s", $param_email); // Veiligheid, hiermee voorkom je dat mensen shit invoeren die je niet wilt
+        $param_email = $mail; // Hier zet je wat er kwa input moet komen
+        mysqli_stmt_execute($Statement); // Hier voor je pas echt de code uit "executing"
+        $resultaat = mysqli_stmt_get_result($Statement); //Hier haal je het resultaat op , alleen nodig bij SELECT statements omdat je ook echt iets terug wilt krijgen
+        return $resultaat; // Return het resultaat om te gebruiken in de code
     }
     function getReview($databaseConnection, $productID,$id)
     {
@@ -20,23 +20,11 @@
                 FROM reviews WHERE productID = ? AND id=".$id;
 
         $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "s", $param_email);
-        $param_email = $productID;
+        mysqli_stmt_bind_param($Statement, "s", $param_id);
+        $param_id = $productID;
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
-    }
-    function makeReview($databaseConnection, $productID,$onderwerp,$naam,$opmerking,$aantSterren)
-    {
-
-        $Query = '
-                INSERT INTO reviews(onderwerp, naam, opmerkingen, productID, aantSterren)
-                VALUES ('.$onderwerp.','.$naam.', '.$opmerking.','.$productID.','.$aantSterren.')';
-
-        $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "s", $param_email);
-        $param_email = $productID;
-        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
     }
     function getCount($databaseConnection, $productID)
     {
@@ -116,8 +104,8 @@
             mysqli_stmt_bind_param($Statement, "s", $param_email);
             $param_email = $productID;
             mysqli_stmt_execute($Statement);
-            $countries = mysqli_stmt_get_result($Statement);
-            return $countries;
+            $resultaat = mysqli_stmt_get_result($Statement);
+            return $resultaat;
         }
     }
     function getReviewIDUit($databaseConnection, $productID)
@@ -144,8 +132,8 @@
     {
         $email = $_SESSION["email"];
         $mail = getMail($databaseConnection, $email);
-        foreach ($mail as $aap) {
-            $winkemandarray = unserialize($aap["winkelmand"]);
+        foreach ($mail as $resultaten) {
+            $winkemandarray = unserialize($resultaten["winkelmand"]);
 
         }
         saveCart($winkemandarray,$databaseConnection);
@@ -196,8 +184,8 @@ function addProductToCart($stockItemID,$databaseConnection){
                 FROM countries ";
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
     }
     function getBetaal($databaseConnection)
     {
@@ -206,8 +194,8 @@ function addProductToCart($stockItemID,$databaseConnection){
                 FROM paymentmethods ";
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
     }
 //function removeProductFromCart($stockItemID){
 //    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen

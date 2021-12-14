@@ -100,9 +100,9 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
     <SELECT name="beoordeling" required>
         <option value="">Selecteer een land</option>
       <?php
-      $countries = getCountries($databaseConnection);
-      foreach ($countries as $aap) {
-          echo '<option value="'.$aap["CountryID"].'">'.$aap["CountryName"].'</option>';
+      $resultaat = getCountries($databaseConnection);
+      foreach ($resultaat as $resultaten) {
+          echo '<option value="'.$resultaten["CountryID"].'">'.$resultaten["CountryName"].'</option>';
       }?>
 
        </SELECT> <br><br>
@@ -115,17 +115,17 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
                             Verzendmethode: <SELECT name="vz" required>
                                 <option value="">Selecteer een verzendmethode</option>
                                 <?php
-                                $countries = getVerzend($databaseConnection);
-                                foreach ($countries as $aap) {
-                                    echo '<option value="'.$aap["DeliveryMethodID"].'">'.$aap["DeliveryMethodName"].'</option>';
+                                $resultaat = getVerzend($databaseConnection);
+                                foreach ($resultaat as $resultaten) {
+                                    echo '<option value="'.$resultaten["DeliveryMethodID"].'">'.$resultaten["DeliveryMethodName"].'</option>';
                                 }?>
                             </SELECT> <br><br>
                             Betaalmethode: <SELECT name="bm" required>
                                 <option value="">Selecteer een betaalmethode</option>
                                 <?php
-                                $countries = getBetaal($databaseConnection);
-                                foreach ($countries as $aap) {
-                                    echo '<option value="'.$aap["PaymentMethodID"].'">'.$aap["PaymentMethodName"].'</option>';
+                                $resultaat = getBetaal($databaseConnection);
+                                foreach ($resultaat as $resultaten) {
+                                    echo '<option value="'.$resultaten["PaymentMethodID"].'">'.$resultaten["PaymentMethodName"].'</option>';
                                 }?>
                             </SELECT> <br><br>
     <input type="submit" name="bestel" value="Submit">
