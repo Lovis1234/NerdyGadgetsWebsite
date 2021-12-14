@@ -197,14 +197,3 @@ function addProductToCart($stockItemID,$databaseConnection){
         $resultaat = mysqli_stmt_get_result($Statement);
         return $resultaat;
     }
-//function removeProductFromCart($stockItemID){
-//    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen
-//
-//    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
-//        unset($cart[$stockItemID]);                   //zo ja:  aantal met 1 verhogen
-//    }
-//
-//    saveCart($cart,$databaseConnection);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
-//    print_r($cart);
-//}
-
