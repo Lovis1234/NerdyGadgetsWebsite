@@ -193,6 +193,7 @@ if(isset($_POST["button"])) {
     getCart($databaseConnection);
     addProductToCart("$id",$databaseConnection);
 }
+$cart = getCart($databaseConnection);
 if(isset($_GET["button-minder"])) {
     if( $cart[$_GET["idprod"]] != 1){
         $cart[$_GET["idprod"]] -= 1;

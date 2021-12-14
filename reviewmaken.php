@@ -32,8 +32,8 @@ if(isset($_GET["review"])) {
                                 <option value="5">5 ster</option>
 
                             </SELECT> <br><br>
-                            <input type="hidden" value="<?php print($_GET["id"]);?>" name="id">
+                            <input type="hidden" value="<?php print($_GET["id"]); ?>" name="id">
     <input type="submit" name="review" value="Submit">
 </form>
 
-makeReview($databaseConnection, $productID,$onderwerp,$naam,$opmerking,$aantSterren);
+<!--makeReview($databaseConnection, $productID,$onderwerp,$naam,$opmerking,$aantSterren);-->
