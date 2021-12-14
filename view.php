@@ -2,7 +2,7 @@
 <?php
 
 include __DIR__ . "/header.php";
-include 'CartFuncties.php';
+include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 $button="";
@@ -24,13 +24,19 @@ $button="";
         <div id="ArticleHeader">
             <?php
             if (isset($StockItemImage)) {
+                if (count($StockItemImage) == 0) {
+                    ?>
+                    <div id="ImageFrame"
+                         style="background-image: url('Public/StockItemIMG/GeenAfbeelding.jpg'); background-size: 250px; background-repeat: no-repeat; background-position: center;"></div>
+                    <?php
+                }
                 // één plaatje laten zien
-                if (count($StockItemImage) == 1) {
+                elseif (count($StockItemImage) == 1) {
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
-                } else if (count($StockItemImage) >= 2) { ?>
+                } elseif (count($StockItemImage) >= 2) { ?>
                     <!-- meerdere plaatjes laten zien -->
                     <div id="ImageFrame">
                         <div id="ImageCarousel" class="carousel slide" data-interval="false">
@@ -83,13 +89,13 @@ $button="";
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <h6> Inclusief <?php $StockItem['SellPrice']/100*$StockItem['TaxRate'] ?> BTW </h6>
                     </div>
                 </div>
             </div>
         </div>
             <form method="post">
-                <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button">
+                <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
             </form>
         </ul>
         <div id="StockItemDescription">
@@ -133,6 +139,49 @@ $button="";
             }
             ?>
         </div>
+            <?php
+            $idarray = getReviewIDUit($databaseConnection,$_GET['id']);
+            if (getReviewCount($databaseConnection,$_GET['id']) == 0) {
+                ?>
+                    <div id="StockItemReview">
+                    <h3 class='Review'>Reviews:</h3>
+                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
+                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px;">
+                </form>
+
+                    <?php }
+            if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
+                ?><div id="StockItemReview"><?php
+
+                print("<h3 class='Review'>Reviews:</h3>");
+                ?><div style="margin: 30px"><?php
+                foreach ($idarray as $id) {
+//                $id = getReviewID()
+                    $sterren = getReviewAantSterren($databaseConnection,$_GET['id'],$id);
+                    $naam = getReviewNaam($databaseConnection,$_GET['id'],$id);
+                    $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
+                    $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
+                    $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
+                    for ($i = 0; $i < $sterren   ; $i++) {
+                        print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
+                    }
+                    for ($i = 0; $i < 5-$sterren   ; $i++) {
+                        print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
+                    }
+                    print("       ". $titel);
+                    ?>
+
+                    <br>
+                    <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
+                    <h3>(<?php print($omschrijving); ?>)</h3>
+                <?php print("<hr style='border: 1px solid white'");
+                } ?>
+                                <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]) ?>">
+                                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px;">
+                                </form>
+                <?php } ?>
+        </div>
+        </div>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
@@ -144,5 +193,17 @@ if(isset($_POST["button"])) {
     getCart($databaseConnection);
     addProductToCart("$id",$databaseConnection);
 }
-
+if(isset($_GET["button-minder"])) {
+    if( $cart[$_GET["idprod"]] != 1){
+        $cart[$_GET["idprod"]] -= 1;
+        saveCart($cart,$databaseConnection);
+        header("Location:Cart.php");
+    }
+    else
+    {
+        header('Location:verwijder.php?idprod='.$_GET["id"]);
+    }
+}
 ?>
+<?php
+include __DIR__ . "/footer.php";

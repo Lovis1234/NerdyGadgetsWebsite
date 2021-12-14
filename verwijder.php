@@ -1,5 +1,5 @@
 <?php
-include "CartFuncties.php";
+include "Functies.php";
 include __DIR__ . "/header.php";
 //$cart = array(1 => 1);
 $cart = getCart($databaseConnection);

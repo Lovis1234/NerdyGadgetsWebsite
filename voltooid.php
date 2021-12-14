@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
+include "Functies.php";
 
 ?>
 <!DOCTYPE html>
@@ -24,3 +24,5 @@ foreach ($orderID as $aap) {
     <br><br>
     <img src="Public/StockItemIMG/voltooid.gif" style="height: 30%; width: 30%">
 <?php }
+
+include __DIR__ . "/footer.php";

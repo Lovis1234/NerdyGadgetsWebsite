@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
-include "cartfuncties.php";
+include "Functies.php";
 
 if(isset($_GET["bestel"])) {
     $email = $_GET['email'];
@@ -134,5 +134,4 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
 
 <?php
 include __DIR__ . "/footer.php";
-
 ?>
