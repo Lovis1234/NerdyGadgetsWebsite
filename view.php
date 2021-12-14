@@ -5,6 +5,8 @@ include __DIR__ . "/header.php";
 include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+$idmail = $_SESSION["email"];
+getWelkom($databaseConnection, $idmail, $_GET['id']);
 $button="";
 ?>
 <div id="CenteredContent">
@@ -190,6 +192,7 @@ $button="";
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
+</div>
 </div>
 <?php
 if(isset($_POST["button"])) {

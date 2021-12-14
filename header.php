@@ -61,6 +61,7 @@ $databaseConnection = connectToDatabase();
                 <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelmand</a>
                 <?php if(isset($_SESSION["loggedin"]) !== true){ print('<a href="inlog.php" class="HrefDecoration"><i class="fas fa-user-circle search"></i> Log in</a>');}?>
                 <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="logout.php" class="HrefDecoration" ><i class="fas fa-user-circle search"></i></i> Log uit</a>');}?>
+                <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="profile.php" class="HrefDecoration" ><i class="fas fa-user-circle search"></i></i> Mijn profiel</a>');}?>
             </li>
         </ul>
 

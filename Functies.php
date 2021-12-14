@@ -1,4 +1,25 @@
     <?php // altijd hiermee starten als je gebruik wilt maken van sessiegegevens
+    function getWelkom($databaseConnection, $mail, $idpro)
+    {
+        $datauser = getMail($databaseConnection, $mail);
+        foreach ($datauser as $info)
+        {
+            $arrayprod = unserialize($info['bekekenprod']);
+            $arrayprod[2] = $arrayprod[1];
+            $arrayprod[1] = $arrayprod[0];
+            $arrayprod[0] = $idpro;
+
+            $datprod = serialize($arrayprod);
+            updateWelkom($databaseConnection,$idpro,$datprod,$info['email']);
+        }
+    }
+    function updateWelkom($databaseConnection, $productID,$uAR,$mail)
+    {
+        $Query = "
+                UPDATE users SET bekekenprod = '".$uAR."' WHERE email = '".$mail."';";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+    }
     function getMail($databaseConnection, $mail)
     {
         $Query = "
@@ -11,6 +32,15 @@
         mysqli_stmt_execute($Statement); // Hier voor je pas echt de code uit "executing"
         $resultaat = mysqli_stmt_get_result($Statement); //Hier haal je het resultaat op , alleen nodig bij SELECT statements omdat je ook echt iets terug wilt krijgen
         return $resultaat; // Return het resultaat om te gebruiken in de code
+    }
+    function getProfiel($databaseConnection, $email, $rij)
+    {
+        $results = getMail($databaseConnection, $email);
+        foreach ($results as $result) {
+            $naam = $result["$rij"];
+
+        }
+        return $naam;
     }
     function getReview($databaseConnection, $productID,$id)
     {
