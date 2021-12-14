@@ -24,7 +24,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     {
         $StockItem = getStockItem($product, $databaseConnection);
         $StockItemImage = getStockItemImage($product, $databaseConnection);
-
          if (isset($StockItemImage)) {
                 if (count($StockItemImage) == 0) {
                     ?>
@@ -39,10 +38,48 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                          style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
                 }
+                elseif (count($StockItemImage) >= 2) { ?>
+                    <!-- meerdere plaatjes laten zien -->
+                    <div id="ImageFrame">
+                        <div id="ImageCarousel" class="carousel slide" data-interval="false">
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators">
+                                <?php for ($i = 0; $i < count($StockItemImage); $i++) {
+                                    ?>
+                                    <li data-target="#ImageCarousel"
+                                        data-slide-to="<?php print $i ?>" <?php print (($i == 0) ? 'class="active"' : ''); ?>></li>
+                                    <?php
+                                } ?>
+                            </ul>
+
+                            <!-- slideshow -->
+                            <div class="carousel-inner">
+                                <?php for ($i = 0; $i < count($StockItemImage); $i++) {
+                                    ?>
+                                    <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
+                                        <img src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
+                                    </div>
+                                <?php } ?>
+                            </div>
+
+                            <!-- knoppen 'vorige' en 'volgende' -->
+                            <a class="carousel-control-prev" href="#ImageCarousel" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#ImageCarousel" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php
+                }
          }
-        echo $StockItem['StockItemName'];
+        echo $StockItem['StockItemName']."<br>";
+
  }
-    echo "</center></center><div class='form-group'>
+    echo "</center>
+
+<div class='form-group'>
             <input href='categories.php' type='submit' class='btn btn-primary' value='Verder winkelen'>
         </div>";
 }
