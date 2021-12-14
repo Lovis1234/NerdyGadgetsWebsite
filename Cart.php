@@ -50,8 +50,6 @@ elseif (isset($_GET["button-meer"])){
 }
 //einde van aanpassen hoeveelheid product
 
-$test = array(1,2,3,4,5);
-
 foreach ($cart as $artikel => $aantal){
     $StockItem = getStockItem($artikel, $databaseConnection);
     $StockItemImage = getStockItemImage($artikel, $databaseConnection);
@@ -100,45 +98,45 @@ foreach ($cart as $artikel => $aantal){
 
             <a id="CartPrijsStuk"></i><?php print sprintf("Prijs per stuk: € %.2f", $StockItem['SellPrice']); ?></a>
             <a id="CartBTWStuk"></i><?php print sprintf("Waarvan BTW: € %.2f", ($StockItem['SellPrice']/100*$StockItem['TaxRate'])); ?></a>
-            <script>
-                $("#apply").click(function(){
-                    if($('#promo_code').val()!=''){
-                        $.ajax({
-                            type: "POST",
-                            url: "process.php",
-                            data:{
-                                coupon_code: $('#coupon_code').val()
-                            },
-                            success: function(dataResult){
-                                var dataResult = JSON.parse(dataResult);
-                                if(dataResult.statusCode==200){
-                                    var after_apply=$('#total_price').val()-dataResult.value;
-                                    $('#total_price').val(after_apply);
-                                    $('#apply').hide();
-                                    $('#edit').show();
-                                    $('#message').html("Promocode applied successfully !");
-
-                                }
-                                else if(dataResult.statusCode==201){
-                                    $('#message').html("Invalid promocode !");
-                                }
-                            }
-                        });
-                    }
-                    else{
-                        $('#message').html("Promocode can not be blank .Enter a Valid Promocode !");
-                    }
-                });
-                $("#edit").click(function(){
-                    $('#coupon_code').val("");
-                    $('#apply').show();
-                    $('#edit').hide();
-                    location.reload();
-                });
-            </script>
-        </div>
-    </div>
-    <div style="height: 160px"/>
+<!--            <script>-->
+<!--                $("#apply").click(function(){-->
+<!--                    if($('#promo_code').val()!=''){-->
+<!--                        $.ajax({-->
+<!--                            type: "POST",-->
+<!--                            url: "process.php",-->
+<!--                            data:{-->
+<!--                                coupon_code: $('#coupon_code').val()-->
+<!--                            },-->
+<!--                            success: function(dataResult){-->
+<!--                                var dataResult = JSON.parse(dataResult);-->
+<!--                                if(dataResult.statusCode==200){-->
+<!--                                    var after_apply=$('#total_price').val()-dataResult.value;-->
+<!--                                    $('#total_price').val(after_apply);-->
+<!--                                    $('#apply').hide();-->
+<!--                                    $('#edit').show();-->
+<!--                                    $('#message').html("Promocode applied successfully !");-->
+<!---->
+<!--                                }-->
+<!--                                else if(dataResult.statusCode==201){-->
+<!--                                    $('#message').html("Invalid promocode !");-->
+<!--                                }-->
+<!--                            }-->
+<!--                        });-->
+<!--                    }-->
+<!--                    else{-->
+<!--                        $('#message').html("Promocode can not be blank .Enter a Valid Promocode !");-->
+<!--                    }-->
+<!--                });-->
+<!--                $("#edit").click(function(){-->
+<!--                    $('#coupon_code').val("");-->
+<!--                    $('#apply').show();-->
+<!--                    $('#edit').hide();-->
+<!--                    location.reload();-->
+<!--                });-->
+<!--            </script>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div style="height: 160px"/>-->
 <?php
     }
 ?>
