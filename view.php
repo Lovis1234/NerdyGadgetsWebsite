@@ -5,8 +5,12 @@ include __DIR__ . "/header.php";
 include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
-$idmail = $_SESSION["email"];
-getWelkom($databaseConnection, $idmail, $_GET['id']);
+if(isset($_SESSION["email"]))
+{
+    $idmail = $_SESSION["email"];
+    getWelkom($databaseConnection, $idmail, $_GET['id']);
+}
+
 $button="";
 ?>
 <div id="CenteredContent">
