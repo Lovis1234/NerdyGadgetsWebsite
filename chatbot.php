@@ -3,7 +3,7 @@ include __DIR__ . "/header.php";
 include "Functies.php";
 $chat=array();
 
-$_SESSION['chat'] = $chat;
+$chat = $_SESSION['chat'];
 
 ?>
     <!DOCTYPE html>
@@ -18,35 +18,45 @@ $_SESSION['chat'] = $chat;
     </head>
     <body>
     <?php
-    if(isset($_POST["submit"]))
+
+    $chat[] = "/help";
+    $chat[] = "/test";
+    if(isset($_POST["submit"])) {
+        $chat[] = $_POST["chatbericht"];
+        $_SESSION['chat'] = $chat;
+    }
     ?>
     <div class="chatbot">
         <div id="chatbox">
+            <?php
+                foreach ($chat as $vraagnummer => $vraag) {
+            ?>
             <div class="botbericht">
-                <h4 id="botnaam">Naam</h4>
-                <p id="botopmerking">hsjjajdajd</p>
+                <h4 id="botnaam">Gebruiker</h4>
+                <div style="word-wrap: break-word; margin-right: 20px">
+                    <p id="botopmerking"> <?php print($vraag); ?></p>
+                </div>
             </div>
-            <div class="botbericht">
-                <h4 id="botnaam">Naam</h4>
-                <p id="botopmerking">hsjjajdajd</p>
-            </div>            <div class="botbericht">
-                <h4 id="botnaam">Naam</h4>
-                <p id="botopmerking">hsjjajdajd</p>
-            </div>            <div class="botbericht">
-                <h4 id="botnaam">Naam</h4>
-                <p id="botopmerking">hsjjajdajd</p>
-            </div>            <div class="botbericht">
-                <h4 id="botnaam">Naam</h4>
-                <p id="botopmerking">hsjjajdajd</p>
-            </div>
-            <div class="botbericht">
-                <h4 id="botnaam">Naam</h4>
-                <p id="botopmerking">hsjjajdajd</p>
-            </div>
+            <?php
+                    if ($vraag == "/help" || $vraag == "/test") {
+                        ?>
+                        <div class="botbericht">
+                            <h4 id="botnaam">Nerd</h4>
+                            <div style="word-wrap: break-word; margin-right: 20px">
+                                <p id="botopmerking">Je Moeder</p>
+                            </div>
+                        </div>
+            <?php
+                    }
+            }
+            ?>
         </div>
-    <form method="get">
+    <form method="post">
         <input type="text" id="chatbericht" name="chatbericht" required>
-        <input type="submit" id="chatsubmit" name="submit" required>
+        <input type="submit" id="chatsubmit" name="submit" value="" required>
+    </form>
+    <form method="get">
+        <input type="submit" id="chatclear" name="submit" value="">
     </form>
     </div>
 
