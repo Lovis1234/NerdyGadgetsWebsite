@@ -18,8 +18,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         $lbprod = $remails['bekekenprod'];
     }
     $lbprod = unserialize($lbprod);
-    print(serialize(array()));
-    print_R($lbprod);
     foreach ($lbprod as $product)
     {
         $StockItem = getStockItem($product, $databaseConnection);
