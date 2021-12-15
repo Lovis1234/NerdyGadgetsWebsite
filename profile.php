@@ -6,7 +6,7 @@ $voornaam = getProfiel($databaseConnection, $email, "voornaam");
 $achternaam = getProfiel($databaseConnection, $email,"achternaam");
 $bestelnaam = getProfiel($databaseConnection, $email, "bestelnaam");
 $bestelstraat = getProfiel($databaseConnection, $email,"bestelstraat");
-$bestelhuisnummer = getProfiel($databaseConnection, $email, "voornaam");
+$bestelhuisnummer = getProfiel($databaseConnection, $email, "besteld");
 $achternaam = getProfiel($databaseConnection, $email,"achternaam");
 ?>
 <div class="container rounded bg-white mt-5 mb-5">
