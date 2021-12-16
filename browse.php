@@ -358,3 +358,5 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
     }
     ?>
 </div>
+<?php
+include __DIR__ . "/footer.php";

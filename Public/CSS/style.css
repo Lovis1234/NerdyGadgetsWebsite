@@ -916,7 +916,7 @@ span.price {
 /*Chatbot code*/
 .chatbot {
     top: 50px;
-    border: 1px solid red;
+    border: 1px solid white;
     height: 620px;
     width: 70%;
     position: absolute;
@@ -925,15 +925,33 @@ span.price {
 }
 #chatbox {
     overflow-y:scroll;
+    /*overflow:auto;
+    display:flex;
+    flex-direction:column-reverse;*/
     height:540px;
     width: 100%;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
     position: absolute;
+}
+#chatmenu {
+    /*overflow:auto;
+    display:flex;
+    flex-direction:column-reverse;*/
+    height:100px;
+    width: 100%;
+    border: 1px solid white;
+    background-color: white;
+    bottom: 80px;
+    position: absolute;
+}
+#chatmenusub {
+    color: black;
+    font-size: 20px;
 }
 
 #chatbericht {
     height: 50px;
-    width: 80%;
+    width: 81%;
     position: absolute;
     bottom: -5px;
     left: 1%;
@@ -944,18 +962,19 @@ span.price {
     width: 10%;
     position: absolute;
     bottom: 15px;
-    right: 8%;
+    right: 7%;
 }
 #chatclear {
     height: 50px;
     width: 5%;
     position: absolute;
     bottom: 15px;
-    right: 4%;
+    right: 1%;
 }
 
 .botbericht {
-    border: 1px solid blue;
+    margin-top: 10px;
+    border: 1px solid #676EFF;
     min-height: 80px;
     height: fit-content;
     width: 98%;
@@ -972,5 +991,14 @@ span.price {
 #botopmerking {
     left: 10px;
     position: relative;
+}
+#chatbot {
+    background-color: #676EFF;
+    color: white;
+    font-size: 30px;
+    height: 80px;
+    width: 80px;
+    border: none;
+    border-radius: 24px;
 }
 /*Einde chatbot code*/

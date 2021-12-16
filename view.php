@@ -162,12 +162,12 @@ $button="";
                     $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
                     $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
                     $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
-                    print("<h3>". $titel."</h3>");
+                    print("<a style='font-size: 20px'> $titel </a><br>");
 
-                    for ($i = 0; $i < $sterren   ; $i++) {
+                    for ($i = 0; $i < $sterren; $i++) {
                         print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
                     }
-                    for ($i = 0; $i < 5-$sterren   ; $i++) {
+                    for ($i = 0; $i < 5-$sterren; $i++) {
                         print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
                     }
                     ?>
