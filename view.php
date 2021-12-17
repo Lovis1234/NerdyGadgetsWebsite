@@ -75,6 +75,7 @@ $button="";
                             </a>
                         </div>
                     </div>
+
                     <?php
                 }
             } else {
@@ -103,6 +104,7 @@ $button="";
                 </div>
             </div>
         </div>
+    
         </ul>
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
