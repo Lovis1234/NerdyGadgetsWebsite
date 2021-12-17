@@ -6,8 +6,14 @@ $voornaam = getProfiel($databaseConnection, $email, "voornaam");
 $achternaam = getProfiel($databaseConnection, $email,"achternaam");
 $bestelnaam = getProfiel($databaseConnection, $email, "bestelnaam");
 $bestelstraat = getProfiel($databaseConnection, $email,"bestelstraat");
-$bestelhuisnummer = getProfiel($databaseConnection, $email, "besteld");
-$achternaam = getProfiel($databaseConnection, $email,"achternaam");
+$bestelhuisnummer = getProfiel($databaseConnection, $email, "bestelhuisnummer");
+$bestelpostcode = getProfiel($databaseConnection, $email,"bestelpostcode");
+$bestelplaats = getProfiel($databaseConnection, $email,"bestelplaats");
+$factuurnaam = getProfiel($databaseConnection, $email, "factuurnaam");
+$factuurstraat = getProfiel($databaseConnection, $email,"factuurstraat");
+$factuurhuisnummer = getProfiel($databaseConnection, $email, "factuurhuisnummer");
+$factuurpostcode = getProfiel($databaseConnection, $email,"factuurpostcode");
+$factuurplaats = getProfiel($databaseConnection, $email,"factuurplaats");
 ?>
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
@@ -21,8 +27,8 @@ $achternaam = getProfiel($databaseConnection, $email,"achternaam");
                     <form method="get">
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="Put in your first name" value="<?php if ($voornaam !== NULL) {print($voornaam);} ?>"></div>
-                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="<?php if ($achternaam !== NULL) {print($achternaam);} ?>" placeholder="surname"></div>
+                    <div class="col-md-6"><label class="labels">Voornaam</label><input type="text" class="form-control" placeholder="<?php if ($voornaam !== NULL) {print($voornaam);} else {echo"Voornaam";} ?>" value="<?php if ($voornaam !== NULL) {print($voornaam);} ?>"></div>
+                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="<?php if ($achternaam !== NULL) {print($achternaam);}   ?>" placeholder="<?php if ($achternaam !== NULL) {print($achternaam);}else {echo"Achternaam";} ?>"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
