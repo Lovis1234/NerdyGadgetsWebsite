@@ -13,6 +13,18 @@
             updateWelkom($databaseConnection,$idpro,$datprod,$info['email']);
         }
     }
+    function updateProfile($databaseConnection, $vn,$an,$fn,$fs,$fh,$fp,$fpl,$bn,$bs,$bh,$bp,$bpl, $mail)
+    {
+        $Query = "
+     UPDATE users SET voornaam=?, achternaam=?, 
+    factuurnaam=?, factuurstraat=?, factuurhuisnummer=?, factuurpostcode=?, factuurplaats=?,
+     bestelnaam=?, bestelstraat=?, bestelhuisnummer=?, bestelpostcode=?, bestelplaats=?
+     WHERE email=?";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "sssssssssssss", $vn,$an,$fn,$fs,$fh,$fp,$fpl,$bn,$bs,$bh,$bp,$bpl,$mail);
+        mysqli_stmt_execute($Statement);
+        header("Location:profile.php");
+    }
     function updateWelkom($databaseConnection, $productID,$uAR,$mail)
     {
         $Query = "
