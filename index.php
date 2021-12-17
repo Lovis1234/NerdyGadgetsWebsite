@@ -13,13 +13,14 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
          
         
     
-    
+    <table>
 ";
         $lbprod = $remails['bekekenprod'];
     }
     $lbprod = unserialize($lbprod);
     foreach ($lbprod as $product)
     {
+        echo"<tr><td>";
         $StockItem = getStockItem($product, $databaseConnection);
         $StockItemImage = getStockItemImage($product, $databaseConnection);
          if (isset($StockItemImage)) {
@@ -72,10 +73,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                     <?php
                 }
          }
-        echo $StockItem['StockItemName']."<br>";
+        echo "</td></tr><tr><td>".$StockItem['StockItemName']."</td></tr><br>";
 
  }
-    echo "</center>
+    echo "</table></center>
 
 <div class='form-group'>
             <input href='categories.php' type='submit' class='btn btn-primary' value='Verder winkelen'>
