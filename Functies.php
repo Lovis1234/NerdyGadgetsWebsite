@@ -229,6 +229,26 @@ function addProductToCart($stockItemID,$databaseConnection){
         $resultaat = mysqli_stmt_get_result($Statement);
         return $resultaat;
     }
+    function getVmet($databaseConnection)
+    {
+        $Query = "
+                SELECT *
+                FROM deliverymethods ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
+    function getOrders($databaseConnection,$mail)
+    {
+        $Query = "
+                SELECT *
+                FROM orders, users WHERE orders.UserID = users.ID AND users.email ='".$mail."'";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
     function getBetaal($databaseConnection)
     {
         $Query = "
