@@ -5,12 +5,7 @@ include __DIR__ . "/header.php";
 include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
-if(isset($_SESSION["email"]))
-{
-    $idmail = $_SESSION["email"];
-    getWelkom($databaseConnection, $idmail, $_GET['id']);
-}
-
+$ChocTemp = getChocTemp($databaseConnection);
 $button="";
 ?>
 <div id="CenteredContent">
@@ -90,14 +85,15 @@ $button="";
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
+            <div class="ChocTemp"><?php print "Chocolate temperature: ".$ChocTemp." °C"; ?></div>
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
-                        <h6> Inclusief <?php $StockItem['SellPrice']/100*$StockItem['TaxRate'] ?> BTW </h6>
+                        <h6> Price Including <?php $StockItem['SellPrice']/100*$StockItem['TaxRate'] ?> VAT </h6>
                         <form method="post">
-                            <input type="submit" name="button" value="Voeg toe aan winkelmand" class="button" id="button">
+                            <input type="submit" name="button" value="Add to cart" class="button" id="button">
                         </form>
                     </div>
                 </div>
@@ -105,17 +101,17 @@ $button="";
         </div>
         </ul>
         <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
+            <h3>Product Description</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
         </div>
         <div id="StockItemSpecifications">
-            <h3>Artikel specificaties</h3>
+            <h3>Product Details</h3>
             <?php
             $CustomFields = json_decode($StockItem['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
                 <table>
                 <thead>
-                <th>Naam</th>
+                <th>Name</th>
                 <th>Data</th>
                 </thead>
                 <?php
@@ -152,7 +148,7 @@ $button="";
                     <div id="StockItemReview">
                     <h3 class='Review'>Reviews:</h3>
                 <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]); ?>">
-                    <input type="submit" name="button2" value="Wees de eerste die voor dit product een review plaatst!" class="button" style="margin-top: 20px; margin-bottom: 20px">
+                    <input type="submit" name="button2" value="Be the first to write a customer review!" class="button" style="margin-top: 20px; margin-bottom: 20px">
                 </form>
 
                     <?php }
@@ -168,12 +164,12 @@ $button="";
                     $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
                     $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
                     $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
-                    print("<h3>". $titel."</h3>");
+                    print("<a style='font-size: 20px'> $titel </a><br>");
 
-                    for ($i = 0; $i < $sterren   ; $i++) {
+                    for ($i = 0; $i < $sterren; $i++) {
                         print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
                     }
-                    for ($i = 0; $i < 5-$sterren   ; $i++) {
+                    for ($i = 0; $i < 5-$sterren; $i++) {
                         print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
                     }
                     ?>
@@ -188,7 +184,7 @@ $button="";
             <?php
                 if (getReviewCount($databaseConnection,$_GET['id']) >= 1) { ?>
                     <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]); ?>">
-                        <input type="submit" name="button2" value="Plaats een review voor dit product!" class="button" style="margin-top: 20px; margin-bottom: 20px">
+                        <input type="submit" name="button2" value="Write a customer review" class="button" style="margin-top: 20px; margin-bottom: 20px">
                     </form>
             <?php } ?>
         </div>
@@ -196,7 +192,6 @@ $button="";
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
-</div>
 </div>
 <?php
 if(isset($_POST["button"])) {

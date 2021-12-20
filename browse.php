@@ -221,14 +221,14 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
 <!-- code deel 3 van User story: Zoeken producten : de html -->
 <!-- de zoekbalk links op de pagina  -->
 
-<div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
+<div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filter </h2>
     <form>
         <div id="FilterOptions">
-            <h4 class="FilterTopMargin"><i class="fas fa-search"></i> Zoeken</h4>
+            <h4 class="FilterTopMargin"><i class="fas fa-search"></i> Search</h4>
             <input type="text" name="search_string" id="search_string"
                    value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
                    class="form-submit">
-            <h4 class="FilterTopMargin"><i class="fas fa-list-ol"></i> Aantal producten op pagina</h4>
+            <h4 class="FilterTopMargin"><i class="fas fa-list-ol"></i> Items per page</h4>
 
             <input type="hidden" name="category_id" id="category_id"
                    value="<?php print (isset($_GET['category_id'])) ? $_GET['category_id'] : ""; ?>">
@@ -246,26 +246,26 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
                 } ?>>75
                 </option>
             </select>
-            <h4 class="FilterTopMargin"><i class="fas fa-sort"></i> Sorteren</h4>
+            <h4 class="FilterTopMargin"><i class="fas fa-sort"></i> Sort By</h4>
             <select name="sort" id="sort" onchange="this.form.submit()">>
                 <option value="price_low_high" <?php if ($_SESSION['sort'] == "price_low_high") {
                     print "selected";
-                } ?>>Prijs oplopend
+                } ?>>Price: Low-High
                 </option>
                 <option value="price_high_low" <?php if ($_SESSION['sort'] == "price_high_low") {
                     print "selected";
-                } ?> >Prijs aflopend
+                } ?> >Price: High-low
                 </option>
                 <option value="name_low_high" <?php if ($_SESSION['sort'] == "name_low_high") {
                     print "selected";
-                } ?>>Naam oplopend
+                } ?>>Alfabetic: A-Z
                 </option>
                 <option value="name_high_low" <?php if ($_SESSION['sort'] == "name_high_low") {
                     print "selected";
-                } ?>>Naam aflopend
+                } ?>>Name: Z-A
                 <option value="relevantie" <?php if ($_SESSION['sort'] == "relevantie") {
                     print "selected";
-                } ?>>Relevantie
+                } ?>>Relevance
                 </option>
                 </option>
             </select>
@@ -300,7 +300,7 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
-                            <h6>Inclusief BTW </h6>
+                            <h6>VAT included </h6>
                         </div>
                     </div>
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
@@ -352,9 +352,11 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
     } else {
         ?>
         <h2 id="NoSearchResults">
-            Er zijn geen resultaten gevonden.
+            Sorry, we couldn't find any results.
         </h2>
         <?php
     }
     ?>
 </div>
+<?php
+include __DIR__ . "/footer.php";
