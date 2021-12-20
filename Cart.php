@@ -21,6 +21,7 @@ include "Functies.php";
         <?php
         $superaantal = 0; //Het totaal aantal producten
         $totaalprijs = 0; //Het totaalbedrag
+        $couponstatus = FALSE;
         $cart = getCart($databaseConnection); //aanroepen cart array
 
         //Aanpassen hoeveelheid van product
@@ -50,7 +51,6 @@ include "Functies.php";
         }
         //einde van aanpassen hoeveelheid product
 
-        $test = array(1,2,3,4,5);
 
         foreach ($cart as $artikel => $aantal){
             $StockItem = getStockItem($artikel, $databaseConnection);
@@ -110,20 +110,43 @@ include "Functies.php";
     <a id="CartTotaalArtikelen">Aantal producten in winkelmand: </i><?php print($superaantal);?></a>
 
     <div class="CartAfronden">
-        <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
         <?php
-        if($totaalprijs == 0) {
+        if(isset($_GET["button"])) {
+            $couponcode=$_GET["korting"];
+            $result = coupon($databaseConnection,$couponcode,$totaalprijs);
+            }
+
+
+
+        if ($result !== "This coupon code does not exist.") {
+
+        ?> <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $supertotaalprijs));?></a>
+
+<?php
+        } else { ?>
+            <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
+    <?php if($totaalprijs == 0) {
             ?><a id="CartTotaalBTWPrijs"></i>Waarvan BTW: €0</a><?php
         } else {
             ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Waarvan BTW: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?></a><?php
+
+        }
         }
         ?>
-
-        <form action="browse.php" method="get">
+    <div>
+        <form action="browse.php" method="get" class="column">
             <input type="submit" name="button" value="Verder winkelen" class="button2" style="float: left;">
         </form>
-        <form action="bestellijst.php" method="get">
-            <?php if ($cart !== array()) {
+
+            <form action="Cart.php" method="get" class="column">
+            <input type="text"  name="korting" placeholder="Put here your coupon codes" style="float: left">
+                <input type="submit" name="button" value="Apply" class="button2" style="float: left">
+            </form>
+
+        <form action="bestellijst.php" method="get" class="column">
+            <?php
+            $cart = getCart($databaseConnection);
+            if ($cart !== array()) {
                 print('<input type="submit" name="button" value="Bestelling afronden" class="button2" style="float: right;">');
             } ?>
         </form>
@@ -131,4 +154,3 @@ include "Functies.php";
     </body>
     </html>
 <?php
-include __DIR__ . "/footer.php";
