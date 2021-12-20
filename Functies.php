@@ -260,33 +260,34 @@ function addProductToCart($stockItemID,$databaseConnection){
         return $resultaat;
     }
     function coupon($databaseConnection, $couponcode, $totaalprijs){
-        $sql = "SELECT couponcode, couponpercentage, beschrijving FROM coupons WHERE couponcode = 'coupon10'";
+        $sql = "SELECT couponcode, couponpercentage, beschrijving FROM coupons WHERE couponcode = ?";
 
         if($stmt = mysqli_prepare($databaseConnection, $sql)){
-//            mysqli_stmt_bind_param($stmt, "s", $param_coupon);
-//            $param_coupon = $couponcode;
+            mysqli_stmt_bind_param($stmt, "s", $param_coupon);
+            $param_coupon = $couponcode;
+            $korting = "";
 
             // Uitvoering
             if(mysqli_stmt_execute($stmt)){
                 // Opslaan
                 $results = mysqli_stmt_get_result($stmt);
                 // Kijken of de couponcode bestaat
-//                if(mysqli_stmt_num_rows($stmt) == 1){
+                if(empty($result)) {
                     foreach ($results as $result) {
                         $korting = $result["couponpercentage"];
                     }
-                    $supertotaalprijs = $totaalprijs*((100-$korting)/100);
+                    $supertotaalprijs = $totaalprijs * ((100 - $korting) / 100);
                     return $korting;
+                }
 //                } else{
 //                    // coupon bestaat niet
 //                    $coupon_err = "This coupon code does not exist.";
 //                    return $coupon_err;
-                }
+
             } else{
                 $coupon_err = "Oops! Something went wrong. Please try again later.";
                 return $coupon_err;
-            }
-            mysqli_stmt_close($stmt);
+            }}
 
 }
     function getChocTemp($databaseConnection) {
