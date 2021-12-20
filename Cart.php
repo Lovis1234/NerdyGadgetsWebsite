@@ -110,19 +110,24 @@ include "Functies.php";
     <a id="CartTotaalArtikelen">Aantal producten in winkelmand: </i><?php print($superaantal);?></a>
 
     <div class="CartAfronden">
-        <?php
+<!--        --><?php
         if(isset($_GET["button"])) {
             $couponcode=$_GET["korting"];
             $result = coupon($databaseConnection,$couponcode,$totaalprijs);
+//            print($result);
+//print($korting);
+
+
+
+
+
+        ?> <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)));?></a>
+            <?php if($totaalprijs == 0) {
+                ?><a id="CartTotaalBTWPrijs"></i>Waarvan BTW: €0<br> Met <?php print($totaalprijs*($result/100)) ?> </a><?php
+            } else {
+                ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Waarvan BTW: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?> <br> <?php print(sprintf("Waarvan korting door couponcode: € %.2f", ($totaalprijs*($result/100)))) ?></a><?php
+
             }
-
-
-
-        if ($result !== "This coupon code does not exist.") {
-
-        ?> <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $supertotaalprijs));?></a>
-
-<?php
         } else { ?>
             <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
     <?php if($totaalprijs == 0) {
@@ -135,12 +140,14 @@ include "Functies.php";
         ?>
     <div>
         <form action="browse.php" method="get" class="column">
-            <input type="submit" name="button" value="Verder winkelen" class="button2" style="float: left;">
+            <input type="submit" name="button" value="Verder winkelen" class="button2">
         </form>
 
             <form action="Cart.php" method="get" class="column">
-            <input type="text"  name="korting" placeholder="Put here your coupon codes" style="float: left">
-                <input type="submit" name="button" value="Apply" class="button2" style="float: left">
+                <center>
+            <input type="text"  name="korting" placeholder="Put here your coupon codes" style="width: 50%">
+                <input type="submit" name="button" value="Apply" class="button2">
+                </center>
             </form>
 
         <form action="bestellijst.php" method="get" class="column">
