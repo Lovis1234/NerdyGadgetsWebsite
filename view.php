@@ -5,12 +5,7 @@ include __DIR__ . "/header.php";
 include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
-if(isset($_SESSION["email"]))
-{
-    $idmail = $_SESSION["email"];
-    getWelkom($databaseConnection, $idmail, $_GET['id']);
-}
-
+$ChocTemp = getChocTemp($databaseConnection);
 $button="";
 ?>
 <div id="CenteredContent">
@@ -75,7 +70,6 @@ $button="";
                             </a>
                         </div>
                     </div>
-
                     <?php
                 }
             } else {
@@ -91,6 +85,7 @@ $button="";
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
+            <div class="ChocTemp"><?php print "Chocolate temperature: ".$ChocTemp." °C"; ?></div>
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
@@ -104,7 +99,6 @@ $button="";
                 </div>
             </div>
         </div>
-    
         </ul>
         <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
@@ -170,12 +164,12 @@ $button="";
                     $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
                     $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
                     $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
-                    print("<h3>". $titel."</h3>");
+                    print("<a style='font-size: 20px'> $titel </a><br>");
 
-                    for ($i = 0; $i < $sterren   ; $i++) {
+                    for ($i = 0; $i < $sterren; $i++) {
                         print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
                     }
-                    for ($i = 0; $i < 5-$sterren   ; $i++) {
+                    for ($i = 0; $i < 5-$sterren; $i++) {
                         print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
                     }
                     ?>
@@ -198,7 +192,6 @@ $button="";
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
-</div>
 </div>
 <?php
 if(isset($_POST["button"])) {
