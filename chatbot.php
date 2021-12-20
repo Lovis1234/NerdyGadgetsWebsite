@@ -7,7 +7,6 @@ if(isset($_SESSION['chat'])){               //controleren of winkelmandje (=cart
 } else{
     $cart = array();                            //zo nee: dan een nieuwe (nog lege) array
 }
-$chat = $_SESSION['chat'];
 
 ?>
     <!DOCTYPE html>
