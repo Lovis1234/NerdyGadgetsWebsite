@@ -363,9 +363,6 @@ ul#ul-class-winkelwagen li {
     float: left;
     margin-right: 10px;
 }
-.ChocTemp {
-    position: relative;
-}
 .QuantityText {
     position: absolute;
     left: 310px;
@@ -914,6 +911,80 @@ span.price {
     .col-25 {
         margin-bottom: 20px;
     }
+}
+
+/*Chatbot code*/
+.chatbot {
+    top: 50px;
+    border: 1px solid red;
+    height: 620px;
+    width: 70%;
+    position: absolute;
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
+}
+#chatbox {
+    overflow-y:scroll;
+    height:540px;
+    width: 100%;
+    border: 1px solid white;
+    position: absolute;
+}
+
+#chatbericht {
+    height: 50px;
+    width: 80%;
+    position: absolute;
+    bottom: -5px;
+    left: 1%;
+}
+
+#chatsubmit {
+    height: 50px;
+    width: 10%;
+    position: absolute;
+    bottom: 15px;
+    right: 8%;
+}
+#chatclear {
+    height: 50px;
+    width: 5%;
+    position: absolute;
+    bottom: 15px;
+    right: 4%;
+}
+
+.botbericht {
+    border: 1px solid blue;
+    min-height: 80px;
+    height: fit-content;
+    width: 98%;
+    left: 1%;
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+#botnaam {
+    top: 10px;
+    left: 10px;
+    position: relative;
+}
+#botopmerking {
+    left: 10px;
+    position: relative;
+}
+/*Einde chatbot code*/
+
+.column {
+    float: left;
+    width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /*Chatbot code*/

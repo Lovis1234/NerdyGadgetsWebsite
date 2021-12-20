@@ -6,6 +6,7 @@ include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 <<<<<<< HEAD
+<<<<<<< HEAD
 if(isset($_SESSION["email"]))
 {
     $idmail = $_SESSION["email"];
@@ -15,6 +16,9 @@ if(isset($_SESSION["email"]))
 =======
 $ChocTemp = getChocTemp($databaseConnection);
 >>>>>>> Jonathan
+=======
+$ChocTemp = getChocTemp($databaseConnection);
+>>>>>>> Stan
 $button="";
 ?>
 <div id="CenteredContent">
@@ -201,7 +205,6 @@ $button="";
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
-</div>
 </div>
 <?php
 if(isset($_POST["button"])) {
