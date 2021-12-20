@@ -50,6 +50,7 @@ include "Functies.php";
         }
         //einde van aanpassen hoeveelheid product
 
+
         foreach ($cart as $artikel => $aantal){
             $StockItem = getStockItem($artikel, $databaseConnection);
             $StockItemImage = getStockItemImage($artikel, $databaseConnection);
