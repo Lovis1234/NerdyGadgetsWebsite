@@ -256,6 +256,35 @@ function addProductToCart($stockItemID,$databaseConnection){
                 FROM paymentmethods ";
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
+<<<<<<< HEAD
         $resultaat = mysqli_stmt_get_result($Statement);
         return $resultaat;
     }
+=======
+        $countries = mysqli_stmt_get_result($Statement);
+        return $countries;
+    }
+    function getChocTemp($databaseConnection) {
+        $Query = "
+                select round(AVG(Temperature),2) GemTemp
+                from coldroomtemperatures";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $choctemp = mysqli_stmt_get_result($Statement);
+        foreach ($choctemp as $ct) {
+            $ct = $ct["GemTemp"];
+        }
+        return $ct;
+    }
+//function removeProductFromCart($stockItemID){
+//    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen
+//
+//    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
+//        unset($cart[$stockItemID]);                   //zo ja:  aantal met 1 verhogen
+//    }
+//
+//    saveCart($cart,$databaseConnection);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
+//    print_r($cart);
+//}
+
+>>>>>>> Jonathan

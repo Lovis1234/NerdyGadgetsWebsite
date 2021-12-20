@@ -169,6 +169,7 @@ else{
 
 </head>
 <body>
+<<<<<<< HEAD
 <center><h1>Checkout</h1></center>
     <div class="row">
         <div class="col-75">
@@ -204,22 +205,109 @@ else{
     Phone: <input type="text" id="telnummer" name="telnummer" required><br>
                             Shipping method: <SELECT name="vz" required>
                                 <option value="">Select a shipping method</option>
+=======
+<div style="text-align: center;"><h1>Afronden bestelling</h1></div>
+<div class="bestellijst">
+    <h3>Contactgegevens</h3>
+
+    <table style="border= 1px solid red">
+    <tr>
+        <table style="text-align: center; width: 100%">
+            <tr>
+                <td colspan="1">
+                    First name: <input type="text" id="email" name="vn" placeholder="First name" required>
+                </td>
+                <td>
+                    Last name: <input type="text" id="email" name="an" placeholder="Last name" required>
+                </td>
+                <td style="width: 14%">
+                    <SELECT name="geslacht" required>
+                        <option value="">Select your gender</option>
+                        <option value="man">Man</option>
+                        <option value="vrouw">Woman</option>
+                        <option value="anders">Different</option>
+                    </SELECT>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <SELECT name="beoordeling" required>
+                        <option value="">Select your country</option>
+                        <?php
+                        $countries = getCountries($databaseConnection);
+                        foreach ($countries as $aap) {
+                            echo '<option value="'.$aap["CountryID"].'">'.$aap["CountryName"].'</option>';
+                        }?>
+                    </SELECT>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Street: <input type="text" id="straat" name="straat" placeholder="Street" required>
+                </td>
+                <td>
+                    House number: <input type="text" id="huisnummer" name="huisnummer" placeholder="House number" required>
+                </td>
+                <td style="width: 14%">
+                    Addition: <input type="text" id="toevoeging" name="toevoeging" placeholder="Addition">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 30%">
+                    Zipcode: <input type="text" id="zip" name="zip" placeholder="Zipcode" required>
+                </td>
+                <td>
+                    City: <input type="text" id="plaats" name="plaats" placeholder="City" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Email: <input type="text" id="email" name="email" placeholder="Email" required>
+                </td>
+                <td>
+                    Telephone number: <input type="text" id="telnummer" name="telnummer" placeholder="Telephone number" required>
+                </td>
+            </tr>
+            <tr>
+                <table style="text-align: left; width: 100%">
+                    <tr>
+                        <td>
+                            Shipping method: <SELECT name="vz" required>
+                                <option value="">Select shipping method</option>
+>>>>>>> Jonathan
                                 <?php
                                 $resultaat = getVmet($databaseConnection);
                                 foreach ($resultaat as $resultaten) {
                                     echo '<option value="'.$resultaten["DeliveryMethodID"].'">'.$resultaten["DeliveryMethodName"].'</option>';
                                 }?>
+<<<<<<< HEAD
                             </SELECT> <br><br>
                             Payment: <SELECT name="bm" required>
                                 <option value="">Select a payment method</option>
+=======
+                            </SELECT>
+                        </td>
+                        <td>
+                            Paying method: <SELECT name="bm" required>
+                                <option value="">Select paying method</option>
+>>>>>>> Jonathan
                                 <?php
                                 $resultaat = getBetaal($databaseConnection);
                                 foreach ($resultaat as $resultaten) {
                                     echo '<option value="'.$resultaten["PaymentMethodID"].'">'.$resultaten["PaymentMethodName"].'</option>';
                                 }?>
-                            </SELECT> <br><br>
-    <input type="submit" name="bestel" value="Submit">
+                            </SELECT>
+                        </td>
+                    </tr>
+                </table>
+            </tr>
+        </table>
+    </tr>
+</table>
+    <input type="submit" name="bestel" value="Submit" style="width: 100%">
 </form>
+
+</div>
 
 
 <?php
