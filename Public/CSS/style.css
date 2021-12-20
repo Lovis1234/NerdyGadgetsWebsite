@@ -1076,3 +1076,10 @@ span.price {
     border-radius: 24px;
 }
 /*Einde chatbot code*/
+
+.bestellijst {
+    width: 70%;
+    position: absolute;
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
+}

@@ -82,7 +82,7 @@ include "Functies.php";
                     <a id="NaamArtikel" href='view.php?id=<?php print($artikel); ?>'></i> <?php print $StockItem['StockItemName']; ?></a>
                 </div>
                 <div class="CartArtikelNr">
-                    <a id="Artikelnummer">Artikelnummer: <?php print($artikel);?></a>
+                    <a id="Artikelnummer">Product ID: <?php print($artikel);?></a>
                 </div>
                 <div class="CartHoeveelheid">
                     <form method="get" action="Cart.php" id="CartHoeveelheidArtikel">
@@ -117,18 +117,18 @@ include "Functies.php";
 
 
         ?> <div class="column">
-            <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)));?></a>
+            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)));?></a>
             <?php if($totaalprijs == 0) {
-                ?><a id="CartTotaalBTWPrijs"></i>Waarvan BTW: €0<br> Met <?php print($totaalprijs*($result/100)) ?> </a><?php
+                ?><a id="CartTotaalBTWPrijs"></i>Of which VAT: €0<br> Met <?php print($totaalprijs*($result/100)) ?> </a><?php
             } else {
                 ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Waarvan BTW: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?> <br> <?php print(sprintf("Waarvan korting door couponcode: € %.2f", ($totaalprijs*($result/100)))) ?></a><?php
 
             }
         } else { ?>
 
-            <a id="CartTotaalPrijs">Totaalprijs: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
+            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
     <?php if($totaalprijs == 0) {
-            ?><a id="CartTotaalBTWPrijs"></i>Waarvan BTW: €0</a><?php
+            ?><a id="CartTotaalBTWPrijs"></i>Of wich VAT: €0</a><?php
         } else {
             ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Waarvan BTW: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?></a><?php
 
