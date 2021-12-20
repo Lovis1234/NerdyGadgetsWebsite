@@ -108,37 +108,35 @@ include "Functies.php";
     </div>
     <a id="CartTotaalArtikelen">Number of products in your cart: </i><?php print($superaantal);?></a>
 
-    <div class="CartAfronden"> <?php
+    <div class="CartAfronden">
+        <form action="browse.php" method="get" class="column">
+            <input type="submit" name="button" value="Continue shopping" class="button2" style="float: left;">
+        </form>
+        <?php
     if(isset($_GET["button"])) {
             $couponcode=$_GET["korting"];
             $result = coupon($databaseConnection,$couponcode,$totaalprijs);
-
-
-
-
-        ?> <div class="column">
-            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)));?></a>
+        ?>
+        <div class="column">
+            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)));?></a><br>
             <?php if($totaalprijs == 0) {
                 ?><a id="CartTotaalBTWPrijs"></i>Of which VAT: €0<br> Met <?php print($totaalprijs*($result/100)) ?> </a><?php
             } else {
-                ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Waarvan BTW: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?> <br> <?php print(sprintf("Waarvan korting door couponcode: € %.2f", ($totaalprijs*($result/100)))) ?></a><?php
+            ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Of which VAT: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?> <br> <?php print(sprintf("Waarvan korting door couponcode: € %.2f", ($totaalprijs*($result/100)))) ?></a></div><?php
 
             }
         } else { ?>
-
-            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a>
+        <div class="column">
+            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs));?></a><br>
     <?php if($totaalprijs == 0) {
-            ?><a id="CartTotaalBTWPrijs"></i>Of wich VAT: €0</a><?php
+            ?><a id="CartTotaalBTWPrijs"></i>Of which VAT: €0</a><br><?php
         } else {
-            ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Waarvan BTW: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?></a><?php
+            ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Of which VAT: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?></a></div><?php
 
         }
         }
 ?>
 
-        <form action="browse.php" method="get" class="column">
-            <input type="submit" name="button" value="Continue shopping" class="button2" style="float: left;">
-        </form>
         <form action="Cart.php" method="get" class="column">
             <center>
                 <input type="text"  name="korting" placeholder="Put here your coupon codes" style="width: 50%">
@@ -150,6 +148,7 @@ include "Functies.php";
                 print('<input type="submit" name="button" value="Proceed to checkout" class="button2" style="float: right;">');
             } ?>
         </form>
+        <div class="column">Test</div>
     </div>
     </body>
     </html>
