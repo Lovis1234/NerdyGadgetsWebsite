@@ -118,11 +118,11 @@ include "Functies.php";
             $result = coupon($databaseConnection,$couponcode,$totaalprijs);
         ?>
         <div class="column">
-            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)));?></a><br>
+            <a id="CartTotaalPrijs">Total amount: </i><?php print(sprintf("€%.2f", $totaalprijs*((100-$result)/100)))." (-".$result."%)"?></a><br>
             <?php if($totaalprijs == 0) {
                 ?><a id="CartTotaalBTWPrijs"></i>Of which VAT: €0<br> Met <?php print($totaalprijs*($result/100)) ?> </a><?php
             } else {
-            ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Of which VAT: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?> <br> <?php print(sprintf("Waarvan korting door couponcode: € %.2f", ($totaalprijs*($result/100)))) ?></a></div><?php
+            ?> <a id="CartTotaalBTWPrijs"></i><?php print sprintf("Of which VAT: € %.2f", ($totaalprijs/100*$StockItem['TaxRate'])); ?><!-- <br> --><?php /*print(sprintf("Waarvan korting door couponcode: € %.2f", ($totaalprijs*($result/100)))) */?></a></div><?php
 
             }
         } else { ?>
