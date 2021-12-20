@@ -5,6 +5,7 @@ include __DIR__ . "/header.php";
 include 'Functies.php';
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+$ChocTemp = getChocTemp($databaseConnection);
 $button="";
 ?>
 <div id="CenteredContent">
@@ -84,6 +85,7 @@ $button="";
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
+            <div class="ChocTemp"><?php print "Chocolate temperature: ".$ChocTemp." °C"; ?></div>
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">

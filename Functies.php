@@ -209,6 +209,18 @@ function addProductToCart($stockItemID,$databaseConnection){
         $countries = mysqli_stmt_get_result($Statement);
         return $countries;
     }
+    function getChocTemp($databaseConnection) {
+        $Query = "
+                select round(AVG(Temperature),2) GemTemp
+                from coldroomtemperatures";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $choctemp = mysqli_stmt_get_result($Statement);
+        foreach ($choctemp as $ct) {
+            $ct = $ct["GemTemp"];
+        }
+        return $ct;
+    }
 //function removeProductFromCart($stockItemID){
 //    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen
 //

@@ -2,7 +2,11 @@
 include __DIR__ . "/header.php";
 include "Functies.php";
 $chat=array();
-
+if(isset($_SESSION['chat'])){               //controleren of winkelmandje (=cart) al bestaat
+    $chat = $_SESSION['chat'];                  //zo ja:  ophalen
+} else{
+    $cart = array();                            //zo nee: dan een nieuwe (nog lege) array
+}
 $chat = $_SESSION['chat'];
 
 ?>
@@ -58,7 +62,7 @@ $chat = $_SESSION['chat'];
                         <div class="botbericht">
                             <h4 id="botnaam">Nerd</h4>
                             <div style="word-wrap: break-word; margin-right: 20px">
-                                <p id="botopmerking">Onderin het scherm verschijnt een lijst van commands om je verder te helpen.</p>
+                                <p id="botopmerking">A list of commands will popup below to help you get further.</p>
                             </div>
                         </div>
 

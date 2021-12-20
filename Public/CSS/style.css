@@ -363,6 +363,9 @@ ul#ul-class-winkelwagen li {
     float: left;
     margin-right: 10px;
 }
+.ChocTemp {
+    position: relative;
+}
 .QuantityText {
     position: absolute;
     left: 310px;
@@ -945,7 +948,7 @@ span.price {
     position: absolute;
 }
 #chatmenusub {
-    color: black;
+    color: #676EFF;
     font-size: 20px;
 }
 
@@ -1002,3 +1005,10 @@ span.price {
     border-radius: 24px;
 }
 /*Einde chatbot code*/
+
+.bestellijst {
+    width: 70%;
+    position: absolute;
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
+}
