@@ -1,16 +1,58 @@
     <?php // altijd hiermee starten als je gebruik wilt maken van sessiegegevens
+    function getWelkom($databaseConnection, $mail, $idpro)
+    {
+        $datauser = getMail($databaseConnection, $mail);
+        foreach ($datauser as $info)
+        {
+            $arrayprod = unserialize($info['bekekenprod']);
+            $arrayprod[2] = $arrayprod[1];
+            $arrayprod[1] = $arrayprod[0];
+            $arrayprod[0] = $idpro;
+
+            $datprod = serialize($arrayprod);
+            updateWelkom($databaseConnection,$idpro,$datprod,$info['email']);
+        }
+    }
+    function updateProfile($databaseConnection, $vn,$an,$fn,$fs,$fh,$fp,$fpl,$bn,$bs,$bh,$bp,$bpl, $mail)
+    {
+        $Query = "
+     UPDATE users SET voornaam=?, achternaam=?, 
+    factuurnaam=?, factuurstraat=?, factuurhuisnummer=?, factuurpostcode=?, factuurplaats=?,
+     bestelnaam=?, bestelstraat=?, bestelhuisnummer=?, bestelpostcode=?, bestelplaats=?
+     WHERE email=?";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "sssssssssssss", $vn,$an,$fn,$fs,$fh,$fp,$fpl,$bn,$bs,$bh,$bp,$bpl,$mail);
+        mysqli_stmt_execute($Statement);
+        header("Location:profile.php");
+    }
+    function updateWelkom($databaseConnection, $productID,$uAR,$mail)
+    {
+        $Query = "
+                UPDATE users SET bekekenprod = '".$uAR."' WHERE email = '".$mail."';";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+    }
     function getMail($databaseConnection, $mail)
     {
         $Query = "
                 SELECT *
-                FROM users WHERE email = ?";
+                FROM users WHERE email = ?"; // Het sql klaar zetten om het te gebruiken
 
-        $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "s", $param_email);
-        $param_email = $mail;
-        mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
+        $Statement = mysqli_prepare($databaseConnection, $Query); // Je koppelt hier de sql aan de database zodat hij ook weet waar uit te voeren
+        mysqli_stmt_bind_param($Statement, "s", $param_email); // Veiligheid, hiermee voorkom je dat mensen shit invoeren die je niet wilt
+        $param_email = $mail; // Hier zet je wat er kwa input moet komen
+        mysqli_stmt_execute($Statement); // Hier voor je pas echt de code uit "executing"
+        $resultaat = mysqli_stmt_get_result($Statement); //Hier haal je het resultaat op , alleen nodig bij SELECT statements omdat je ook echt iets terug wilt krijgen
+        return $resultaat; // Return het resultaat om te gebruiken in de code
+    }
+    function getProfiel($databaseConnection, $email, $rij)
+    {
+        $results = getMail($databaseConnection, $email);
+        foreach ($results as $result) {
+            $naam = $result["$rij"];
+
+        }
+        return $naam;
     }
     function getReview($databaseConnection, $productID,$id)
     {
@@ -20,23 +62,11 @@
                 FROM reviews WHERE productID = ? AND id=".$id;
 
         $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "s", $param_email);
-        $param_email = $productID;
+        mysqli_stmt_bind_param($Statement, "s", $param_id);
+        $param_id = $productID;
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
-    }
-    function makeReview($databaseConnection, $productID,$onderwerp,$naam,$opmerking,$aantSterren)
-    {
-
-        $Query = '
-                INSERT INTO reviews(onderwerp, naam, opmerkingen, productID, aantSterren)
-                VALUES ('.$onderwerp.','.$naam.', '.$opmerking.','.$productID.','.$aantSterren.')';
-
-        $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "s", $param_email);
-        $param_email = $productID;
-        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
     }
     function getCount($databaseConnection, $productID)
     {
@@ -116,8 +146,8 @@
             mysqli_stmt_bind_param($Statement, "s", $param_email);
             $param_email = $productID;
             mysqli_stmt_execute($Statement);
-            $countries = mysqli_stmt_get_result($Statement);
-            return $countries;
+            $resultaat = mysqli_stmt_get_result($Statement);
+            return $resultaat;
         }
     }
     function getReviewIDUit($databaseConnection, $productID)
@@ -144,8 +174,8 @@
     {
         $email = $_SESSION["email"];
         $mail = getMail($databaseConnection, $email);
-        foreach ($mail as $aap) {
-            $winkemandarray = unserialize($aap["winkelmand"]);
+        foreach ($mail as $resultaten) {
+            $winkemandarray = unserialize($resultaten["winkelmand"]);
 
         }
         saveCart($winkemandarray,$databaseConnection);
@@ -196,8 +226,28 @@ function addProductToCart($stockItemID,$databaseConnection){
                 FROM countries ";
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
+    function getVmet($databaseConnection)
+    {
+        $Query = "
+                SELECT *
+                FROM deliverymethods ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
+    function getOrders($databaseConnection,$mail)
+    {
+        $Query = "
+                SELECT *
+                FROM orders, users WHERE orders.UserID = users.ID AND users.email ='".$mail."'";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
     }
     function getBetaal($databaseConnection)
     {
@@ -206,9 +256,39 @@ function addProductToCart($stockItemID,$databaseConnection){
                 FROM paymentmethods ";
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
-        $countries = mysqli_stmt_get_result($Statement);
-        return $countries;
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
     }
+    function coupon($databaseConnection, $couponcode, $totaalprijs){
+        $sql = "SELECT couponcode, couponpercentage, beschrijving FROM coupons WHERE couponcode = 'coupon10'";
+
+        if($stmt = mysqli_prepare($databaseConnection, $sql)){
+//            mysqli_stmt_bind_param($stmt, "s", $param_coupon);
+//            $param_coupon = $couponcode;
+
+            // Uitvoering
+            if(mysqli_stmt_execute($stmt)){
+                // Opslaan
+                $results = mysqli_stmt_get_result($stmt);
+                // Kijken of de couponcode bestaat
+//                if(mysqli_stmt_num_rows($stmt) == 1){
+                    foreach ($results as $result) {
+                        $korting = $result["couponpercentage"];
+                    }
+                    $supertotaalprijs = $totaalprijs*((100-$korting)/100);
+                    return $korting;
+//                } else{
+//                    // coupon bestaat niet
+//                    $coupon_err = "This coupon code does not exist.";
+//                    return $coupon_err;
+                }
+            } else{
+                $coupon_err = "Oops! Something went wrong. Please try again later.";
+                return $coupon_err;
+            }
+            mysqli_stmt_close($stmt);
+
+}
     function getChocTemp($databaseConnection) {
         $Query = "
                 select round(AVG(Temperature),2) GemTemp
@@ -220,15 +300,4 @@ function addProductToCart($stockItemID,$databaseConnection){
             $ct = $ct["GemTemp"];
         }
         return $ct;
-    }
-//function removeProductFromCart($stockItemID){
-//    $cart = getCart($databaseConnection);                          // eerst de huidige cart ophalen
-//
-//    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
-//        unset($cart[$stockItemID]);                   //zo ja:  aantal met 1 verhogen
-//    }
-//
-//    saveCart($cart,$databaseConnection);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
-//    print_r($cart);
-//}
-
+    } 

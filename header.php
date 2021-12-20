@@ -43,7 +43,7 @@ $databaseConnection = connectToDatabase();
                 ?>
 
                 <li>
-                    <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
+                    <a href="categories.php" class="HrefDecoration">Categories</a>
                 </li>
             </ul>
 
@@ -57,10 +57,11 @@ $databaseConnection = connectToDatabase();
 </form>
         <ul id="class-navigation">
             <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
-                <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelmand</a>
-                <?php if(isset($_SESSION["loggedin"]) !== true){ print('<a href="inlog.php" class="HrefDecoration"><i class="fas fa-user-circle search"></i> Log in</a>');}?>
-                <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="logout.php" class="HrefDecoration" ><i class="fas fa-user-circle search"></i></i> Log uit</a>');}?>
+                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Search</a>
+                <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Cart</a>
+                <?php if(isset($_SESSION["loggedin"]) !== true){ print('<a href="inlog.php" class="HrefDecoration"><i class="fas fa-user-circle search"></i> Login</a>');}?>
+                <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="logout.php" class="HrefDecoration" ><i class="fas fa-user-circle search"></i></i> Log Out</a>');}?>
+                <?php if(isset($_SESSION["loggedin"]) == true){ print('<a href="profile.php" class="HrefDecoration" ><i class="fas fa-user-circle search"></i></i> Account</a>');}?>
             </li>
         </ul>
 
