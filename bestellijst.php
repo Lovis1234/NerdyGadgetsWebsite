@@ -60,7 +60,7 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
     }
-
+    header("Location:voltooid.php");
 }
 if(isset($_GET["bestel2"])) {
     $tel = $_GET['geslacht'];
@@ -92,7 +92,7 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
     }
-
+    header("Location:voltooid.php");
 }
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     $email = $_SESSION["email"];
