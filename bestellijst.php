@@ -79,26 +79,26 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
 
 </head>
 <body>
-<center><h1>Afronden bestelling</h1></center>
+<center><h1>Checkout</h1></center>
     <div class="row">
         <div class="col-75">
              <div class="container">
                 <form action="bestellijst.php">
                     <div class="row">
                         <div class="col-50">
-                            <h3>Contactgegevens</h3>
+                            <h3>Contact information</h3>
     Email: <input type="text" id="email" name="email" required><br>
-    Geslacht:
+    Gender:
       <input type="radio" id="man" name="geslacht" value="man">
-      <label for="man">Man</label>
+      <label for="man">Male</label>
       <input type="radio" id="vrouw" name="geslacht" value="vrouw">
-      <label for="css">Vrouw</label>
+      <label for="css">Female</label>
       <input type="radio" id="anders" name="geslacht" value="anders">
-      <label for="anders">Anders</label><br>
-    Voornaam: <input type="text" id="email" name="vn" required>
-                            Achternaam: <input type="text" id="email" name="an" required>
+      <label for="anders">Other</label><br>
+    First name: <input type="text" id="email" name="vn" required>
+                            Surname: <input type="text" id="email" name="an" required>
     <SELECT name="beoordeling" required>
-        <option value="">Selecteer een land</option>
+        <option value="">Select a country</option>
       <?php
       $resultaat = getCountries($databaseConnection);
       foreach ($resultaat as $resultaten) {
@@ -106,22 +106,22 @@ VALUES (NULL, (SELECT max(CustomerID) FROM customers), '1', NULL, '1', NULL,
       }?>
 
        </SELECT> <br><br>
-    Postcode: <input type="text" id="zip" name="zip" required><br>
-    Huisnummer: <input type="text" id="huisnummer" name="huisnummer" required>
+    Zip/Postal code: <input type="text" id="zip" name="zip" required><br>
+    House number: <input type="text" id="huisnummer" name="huisnummer" required>
                             Toevoeging: <input type="text" id="toevoeging" name="toevoeging"><br>
-    Straat: <input type="text" id="straat" name="straat" required><br>
-    Plaats: <input type="text" id="plaats" name="plaats" required><br>
-    Telefoonnummer: <input type="text" id="telnummer" name="telnummer" required><br>
-                            Verzendmethode: <SELECT name="vz" required>
-                                <option value="">Selecteer een verzendmethode</option>
+    Street: <input type="text" id="straat" name="straat" required><br>
+    City: <input type="text" id="plaats" name="plaats" required><br>
+    Phone: <input type="text" id="telnummer" name="telnummer" required><br>
+                            Shipping method: <SELECT name="vz" required>
+                                <option value="">Select a shipping method</option>
                                 <?php
                                 $resultaat = getVerzend($databaseConnection);
                                 foreach ($resultaat as $resultaten) {
                                     echo '<option value="'.$resultaten["DeliveryMethodID"].'">'.$resultaten["DeliveryMethodName"].'</option>';
                                 }?>
                             </SELECT> <br><br>
-                            Betaalmethode: <SELECT name="bm" required>
-                                <option value="">Selecteer een betaalmethode</option>
+                            Payment: <SELECT name="bm" required>
+                                <option value="">Select a payment method</option>
                                 <?php
                                 $resultaat = getBetaal($databaseConnection);
                                 foreach ($resultaat as $resultaten) {

@@ -18,10 +18,10 @@
 </head>
 <body>
 <center> <br><br><br><br><br><br><br><br>
-<h1>Je staat op het punt om uit te loggen</h1>
+<h1>Are you sure you want to log out?</h1>
 <form action="logout.php">
-    <input type="submit" name="annuleren" value="Annuleren" class="button2" style="background-color: red">
-    <input type="submit" name="doorgaan" value="Doorgaan" class="button2">
+    <input type="submit" name="annuleren" value="Cancel" class="button2" style="background-color: red">
+    <input type="submit" name="doorgaan" value="Continue" class="button2">
 </form>
     <center>
 <?php
