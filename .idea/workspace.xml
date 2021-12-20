@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40d8d2ef-6f2d-4b34-913f-e24dcdc2e646" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bestellijst.php" beforeDir="false" afterPath="$PROJECT_DIR$/bestellijst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,10 +75,8 @@
       <workItem from="1637913898643" duration="3336000" />
       <workItem from="1637920191482" duration="308000" />
       <workItem from="1638520437203" duration="15939000" />
-      <workItem from="1638882379741" duration="10319000" />
-      <workItem from="1639474744290" duration="5485000" />
-      <workItem from="1639553571861" duration="279000" />
-      <workItem from="1639741877093" duration="8757000" />
+      <workItem from="1638882379741" duration="9188000" />
+      <workItem from="1639121661191" duration="2443000" />
     </task>
     <servers />
   </component>
@@ -100,16 +97,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/chatbot.php</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

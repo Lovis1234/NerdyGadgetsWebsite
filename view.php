@@ -81,11 +81,15 @@ $button="";
             ?>
 
 
-            <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
+            <h1 class="StockItemID">Product id: <?php print $StockItem["StockItemID"]; ?></h1>
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
-            <div class="ChocTemp"><?php print "Chocolate temperature: ".$ChocTemp." °C"; ?></div>
+            <div class="ChocTemp"><?php
+                if ($StockItem['IsChillerStock'] == 1) {
+                    print "Chocolate temperature: " . $ChocTemp . " °C";
+                }
+                ?></div>
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
@@ -93,7 +97,7 @@ $button="";
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
                         <h6> Price Including <?php $StockItem['SellPrice']/100*$StockItem['TaxRate'] ?> VAT </h6>
                         <form method="post">
-                            <input type="submit" name="button" value="Add to cart" class="button" id="button">
+                            <input type="submit" name="button" value="&nbsp &nbsp Add to cart &nbsp &nbsp" class="button" id="button">
                         </form>
                     </div>
                 </div>
