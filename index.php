@@ -8,11 +8,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     foreach ($email as $remails){
         echo" <center><h1>Welcome back " .$remails['voornaam']. " ".$remails['achternaam']."</h1><br><br><br>
         <h2>Last seen products:</h2><br>
-        
-        
-         
-        
-    
     <table><tr>
 ";
         $titels = array();

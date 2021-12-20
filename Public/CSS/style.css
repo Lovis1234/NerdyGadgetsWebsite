@@ -812,14 +812,10 @@ cart layout
 #CartTotaalPrijs {
     font-size: 30px;
     top: 30px;
-    left: 230px;
-    position: absolute;
 }
 #CartTotaalBTWPrijs {
     font-size: 20px;
-    top: 66px;
-    left: 230px;
-    position: absolute;
+    top: 28px;
 }
 #CartTotaalArtikelen {
     font-size: 26px;
@@ -977,7 +973,7 @@ span.price {
 
 .column {
     float: left;
-    width: 25%;
+    width: 23.5%;
 }
 
 /* Clear floats after the columns */
