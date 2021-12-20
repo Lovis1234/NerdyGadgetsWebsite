@@ -193,7 +193,7 @@ function getVoorraadTekst($actueleVoorraad) {
     if ($actueleVoorraad > 1000) {
         return "Ruime voorraad beschikbaar.";
     } else {
-        return "Voorraad: $actueleVoorraad";
+        return "In stock: $actueleVoorraad";
     }
 }
 function berekenVerkoopPrijs($adviesPrijs, $btw) {

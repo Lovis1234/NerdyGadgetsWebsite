@@ -194,7 +194,7 @@ $button="";
         </div>
         <?php
     } else {
-        ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
+        ?><h2 id="ProductNotFound">Sorry, we couldn't find any results.</h2><?php
     } ?>
 </div>
 </div>
