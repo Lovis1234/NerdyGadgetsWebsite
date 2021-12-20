@@ -6,21 +6,17 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     $id = $_SESSION["email"];
     $email = getMail($databaseConnection, $id);
     foreach ($email as $remails){
-        echo" <center><h1>Welkom terug " .$remails['voornaam']. " ".$remails['achternaam']."</h1><br><br><br>
-        <h2>Laast bekeken producten:</h2><br>
-        
-        
-         
-        
-    
-    <table>
+        echo" <center><h1>Welcome back " .$remails['voornaam']. " ".$remails['achternaam']."</h1><br><br><br>
+        <h2>Last seen products:</h2><br>
+    <table><tr>
 ";
+        $titels = array();
         $lbprod = $remails['bekekenprod'];
     }
     $lbprod = unserialize($lbprod);
     foreach ($lbprod as $product)
     {
-        echo"<tr><td>";
+        echo"<td>";
         $StockItem = getStockItem($product, $databaseConnection);
         $StockItemImage = getStockItemImage($product, $databaseConnection);
          if (isset($StockItemImage)) {
@@ -73,13 +69,22 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                     <?php
                 }
          }
-        echo "</td></tr><tr><td>".$StockItem['StockItemName']."</td></tr><br>";
-
+        array_push($titels,$StockItem['StockItemName']);
+        echo "</td>";
+        // $StockItem['StockItemName']
  }
-    echo "</table></center>
+    echo "</tr><tr>";
+    foreach ($titels as $productnaam)
+        {
+            echo "<td>".$productnaam."</td>";
+        }
+    echo"</tr>
 
+
+</table></center>
+    
 <div class='form-group'>
-            <input href='categories.php' type='submit' class='btn btn-primary' value='Verder winkelen'>
+            <a href='categories.php'> <input  type='submit' class='btn btn-primary' value='Continue shopping'></a>
         </div>";
 }
 else

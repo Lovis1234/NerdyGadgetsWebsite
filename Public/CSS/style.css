@@ -812,14 +812,10 @@ cart layout
 #CartTotaalPrijs {
     font-size: 30px;
     top: 30px;
-    left: 230px;
-    position: absolute;
 }
 #CartTotaalBTWPrijs {
     font-size: 20px;
-    top: 66px;
-    left: 230px;
-    position: absolute;
+    top: 28px;
 }
 #CartTotaalArtikelen {
     font-size: 26px;
@@ -974,3 +970,112 @@ span.price {
     position: relative;
 }
 /*Einde chatbot code*/
+
+.column {
+    float: left;
+    width: 23.5%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*Chatbot code*/
+.chatbot {
+    top: 50px;
+    border: 1px solid white;
+    height: 620px;
+    width: 70%;
+    position: absolute;
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
+}
+#chatbox {
+    overflow-y:scroll;
+    /*overflow:auto;
+    display:flex;
+    flex-direction:column-reverse;*/
+    height:540px;
+    width: 100%;
+    border-bottom: 1px solid white;
+    position: absolute;
+}
+#chatmenu {
+    /*overflow:auto;
+    display:flex;
+    flex-direction:column-reverse;*/
+    height:100px;
+    width: 100%;
+    border: 1px solid white;
+    background-color: white;
+    bottom: 80px;
+    position: absolute;
+}
+#chatmenusub {
+    color: #676EFF;
+    font-size: 20px;
+}
+
+#chatbericht {
+    height: 50px;
+    width: 81%;
+    position: absolute;
+    bottom: -5px;
+    left: 1%;
+}
+
+#chatsubmit {
+    height: 50px;
+    width: 10%;
+    position: absolute;
+    bottom: 15px;
+    right: 7%;
+}
+#chatclear {
+    height: 50px;
+    width: 5%;
+    position: absolute;
+    bottom: 15px;
+    right: 1%;
+}
+
+.botbericht {
+    margin-top: 10px;
+    border: 1px solid #676EFF;
+    min-height: 80px;
+    height: fit-content;
+    width: 98%;
+    left: 1%;
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+#botnaam {
+    top: 10px;
+    left: 10px;
+    position: relative;
+}
+#botopmerking {
+    left: 10px;
+    position: relative;
+}
+#chatbot {
+    background-color: #676EFF;
+    color: white;
+    font-size: 30px;
+    height: 80px;
+    width: 80px;
+    border: none;
+    border-radius: 24px;
+}
+/*Einde chatbot code*/
+
+.bestellijst {
+    width: 70%;
+    position: absolute;
+    -ms-transform: translateX(20%);
+    transform: translateX(20%);
+}
