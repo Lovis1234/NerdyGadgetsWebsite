@@ -191,9 +191,9 @@ if (isset($amount)) {
 
 function getVoorraadTekst($actueleVoorraad) {
     if ($actueleVoorraad > 1000) {
-        return "Ruime voorraad beschikbaar.";
+        return "Large stock available.";
     } else {
-        return "Voorraad: $actueleVoorraad";
+        return "Stock: $actueleVoorraad";
     }
 }
 function berekenVerkoopPrijs($adviesPrijs, $btw) {
@@ -303,7 +303,7 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
                             <h6>VAT included </h6>
                         </div>
                     </div>
-                    <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
+                    <h1 class="StockItemID">Product id: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
                     <h4 class="ItemQuantity"><?php print getVoorraadTekst($row["QuantityOnHand"]); ?></h4>
