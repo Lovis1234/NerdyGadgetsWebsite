@@ -19,17 +19,17 @@ if(isset($_GET["review"])) {
 <form action="reviewmaken.php">
                     <div class="row">
                         <div class="col-50">
-                            <h3>Review achterlaten</h3>
-    Onderwerp: <input type="text" id="onderwerp" name="onderwerp" required><br>
-    Naam: <input type="text" id="naam" name="naam" required>
-    Opmerking: <input type="text" id="opmerking" name="opmerking" required><br>
+                            <h3>Write A Customer Review</h3>
+    Subject: <input type="text" id="onderwerp" name="onderwerp" required><br>
+    Name: <input type="text" id="naam" name="naam" required>
+    Review: <input type="text" id="opmerking" name="opmerking" required><br>
                             <SELECT name="sterren" required>
-                                <option value="">Selecteer een beoordeling</option>
-                                <option value="1">1 ster</option>
-                                <option value="2">2 ster</option>
-                                <option value="3">3 ster</option>
-                                <option value="4">4 ster</option>
-                                <option value="5">5 ster</option>
+                                <option value="">Select Your Rating</option>
+                                <option value="1">1 star  - Very Unsatisfied</option>
+                                <option value="2">2 stars - Unsatisfied</option>
+                                <option value="3">3 stars - Neutral</option>
+                                <option value="4">4 stars - Satisfied</option>
+                                <option value="5">5 stars - Very Satisfied</option>
 
                             </SELECT> <br><br>
                             <input type="hidden" value="<?php print($_GET["id"]); ?>" name="id">

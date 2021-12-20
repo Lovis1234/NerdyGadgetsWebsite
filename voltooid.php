@@ -19,8 +19,8 @@ include "Functies.php";
     $orderID = getVerzend($databaseConnection);
 foreach ($orderID as $resultaten) {
     ?><center>
-    <h1> Bedankt voor uw bestelling!</h1>
-    <h2> Ordernummer: #<?php print($resultaten["max(OrderID)"]); ?></h2>
+    <h1> Thank you for your order!</h1>
+    <h2> OrderID: #<?php print($resultaten["max(OrderID)"]); ?></h2>
     <br><br>
     <img src="Public/StockItemIMG/voltooid.gif" style="height: 30%; width: 30%">
 <?php }

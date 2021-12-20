@@ -7,10 +7,10 @@ $id = $_GET['idprod'];
 $StockItem = getStockItem($id, $databaseConnection);
 //print_r($cart); ?>
 <center>
-<h1>Je staat op het punt om <?php print $StockItem['StockItemName']; ?> uit de winkelwagen te verwijderen.</h1>
+<h1>Are you sure you want to remove <?php print $StockItem['StockItemName']; ?> from your cart?</h1>
 <form>
-    <input type="submit" name="annuleren" value="Annuleren" class="button2" style="background-color: red">
-    <input type="submit" name="doorgaan" value="Doorgaan" class="button2">
+    <input type="submit" name="annuleren" value="Cancel" class="button2" style="background-color: red">
+    <input type="submit" name="doorgaan" value="Continue" class="button2">
     <input type="hidden" name="idprod" value="<?php print($id); ?>">
 </form>
 </center>
