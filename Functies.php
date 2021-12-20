@@ -13,6 +13,18 @@
             updateWelkom($databaseConnection,$idpro,$datprod,$info['email']);
         }
     }
+    function updateProfile($databaseConnection, $vn,$an,$fn,$fs,$fh,$fp,$fpl,$bn,$bs,$bh,$bp,$bpl, $mail)
+    {
+        $Query = "
+     UPDATE users SET voornaam=?, achternaam=?, 
+    factuurnaam=?, factuurstraat=?, factuurhuisnummer=?, factuurpostcode=?, factuurplaats=?,
+     bestelnaam=?, bestelstraat=?, bestelhuisnummer=?, bestelpostcode=?, bestelplaats=?
+     WHERE email=?";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "sssssssssssss", $vn,$an,$fn,$fs,$fh,$fp,$fpl,$bn,$bs,$bh,$bp,$bpl,$mail);
+        mysqli_stmt_execute($Statement);
+        header("Location:profile.php");
+    }
     function updateWelkom($databaseConnection, $productID,$uAR,$mail)
     {
         $Query = "
@@ -212,6 +224,26 @@ function addProductToCart($stockItemID,$databaseConnection){
         $Query = "
                 SELECT *
                 FROM countries ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
+    function getVmet($databaseConnection)
+    {
+        $Query = "
+                SELECT *
+                FROM deliverymethods ";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+        $resultaat = mysqli_stmt_get_result($Statement);
+        return $resultaat;
+    }
+    function getOrders($databaseConnection,$mail)
+    {
+        $Query = "
+                SELECT *
+                FROM orders, users WHERE orders.UserID = users.ID AND users.email ='".$mail."'";
         $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
         $resultaat = mysqli_stmt_get_result($Statement);
