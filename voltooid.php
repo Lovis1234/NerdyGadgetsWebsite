@@ -71,4 +71,7 @@ foreach ($orderID as $resultaten) {
             <div style="height: 160px"/>
 <?php
 }
+        $cart = getCart($databaseConnection);
+        $cart = array();
+        saveCart($cart,$databaseConnection);
 include __DIR__ . "/footer.php";
