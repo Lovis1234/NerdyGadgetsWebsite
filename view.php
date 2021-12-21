@@ -210,5 +210,6 @@ if(isset($_POST["button"])) {
 }
 
 ?>
+</div>
 <?php
 include __DIR__ . "/footer.php";
