@@ -17,7 +17,6 @@ if(isset($_GET["review"])) {
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
-    header("Location:view.php?id=".$productID);
 }
 ?>
 <div class="container rounded bg-white mt-5 mb-5" style="color:black">
@@ -25,7 +24,7 @@ if(isset($_GET["review"])) {
         <div class="p-3 py-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="text-right">Write a customer review for <?php print $StockItem['StockItemName'] ?></h4>
-                <form action="reviewmaken.php">
+                <form  method="get">
             </div>
             <div class="row mt-3">
                 <div class="col-md-12"><label class="labels">Name:</label><input type="text" class="form-control" placeholder="Name" value="" id="naam" name="naam" required></div>
@@ -41,7 +40,7 @@ if(isset($_GET["review"])) {
                     <option value="4">4 star</option>
                     <option value="5">5 star</option>
                 </SELECT>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Submit review</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" name="review" type="submit">Submit review</button></div>
                 <input type="hidden" value="<?php print($productID); ?>" name="id" >
                 </form
             </div>
