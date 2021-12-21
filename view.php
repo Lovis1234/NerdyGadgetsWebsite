@@ -7,6 +7,11 @@ $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 $ChocTemp = getChocTemp($databaseConnection);
 $button="";
+if(isset($_SESSION["email"]))
+{
+    $idmail = $_SESSION["email"];
+    getWelkom($databaseConnection, $idmail, $_GET['id']);
+}
 ?>
 <div id="CenteredContent">
     <?php
@@ -205,5 +210,6 @@ if(isset($_POST["button"])) {
 }
 
 ?>
+</div>
 <?php
 include __DIR__ . "/footer.php";

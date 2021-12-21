@@ -17,6 +17,7 @@ if(isset($_GET["review"])) {
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
+    header("Location:view.php?id=".$productID);
 }
 ?>
 <div class="container rounded bg-white mt-5 mb-5" style="color:black">
@@ -41,6 +42,7 @@ if(isset($_GET["review"])) {
                     <option value="5">5 star</option>
                 </SELECT>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Submit review</button></div>
+                <input type="hidden" value="<?php print($productID); ?>" name="id" >
                 </form
             </div>
         </div>
@@ -48,3 +50,5 @@ if(isset($_GET["review"])) {
 </div>
 </div>
 </div>
+<?php
+include __DIR__ . "/footer.php";
