@@ -16,15 +16,62 @@ include "Functies.php";
 <body>
     <br><br><br>
 <?php
-$cart = getCart($databaseConnection);
-$cart = array();
-saveCart($cart,$databaseConnection);
     $orderID = getVerzend($databaseConnection);
 foreach ($orderID as $resultaten) {
     ?><center>
-    <h1> Thank you for your order!</h1>
-    <h2> OrderID: #<?php print($resultaten["max(OrderID)"]); ?></h2>
+    <h1> Thank you for shopping with us!</h1>
+    <h2> Ordernumber: #<?php print($resultaten["max(OrderID)"]); ?></h2>
+    <h2>The products you bought:</h2>
     <br><br>
-    <img src="Public/StockItemIMG/voltooid.gif" style="height: 30%; width: 30%">
-<?php }
+    <div class="Cart" id="ResultsArea">
+        <?php }
+        $superaantal = 0; //Het totaal aantal producten
+        $totaalprijs = 0; //Het totaalbedrag
+        $cart = getCart($databaseConnection); //aanroepen cart array
+        foreach ($cart as $artikel => $aantal){
+            $StockItem = getStockItem($artikel, $databaseConnection);
+            $StockItemImage = getStockItemImage($artikel, $databaseConnection);
+
+            ?>
+            <hr style="border: 1px solid white">
+
+            <div class="CartProductFrame">
+                <?php
+                if (isset($StockItemImage)) {
+                    if (count($StockItemImage) == 0) {
+                        ?>
+                        <div id="CartImageFrame"
+                             style="background-image: url('Public/StockItemIMG/GeenAfbeelding.jpg'); background-size: 200px; background-repeat: no-repeat; background-position: center;"></div>
+                        <?php
+                    }
+                    // één plaatje laten zien
+                    if (count($StockItemImage) >= 1) {
+                        ?>
+                        <div id="CartImageFrame"
+                             style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 200px; background-repeat: no-repeat; background-position: center;"></div>
+                        <?php
+                    }
+                }
+                ?>
+                <div class="CartNaamArtikel">
+                    <a id="NaamArtikel" href='view.php?id=<?php print($artikel); ?>'></i> <?php print $StockItem['StockItemName']; ?></a>
+                </div>
+                <div class="CartArtikelNr">
+                    <a id="Artikelnummer">Artikelnummer: <?php print($artikel);?></a>
+                </div>
+                <div class="CartHoeveelheid">
+                    <form method="get" action="Cart.php" id="CartHoeveelheidArtikel">
+                        <input type="hidden" name="idprod" value="<?php print($artikel); ?>">
+
+                       Total: <?php print($aantal); ?>
+                    </form>
+                </div>
+
+            </div>
+            <div style="height: 160px"/>
+<?php
+}
+        $cart = getCart($databaseConnection);
+        $cart = array();
+        saveCart($cart,$databaseConnection);
 include __DIR__ . "/footer.php";
