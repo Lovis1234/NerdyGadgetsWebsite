@@ -25,7 +25,7 @@ include "Functies.php";
 
         //Aanpassen hoeveelheid van product
         if ($cart == array()) {
-            print("<h1 style='font-size: xxx-large'> Your cart is empty.. <br>");
+            print("<h1 style='font-size: x-large'> Your cart is empty.. <br>");
 
         }
 
@@ -135,20 +135,21 @@ include "Functies.php";
 
         }
         }
+    if($superaantal >= 1) {
 ?>
-
         <form action="Cart.php" method="get" class="column">
             <center>
                 <input type="text"  name="korting" placeholder="Put here your coupon codes" style="width: 50%">
                 <input type="submit" name="button" value="Apply" class="button2">
             </center>
         </form>
+        <?php } ?>
         <form action="bestellijst.php" method="get" class="column">
             <?php if ($cart !== array()) {
                 print('<input type="submit" name="button" value="Proceed to checkout" class="button2" style="float: right;">');
             } ?>
         </form>
-        <div class="column">Test</div>
+        <div class="column"></div>
     </div>
     </body>
     </html>
