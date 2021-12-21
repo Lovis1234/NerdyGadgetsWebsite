@@ -17,6 +17,7 @@ if(isset($_GET["review"])) {
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
+    header("Location:view.php?id=".$productID);
 }
 ?>
 <div class="container rounded bg-white mt-5 mb-5" style="color:black">
