@@ -27,5 +27,4 @@ foreach ($orderID as $resultaten) {
     <br><br>
     <img src="Public/StockItemIMG/voltooid.gif" style="height: 30%; width: 30%">
 <?php }
-
 include __DIR__ . "/footer.php";
