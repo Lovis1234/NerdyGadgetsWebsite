@@ -7,6 +7,11 @@ $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 $ChocTemp = getChocTemp($databaseConnection);
 $button="";
+if(isset($_SESSION["email"]))
+{
+    $idmail = $_SESSION["email"];
+    getWelkom($databaseConnection, $idmail, $_GET['id']);
+}
 ?>
 <div id="CenteredContent">
     <?php
