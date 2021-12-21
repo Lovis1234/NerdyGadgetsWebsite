@@ -25,8 +25,8 @@ include "Functies.php";
 
         //Aanpassen hoeveelheid van product
         if ($cart == array()) {
-            print("<h2> Your cart is empty <br>");
-            print('<img src="Public/StockItemIMG/jemoeder.gif" style="height: 25%; width: 25%" >');
+            print("<h1 style='font-size: xxx-large'> Your cart is empty.. <br>");
+
         }
 
         if(isset($_GET["doorgaan"])) {//controleren of $stockItemID(=key!) al in array staat
