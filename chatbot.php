@@ -305,6 +305,19 @@ if(isset($_SESSION['chat'])){               //controleren of winkelmandje (=cart
 
                         <?php
                     }
+                    if ($vraag == "/discount") {
+                        ?>
+                        <div class="botbericht">
+                            <h4 id="botnaam">Nerd</h4>
+                            <div style="word-wrap: break-word; margin-right: 20px">
+                                <p id="botopmerking">
+                                    You can add "coupon20" as discount code <3
+                                </p>
+                            </div>
+                        </div>
+
+                        <?php
+                    }
 
             }
             if(isset($_POST["chatsubmit"])) {
@@ -328,6 +341,7 @@ if(isset($_SESSION['chat'])){               //controleren of winkelmandje (=cart
                             <td><h3 id="chatmenusub">/choctemp</h3></td>
                             <td><h3 id="chatmenusub">/payment</h3></td>
                             <td><h3 id="chatmenusub">/warranty</h3></td>
+                            <td><h3 id="chatmenusub">/discount</h3></td>
                         </tr>
                         <tr style="">
                             <td><h3 id="chatmenusub">/returnpolicy</h3></td>
