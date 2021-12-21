@@ -16,9 +16,6 @@ include "Functies.php";
 <body>
     <br><br><br>
 <?php
-$cart = getCart($databaseConnection);
-$cart = array();
-saveCart($cart,$databaseConnection);
     $orderID = getVerzend($databaseConnection);
 foreach ($orderID as $resultaten) {
     ?><center>
@@ -26,10 +23,6 @@ foreach ($orderID as $resultaten) {
     <h2> Ordernumber: #<?php print($resultaten["max(OrderID)"]); ?></h2>
     <h2>The products you bought:</h2>
     <br><br>
-<<<<<<< HEAD
-    <img src="Public/StockItemIMG/voltooid.gif" style="height: 30%; width: 30%">
-<?php }
-=======
     <div class="Cart" id="ResultsArea">
         <?php }
         $superaantal = 0; //Het totaal aantal producten
@@ -78,5 +71,7 @@ foreach ($orderID as $resultaten) {
             <div style="height: 160px"/>
 <?php
 }
->>>>>>> Hamza-3
+        $cart = getCart($databaseConnection);
+        $cart = array();
+        saveCart($cart,$databaseConnection);
 include __DIR__ . "/footer.php";
