@@ -16,6 +16,9 @@ include "Functies.php";
 <body>
     <br><br><br>
 <?php
+$cart = getCart($databaseConnection);
+$cart = array();
+saveCart($cart,$databaseConnection);
     $orderID = getVerzend($databaseConnection);
 foreach ($orderID as $resultaten) {
     ?><center>
