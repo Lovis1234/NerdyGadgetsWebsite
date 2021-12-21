@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
-            <label>email</label>
+            <label>Email</label>
             <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
             <span class="invalid-feedback"><?php echo $email_err; ?></span>
         </div>
