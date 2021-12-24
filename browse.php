@@ -122,7 +122,8 @@ if ($CategoryID == "") {
                 (SELECT ImagePath
                 FROM stockitemimages
                 WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
-                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath, MATCH(stockitemname, searchdetails, marketingcomments)            AGAINST ('". $SearchString ."' in boolean mode) as score
+                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath, 
+                MATCH(stockitemname, searchdetails, marketingcomments)            AGAINST ('". $SearchString ."' in boolean mode) as score
                 FROM stockitems SI
                 JOIN stockitemholdings SIH USING(stockitemid)
                 " . $queryBuildResult . "
