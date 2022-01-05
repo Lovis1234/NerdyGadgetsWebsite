@@ -199,6 +199,7 @@ else{
     <div style="text-align: center;"><h1>Finish order</h1></div>
 <div class="bestellijst">
     <h3>Contact information</h3>
+    <form action="bestellijst.php">
 
     <table style="border= 1px solid red">
         <tr>
@@ -265,9 +266,9 @@ else{
                                 Shipping method: <SELECT name="vz" required>
                                     <option value="">Select shipping method</option>
                                     <?php
-                                    $countries = getVerzend($databaseConnection);
-                                    foreach ($countries as $aap) {
-                                        echo '<option value="'.$aap["DeliveryMethodID"].'">'.$aap["DeliveryMethodName"].'</option>';
+                                    $resultaat = getVmet($databaseConnection);
+                                    foreach ($resultaat as $resultaten) {
+                                        echo '<option value="'.$resultaten["DeliveryMethodID"].'">'.$resultaten["DeliveryMethodName"].'</option>';
                                     }?>
                                 </SELECT>
                             </td>
@@ -288,7 +289,7 @@ else{
         </tr>
     </table>
     <br>
-    <input type="submit" name="bestel" value="Submit" style="width: 100%">
+    <input type="submit" name="bestel2" value="Submit" style="width: 100%">
 <?php
 }
 include __DIR__ . "/footer.php";
