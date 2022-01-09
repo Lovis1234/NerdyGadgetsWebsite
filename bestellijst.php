@@ -16,7 +16,6 @@ if(isset($_GET["bestel"])) {
     $tel = $_GET['telnummer'];
     $vz = $_GET['vz'];
     $bm = $_GET['bm'];
-//    echo $email. "<br>". $geslacht. "<br>".$vn. "<br>".$an. "<br>".$beoordeling. "<br>".$zip. "<br>".$hn. "<br>".$toevoeging. "<br>".$straat. "<br>".$plaats. "<br>".$tel. "<br>".$vz. "<br>".$bm. "<br>";
 
     $Query = "INSERT INTO `customers`
 (`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`,

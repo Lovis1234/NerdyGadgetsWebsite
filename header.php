@@ -65,11 +65,6 @@ $databaseConnection = connectToDatabase();
             </li>
         </ul>
 
-<!--        <ul id="ul-class-winkelwagen">-->
-<!--            <li>-->
-<!--                <a href="cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart search"></i> Winkelwagen</a>-->
-<!--            </li>-->
-<!--        </ul>-->
 
 <!-- einde code voor US3 zoeken -->
     </div>

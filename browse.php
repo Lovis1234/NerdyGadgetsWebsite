@@ -97,9 +97,6 @@ if ($SearchString != "") {
 }
 
 
-// <einde van de code voor zoekcriteria>
-// einde code deel 1 van User story: Zoeken producten
-
 
 $Offset = $PageNumber * $ProductsOnPage;
 
@@ -109,8 +106,6 @@ if ($CategoryID != "") {
     }
 }
 
-// code deel 2 van User story: Zoeken producten
-// <voeg hier de code in waarin het zoekresultaat opgehaald wordt uit de database>
 if ($CategoryID == "") {
     if ($queryBuildResult != "") {
         $queryBuildResult = "WHERE " . $queryBuildResult;
@@ -147,10 +142,6 @@ if ($CategoryID == "") {
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 }
-
-
-// <einde van de code voor zoekresultaat>
-// einde deel 2 van User story: Zoeken producten
 
 if ($CategoryID !== "") {
     $Query = "
