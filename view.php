@@ -151,8 +151,8 @@ if(isset($_SESSION["email"]))
             ?>
         </div>
             <?php
-            $idarray = getReviewIDUit($databaseConnection,$_GET['id']);
-            if (getReviewCount($databaseConnection,$_GET['id']) == 0) {
+            $idarray = getReviewIDUit($databaseConnection,$_GET['id']); // Alle reviewID's ophalen bij het gegeven product
+            if (getReviewCount($databaseConnection,$_GET['id']) == 0) { // Wanneer er geen reviews zijn
                 ?>
                     <div id="StockItemReview">
                     <h3 class='Review'>Reviews:</h3>
@@ -161,36 +161,36 @@ if(isset($_SESSION["email"]))
                 </form>
 
                     <?php }
-            if (getReviewCount($databaseConnection,$_GET['id']) >= 1) {
+            if (getReviewCount($databaseConnection,$_GET['id']) >= 1) { // Wanneer er reviews zijn
                 ?><div id="StockItemReview"><?php
 
                 print("<h3 class='Review'>Reviews:</h3>");
                 ?><div style="margin: 30px"><?php
-                foreach ($idarray as $id) {
-//                $id = getReviewID()
-                    $sterren = getReviewAantSterren($databaseConnection,$_GET['id'],$id);
-                    $naam = getReviewNaam($databaseConnection,$_GET['id'],$id);
-                    $datum = getReviewDatum($databaseConnection,$_GET['id'],$id);
-                    $omschrijving = getReviewOmschrijving($databaseConnection,$_GET['id'],$id);
-                    $titel = getReviewOnderwerp($databaseConnection,$_GET['id'],$id);
+                foreach ($idarray as $id) { // Om voor elk review alle gegevens op te halen
+                    $sterren = getReviewDetails($databaseConnection,$_GET['id'],$id,"aantSterren");
+                    $naam = getReviewDetails($databaseConnection,$_GET['id'],$id,"naam");
+                    $datum = getReviewDetails($databaseConnection,$_GET['id'],$id,"datum");
+                    $omschrijving = getReviewDetails($databaseConnection,$_GET['id'],$id,"opmerkingen");
+                    $titel = getReviewDetails($databaseConnection,$_GET['id'],$id,"onderwerp");
                     print("<a style='font-size: 20px'> $titel </a><br>");
 
                     for ($i = 0; $i < $sterren; $i++) {
-                        print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">');
+                        print('<img src="Public/Img/starvol.png" style="height: 10%; width: 10%">'); // Aantal gegeven sterren
                     }
                     for ($i = 0; $i < 5-$sterren; $i++) {
-                        print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">');
+                        print('<img src="Public/Img/star.png" style="height: 10%; width: 10%">'); // Opvul lege sterren
                     }
                     ?>
 
-                    <br>
+                    <br> // Details laten zijn
+                    <h3>(<?php print($titel); ?>)</h3>
                     <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
                     <h3>(<?php print($omschrijving); ?>)</h3>
                 <?php print("<hr style='border: 1px solid white'");
                 } ?>
                 <?php } ?>
         </div>
-            <?php
+            <?php // Button review maken als er reviews zijn
                 if (getReviewCount($databaseConnection,$_GET['id']) >= 1) { ?>
                     <form method="post" action="reviewmaken.php?id=<?php print($_GET["id"]); ?>">
                         <input type="submit" name="button2" value="Write a customer review" class="button" style="margin-top: 20px; margin-bottom: 20px">

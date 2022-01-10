@@ -90,50 +90,14 @@
         }
         return $naam;
     }
-    function getReviewNaam($databaseConnection, $productID, $id)
+    function getReviewDetails($databaseConnection, $productID, $id, $rij)
     {
         $results = getReview($databaseConnection, $productID, $id);
         foreach ($results as $result) {
-            $naam = $result["naam"];
+            $naam = $result["$rij"];
 
         }
         return $naam;
-    }
-    function getReviewOmschrijving($databaseConnection, $productID, $id)
-    {
-        $results = getReview($databaseConnection, $productID, $id);
-        foreach ($results as $result) {
-            $naam = $result["opmerkingen"];
-
-        }
-        return $naam;
-    }
-    function getReviewOnderwerp($databaseConnection, $productID, $id)
-    {
-        $results = getReview($databaseConnection, $productID, $id);
-        foreach ($results as $result) {
-            $naam = $result["onderwerp"];
-
-        }
-        return $naam;
-    }
-    function getReviewAantSterren($databaseConnection, $productID, $id)
-    {
-        $results = getReview($databaseConnection, $productID, $id);
-        foreach ($results as $result) {
-            $aantSterren = $result["aantSterren"];
-
-        }
-        return $aantSterren;
-    }
-    function getReviewDatum($databaseConnection, $productID, $id)
-    {
-        $results = getReview($databaseConnection, $productID, $id);
-        foreach ($results as $result) {
-            $datum = $result["datum"];
-
-        }
-        return $datum;
     }
     function getReviewID($databaseConnection, $productID)
     {
