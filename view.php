@@ -182,7 +182,7 @@ if(isset($_SESSION["email"]))
                     }
                     ?>
 
-                    <br> // Details laten zijn
+                    <br>
                     <h3>(<?php print($titel); ?>)</h3>
                     <h4><?php print("$naam");?> | <?php print("$datum");?> </h4>
                     <h3>(<?php print($omschrijving); ?>)</h3>
