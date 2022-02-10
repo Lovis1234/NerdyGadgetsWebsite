@@ -1,3 +1,7 @@
+
+
+/*Herkansing Ines Daal ictm1b1 regel 1088 t/m 1107 (helemaal onderaan bestand) */
+
 #class-aantalartikel {
     right: 1300px;
     line-height: 200px;
@@ -1078,4 +1082,26 @@ span.price {
     position: absolute;
     -ms-transform: translateX(20%);
     transform: translateX(20%);
+}
+
+
+/*HERKANSING INES DAAL ICTM1B1*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    font-size: larger;
+}
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #23232f;
+    min-width: 20px;
+    padding: 12px 16px;
+    z-index: 1;
+    border-style: solid;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

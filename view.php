@@ -1,4 +1,9 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
+
+
+/*    Herkansing Ines Daal ictm1b1 regel 99 t/m 117   */
+
+
 <?php
 
 include __DIR__ . "/header.php";
@@ -90,6 +95,27 @@ $button="";
                     print "Chocolate temperature: " . $ChocTemp . " °C";
                 }
                 ?></div>
+
+/* HERKANSING INES DAAL ICTM1B1 */
+<br>
+        <div
+            <?php
+        if ($StockItem["StockItemID"] <= 227 && $StockItem["StockItemID"] >= 220){
+        ?>
+                class="dropdown">
+            <p >Keurmerk:</p>
+           <span> <img src="Public/Img/fairtradegoed.jpg" alt="foto" style="width: 65px;height: 65px;"> </span>
+            <div class="dropdown-content">
+                 <p>Fairtrade helpt boeren en arbeiders in ontwikkelingslanden <br>
+                    een betere plek te verwerven in de handelsketen, <br>
+                    zodat ze kunnen leven van hun werk en <br>
+                    kunnen investeren in een duurzame toekomst.</p>
+            </div>
+        </div>
+<?php } ?>
+
+/* EIND HERKANSING INES DAAL ICTM1B1*/
+
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
