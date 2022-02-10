@@ -77,3 +77,29 @@ $databaseConnection = connectToDatabase();
         <div class="col-12">
             <div id="SubContent">
                 <br>
+                <?php
+                if (date("h") > 0 AND date("h") < 2   ){
+                    echo "<center>Je happyhour kortingscode: 'happyhour' (20%)</center>";
+                    $sql_coupon = "SELECT couponcode FROM coupons WHERE couponcode = 'happyhour'";
+                    $declaratie = mysqli_query($databaseConnection, $sql_coupon);
+                    $rij = mysqli_num_rows($declaratie);
+
+                    if ($rij == 0){
+                        $Query = "  INSERT INTO `coupons` (`couponcode`, `couponpercentage`, `beschrijving`) VALUES ('happyhour', '20', NULL);";
+                        $Statement = mysqli_prepare($databaseConnection, $Query);
+                        mysqli_stmt_execute($Statement);
+                    }
+
+                } else {
+                    $sql_coupon = "SELECT couponcode FROM coupons WHERE couponcode = 'happyhour'";
+                    $declaratie = mysqli_query($databaseConnection, $sql_coupon);
+                    $rij = mysqli_num_rows($declaratie);
+
+                    if ($rij > 0){
+                        $Query = "DELETE FROM `coupons` WHERE `coupons`.`couponcode` = 'happyhour'";
+                        $Statement = mysqli_prepare($databaseConnection, $Query);
+                        mysqli_stmt_execute($Statement);
+                    }
+
+                }
+                ?>
