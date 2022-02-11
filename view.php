@@ -119,7 +119,7 @@ if(isset($_SESSION["email"]))
                 }
                 ?></div>
 
-<!--/* HERKANSING INES DAAL ICTM1B1 */-->
+<!-- HERKANSING INES DAAL ICTM1B1 -->
 <br>
         <div
             <?php
@@ -137,7 +137,7 @@ if(isset($_SESSION["email"]))
         </div>
 <?php } ?>
 
-<!--/* EIND HERKANSING INES DAAL ICTM1B1*/-->
+<!-- EIND HERKANSING INES DAAL ICTM1B1-->
 
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
