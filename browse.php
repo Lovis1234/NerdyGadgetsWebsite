@@ -122,8 +122,7 @@ if ($CategoryID == "") {
                 (SELECT ImagePath
                 FROM stockitemimages
                 WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
-                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath, 
-                MATCH(stockitemname, searchdetails, marketingcomments)            AGAINST ('". $SearchString ."' in boolean mode) as score
+                (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath, MATCH(stockitemname, searchdetails, marketingcomments)            AGAINST ('". $SearchString ."' in boolean mode) as score
                 FROM stockitems SI
                 JOIN stockitemholdings SIH USING(stockitemid)
                 " . $queryBuildResult . "
@@ -192,9 +191,9 @@ if (isset($amount)) {
 
 function getVoorraadTekst($actueleVoorraad) {
     if ($actueleVoorraad > 1000) {
-        return "Large stock available.";
+        return "Plenty in stock.";
     } else {
-        return "Stock: $actueleVoorraad";
+        return "In stock: $actueleVoorraad";
     }
 }
 function berekenVerkoopPrijs($adviesPrijs, $btw) {
@@ -247,7 +246,7 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
                 } ?>>75
                 </option>
             </select>
-            <h4 class="FilterTopMargin"><i class="fas fa-sort"></i> Sort By</h4>
+            <h4 class="FilterTopMargin"><i class="fas fa-sort"></i> Sort by</h4>
             <select name="sort" id="sort" onchange="this.form.submit()">>
                 <option value="price_low_high" <?php if ($_SESSION['sort'] == "price_low_high") {
                     print "selected";
@@ -304,7 +303,7 @@ foreach ($HeaderStockGroups as $HeaderStockGroup) {
                             <h6>VAT included </h6>
                         </div>
                     </div>
-                    <h1 class="StockItemID">Product id: <?php print $row["StockItemID"]; ?></h1>
+                    <h1 class="StockItemID">Product ID: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
                     <h4 class="ItemQuantity"><?php print getVoorraadTekst($row["QuantityOnHand"]); ?></h4>

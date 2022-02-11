@@ -2,32 +2,32 @@
 <?php
 include __DIR__ . "/header.php";
 include "Functies.php";
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    $id = $_SESSION["email"];
-    $email = getMail($databaseConnection, $id);
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){ // ben je ingelogd?
+    $id = $_SESSION["email"]; //pakt de sessie, want daar staat de id in van het bijbehorende acc
+    $email = getMail($databaseConnection, $id); // pakt alle gegevens van het acc waarop je bent ingelogd
     foreach ($email as $remails){
-        echo" <center><h1>Welcome back " .$remails['voornaam']. " ".$remails['achternaam']."</h1><br><br><br>
+        echo" <center><h1>Welcome back " .$remails['voornaam']. " ".$remails['achternaam']."</h1><br><br><br>   
         <h2>Last seen products:</h2><br>
     <table><tr>
 ";
-        $titels = array();
-        $lbprod = $remails['bekekenprod'];
+        $titels = array(); // je maakt die array aan, genaamd titels
+        $lbprod = $remails['bekekenprod'];// in database staat array van laatst bekeken producten, die zet die in lbprod
     }
-    $lbprod = unserialize($lbprod);
-    foreach ($lbprod as $product)
+    $lbprod = unserialize($lbprod);// omdat dit in tekst staat, wordt het hier gezet in die array
+    foreach ($lbprod as $product)// gebruik je loop voor 3 producten die in de array staan
     {
         echo"<td>";
         $StockItem = getStockItem($product, $databaseConnection);
         $StockItemImage = getStockItemImage($product, $databaseConnection);
-         if (isset($StockItemImage)) {
-                if (count($StockItemImage) == 0) {
+         if (isset($StockItemImage)) { // standaar functie die er al in stond, hier pakt die de foto's
+                if (count($StockItemImage) == 0) {// als product geen foto heeft, laat die standaart foto zien
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/GeenAfbeelding.jpg'); background-size: 250px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
                 }
                 // één plaatje laten zien
-                elseif (count($StockItemImage) == 1) {
+                elseif (count($StockItemImage) == 1) {// als die hier 1 plaatje heeft laat die het zien
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
@@ -69,14 +69,14 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                     <?php
                 }
          }
-        array_push($titels,$StockItem['StockItemName']);
+        array_push($titels,$StockItem['StockItemName']);// zet je titels van producten in een array (met stockitem functie)
         echo "</td>";
         // $StockItem['StockItemName']
  }
     echo "</tr><tr>";
-    foreach ($titels as $productnaam)
+    foreach ($titels as $productnaam)// titells worden naast elkaar gezet
         {
-            echo "<td>".$productnaam."</td>";
+            echo "<td>".$productnaam."</td>";// titels zijn te zien
         }
     echo"</tr>
 
