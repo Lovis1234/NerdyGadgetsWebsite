@@ -78,8 +78,8 @@ $databaseConnection = connectToDatabase();
             <div id="SubContent">
                 <br>
                 <?php
-                if (date("h") > 0 AND date("h") < 2   ){
-                    echo "<center>Je happyhour kortingscode: 'happyhour' (20%)</center>";
+                if (date("h") > 10 AND date("h") < 12   ){
+                    print "<center>Je happyhour kortingscode: 'happyhour' (20%)</center>";
                     $sql_coupon = "SELECT couponcode FROM coupons WHERE couponcode = 'happyhour'";
                     $declaratie = mysqli_query($databaseConnection, $sql_coupon);
                     $rij = mysqli_num_rows($declaratie);
