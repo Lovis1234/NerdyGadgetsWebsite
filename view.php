@@ -1,8 +1,26 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 
 
-/*    Herkansing Ines Daal ictm1b1 regel 99 t/m 117   */
+<!--    Herkansing Ines Daal ictm1b1 regel 123 t/m 138   -->
 
+<style>.dropdown {
+        position: relative;
+        display: inline-block;
+        font-size: larger;
+    }
+    .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: #23232f;
+        min-width: 20px;
+        padding: 12px 16px;
+        z-index: 1;
+        border-style: solid;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }</style>
 
 <?php
 
@@ -101,7 +119,7 @@ if(isset($_SESSION["email"]))
                 }
                 ?></div>
 
-/* HERKANSING INES DAAL ICTM1B1 */
+<!--/* HERKANSING INES DAAL ICTM1B1 */-->
 <br>
         <div
             <?php
@@ -119,7 +137,7 @@ if(isset($_SESSION["email"]))
         </div>
 <?php } ?>
 
-/* EIND HERKANSING INES DAAL ICTM1B1*/
+<!--/* EIND HERKANSING INES DAAL ICTM1B1*/-->
 
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">

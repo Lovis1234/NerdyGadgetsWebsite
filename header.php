@@ -1,4 +1,7 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
+
+<!--    Herkansing Tamim Ayoubie ICTM1b regel 84 t/m 109  -->
+
 <?php
 session_start();
 include "database.php";
@@ -77,6 +80,7 @@ $databaseConnection = connectToDatabase();
         <div class="col-12">
             <div id="SubContent">
                 <br>
+                <!-- HERKANSING TAMIM AYOUBIE ICTM1B1 -->
                 <?php
                 if (date("h") > 0 AND date("h") < 2   ){
                     print "<center>Je happyhour kortingscode: 'happyhour' (20%)</center>";
@@ -103,3 +107,4 @@ $databaseConnection = connectToDatabase();
 
                 }
                 ?>
+                <!-- HERKANSING TAMIM AYOUBIE ICTM1B1 -->
