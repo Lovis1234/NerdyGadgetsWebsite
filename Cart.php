@@ -144,13 +144,19 @@ include "Functies.php";
             </center>
         </form>
         <?php } ?>
-        <form action="bestellijst.php" method="get" class="column">
-            <?php if ($cart !== array()) {
+<!--        <form action="bestellijst.php" method="get" class="column">
+            <?php /*if ($cart !== array()) {
                 print('<input type="submit" name="button" value="Proceed to checkout" class="button2" style="float: right;">');
-            } ?>
-        </form>
+            } */?>
+        </form>-->
         <div class="column"></div>
     </div>
+    <form action="bestellijst.php" method="get">
+    <?php if ($cart !== array()) {
+        print('<input type="submit" name="button" value="Proceed to checkout" class="checkoutButton" style="float: right;">');
+    } ?>
+    </form>
+
     </body>
     </html>
 <?php
